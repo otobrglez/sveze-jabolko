@@ -10,8 +10,6 @@ gem 'rails', '3.1.0.rc1'
 gem 'sass'
 #gem 'coffee-script'
 gem 'uglifier'
-
-
 gem 'jquery-rails'
 
 # Use unicorn as the web server
@@ -27,6 +25,7 @@ group :test, :development do
   gem 'turn', :require => false
 	gem 'sqlite3'
 	gem 'unicorn'
+	gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :development do
