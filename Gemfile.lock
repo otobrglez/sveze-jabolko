@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.5.0)
     actionmailer (3.1.0.rc1)
       actionpack (= 3.1.0.rc1)
       mail (~> 2.3.0)
@@ -34,9 +35,12 @@ GEM
     ansi (1.2.5)
     archive-tar-minitar (0.5.2)
     arel (2.1.1)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
     bcrypt-ruby (2.1.4)
     builder (3.0.0)
     columnize (0.3.2)
+    diff-lcs (1.1.2)
     erubis (2.7.0)
     execjs (1.0.0)
       multi_json (~> 1.0)
@@ -80,6 +84,19 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.6)
     rake (0.9.0)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.3)
+    rspec-expectations (2.6.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0)
+    rspec-rails (2.6.1)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+      rspec (~> 2.6.0)
     ruby-debug-base19 (0.11.25)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
@@ -116,9 +133,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest
   jquery-rails
   pg
   rails (= 3.1.0.rc1)
+  rspec
+  rspec-rails
   ruby-debug19
   sass
   sqlite3
