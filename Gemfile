@@ -11,6 +11,7 @@ gem 'sass'
 #gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
+gem 'devise'
 
 # Use unicorn as the web server
 
@@ -28,7 +29,7 @@ group :test, :development do
 	gem 'ruby-debug19', :require => 'ruby-debug'
 	gem 'rspec'
 	gem 'rspec-rails'
-	gem "autotest"
+	gem 'autotest'	
 end
 
 group :development do

@@ -32,5 +32,21 @@ describe Article do
     @article.published.should == false
     @article.published?.should == false
   end
+  
+  it "has many sources" do
+    @article.should respond_to :sources
+    
+    @article.sources << Source.new( :title => "Demo title", :url => "http://apple.com")
+    @article.sources << Source.new( :title => "Demo title 2", :url => "http://google.com")
+    @article.sources.size.should == 2
+  end
+
+  it "has author" do
+    @article.should respond_to :author
+    @article.should have(1).error_on(:author)
+    
+    @article.author = User.new :name => "Oto Brglez"
+    @article.should have(0).error_on(:author)
+  end
 
 end
