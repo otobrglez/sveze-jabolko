@@ -1,0 +1,32 @@
+=simple_form_for([:admin,@user]) do |f|
+	%ul
+		%li
+			=f.input :name
+		%li
+			=f.input :email
+		%li
+			=f.input :password
+		%li
+			=f.input :home_url
+		%li
+			=f.input :twitter_name
+		%li
+			=f.input :facebook_name
+		%li
+			=f.input :github_name
+		%li
+			=f.input :skype_name
+		%li
+			=f.input :is_admin, :as => :boolean
+		%li
+			=f.input :is_author, :as => :boolean
+		%li
+			=f.input :is_developer, :as => :boolean
+
+		%li
+			= link_to "Nazaj", [:admin,:users]
+			- unless f.object.new_record?
+				|
+				=link_to "Odstrani", [:admin,f.object], :method => :delete
+				|
+			=f.button :submit

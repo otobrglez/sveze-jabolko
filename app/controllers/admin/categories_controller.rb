@@ -1,12 +1,11 @@
 class Admin::CategoriesController < AdminController
   
   inherit_resources
-  actions :all, :except => [ :index ]
+  actions :all, :except => [:index]
   defaults :route_prefix => 'admin'
   
-  before_filter :get_category, :only => [:edit, :show, :update, :destroy]
+  before_filter :find_category, :only => [:edit, :show, :update, :destroy]
   
-
   def index
     @categories = Category.page(params[:categories_page]).per(10)
     respond_with(@categories)
@@ -23,10 +22,9 @@ class Admin::CategoriesController < AdminController
   end
   
   private
-    def get_category
+    def find_category
       @category = Category.find_by_slug(params[:id])
       @category = Category.find(params[:id]) if @category == nil
     end
-  
   
 end

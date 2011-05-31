@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110531174622) do
+ActiveRecord::Schema.define(:version => 20110531211945) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20110531174622) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -59,14 +59,14 @@ ActiveRecord::Schema.define(:version => 20110531174622) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.boolean  "is_admin",                              :default => false
-    t.boolean  "is_author",                             :default => false
-    t.boolean  "is_developer",                          :default => false
     t.string   "twitter_name"
     t.string   "facebook_name"
     t.string   "github_name"
     t.string   "skype_name"
     t.string   "home_url"
+    t.integer  "is_admin",                              :default => 0
+    t.integer  "is_developer",                          :default => 0
+    t.integer  "is_author",                             :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

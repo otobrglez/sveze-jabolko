@@ -3,6 +3,26 @@
 %p
 	=link_to "Nov članek", new_admin_article_path()
 
+:css
+	p.categories{ margin-top:10px; }
+	p.categories,
+	p.categories a.category{ display:inline-block; height:30px;
+		line-height:30px; padding-left:10px; padding-right:10px }
+	p.categories a.category{
+	
+		background-color:#3FA9F5; color:white;
+	
+	}
+
+%p.categories
+	=link_to "Kategorije", [:admin,:categories]
+
+	=link_to "Vse", [:admin,:articles], :class => "category"
+	- @categories.each do |category|
+		=link_to category, admin_articles_path(:category_id => category.id), | 
+			:class => "category", :id => "category-#{category.id}"
+	
+
 %table#articles.a
 	%thead
 		%tr

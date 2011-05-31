@@ -1,27 +1,30 @@
 %ul#topnav
-	%li.selected
+	%li{:class => ("selected" if @category == nil && @is_administration == nil) }
 		=link_to root_path() do
 			%span Domov
-	%li
+	%li{:class => ("selected" if @category != nil && @category.slug == "novice") }
 		=link_to "/novice" do
 			%span Novice
-	%li
+	%li{:class => ("selected" if @category != nil && @category.slug == "mac") }
 		=link_to "/mac" do
 			%span Mac
-	%li
+	%li{:class => ("selected" if @category != nil && @category.slug == "iphone-ipod") }
 		=link_to "/iphone-ipod" do
 			%span iPhone / iPad
-	%li
+	%li{:class => ("selected" if @category != nil && @category.slug == "ipad") }
 		=link_to "/ipad" do
 			%span iPad
-	%li
+	%li{:class => ("selected" if @category != nil && @category.slug == "snelkurs") }
 		=link_to "/snelkurs" do
 			%span Šnelkurs
 	%li
 		=link_to "http://forum.jabolko.org" do
 			%span Forum
 	- if user_signed_in?
-		%li
+		%li{:class => ("selected" if @is_administration != nil && @is_administration == 1) }
 			=link_to admin_path() do
 				%span Administracija
+		%li
+			=link_to destroy_user_session_path() do
+				%span Odjava
 			

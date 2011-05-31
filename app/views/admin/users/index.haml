@@ -1,19 +1,24 @@
 %h1=link_to "Uporabniki", admin_users_path()
+
 %table#users.a
 	%thead
 		%tr
 			%th{:style => "width:40px"} ID
 			%th Naziv
 			%th Email
+			%th Prijava
+			%th Št. č.
 			%th.tools Orodja
 	%tbody
 		- @users.each do |user|
 			%tr
 				%th=user.id
-				%td=link_to(user, author_path(user))
+				%th=link_to(user, author_path(user))
 				%td=user.email
+				%th=time_ago_in_words user.last_sign_in_at
+				%th=user.articles.count
 				%th
-					=link_to "Uredi"
+					=link_to "Uredi", [:edit,:admin,user]
 
 	%tfoot
 		%tr
