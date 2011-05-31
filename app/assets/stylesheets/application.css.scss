@@ -28,6 +28,7 @@ img {border:0}
 #container, #infobox, #footer {width:950px; margin:0 auto}
 #header {height:191px; position:relative}
 #logo {position:absolute; top:95px; left:-1px; width:360px; height:70px}
+
 #topnav {position:absolute; top:18px; left:-11px; height:24px; width:650px}
 #topnav li {float:left; height:24px; margin:0 20px 0 0}
 #topnav li.disabled a span {color:#888}
@@ -37,6 +38,7 @@ img {border:0}
 #topnav a span {font-size:15px; color:#fff; line-height:24px; padding:0 11px}
 #topnav a:hover, #topnav .selected a {background:url($aws+"../images/topnav_bgl.png") no-repeat left 0}
 #topnav a:hover span, #topnav .selected a span {background:url($aws+"../images/topnav_bgr.png") no-repeat right 0}
+
 .module_search {background:url($aws+"../images/search.png") no-repeat 0 0; width:260px; height:32px; position:absolute; top:13px; right:0}
 #module_search_form_inputbox {border:0; color:#808080; font-size:13px; height:22px; left:32px; padding:0; position:absolute; top:6px; width:220px; font-family:Arial, sans-serif}
 #about {height:130px; width:260px; border-left:1px solid #d9d9d9; position:absolute; right:0; top:61px; padding:0 0 0 19px}
