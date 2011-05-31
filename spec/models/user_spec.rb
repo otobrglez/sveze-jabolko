@@ -35,5 +35,10 @@ describe User do
     @user.articles << Article.new(:title => "Demo x2")
     @user.articles.size.should == 2
   end
+  
+  it "has some magic functions" do
+    @user.name = "Oto Brglez"
+    @user.to_param.should == "oto-brglez"
+  end
 
 end

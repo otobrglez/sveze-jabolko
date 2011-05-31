@@ -11,6 +11,7 @@ describe Article do
     @article.should have(1).error_on(:title)
     @article.should have(1).error_on(:intro)
     @article.should have(1).error_on(:body)
+    @article.should have(1).error_on(:author)
   end
   
   it "belongs to category" do

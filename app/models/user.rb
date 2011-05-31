@@ -23,4 +23,12 @@ class User < ActiveRecord::Base
     return self.is_developer
   end
   
+  def to_param
+    "#{self.id}-#{self.name}".parameterize
+  end
+  
+  def to_s
+    "#{self.name}"
+  end
+  
 end

@@ -1,0 +1,6 @@
+%h1 Kategorije
+
+%ul
+	- @categories.each do |category|
+		%li
+			=link_to category, category_path(category)

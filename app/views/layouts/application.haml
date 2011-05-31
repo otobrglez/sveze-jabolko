@@ -19,14 +19,10 @@
 			#main
 				=yield
 			
-			#sidebar
-				%p Sidebar
+			=render :partial => 'layouts/sidebar'
 				
-				
-			#clear
+			.clear
 	
 	=render :partial => 'layouts/infobox'
-
-		
 	=render :partial => 'layouts/footer'
 		

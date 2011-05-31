@@ -1,6 +1,17 @@
-%h1 Articles
-
-%ul
+%div#articles
 	- @articles.each do |article|
-		%li
-			=article
+		.article
+			%h2=link_to article, article_path(article.category, article)
+		
+			.meta.clear
+				.numofcom
+					=link_to "0", article_path(article.category, article)
+				%span.created_at
+					=link_to article.author, author_path(article.author)
+					\,
+					=article.created_at
+					v
+					=link_to article.category, category_path(article.category)
+					z značkami
+			
+		%hr/

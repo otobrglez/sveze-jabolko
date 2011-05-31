@@ -1,8 +1,22 @@
 SvezeJabolko::Application.routes.draw do
+  # get "categories/show"
+
   devise_for :users
 
   root :to => "articles#index"
 
+  match "avtorji/:user_id" => "authors#show", :as => :author
+  match "avtorji" => "authors#index", :as => :authors
+  match "404" => "application#missing_page", :as => :missing_page
+  
+  match "kategorije" => "categories#index", :as => :categories
+  match ":category_id/:id" => "articles#show", :as => :article
+  match ":category_id" => "categories#show", :as => :category
+  
+  #resources :categories, :only => [:show, :index], :via => [:get] do
+  #  resources :articles, :only => [:show, :index], :via => [:get]
+  #end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
