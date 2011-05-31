@@ -2,4 +2,8 @@
 
 %p= @category.description if @category.description != nil
 
-%div#articles=render @category.articles
+%div#articles=render @articles
+
+.pagination_wrap
+	.pagination
+		= paginate @articles

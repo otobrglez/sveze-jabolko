@@ -2,15 +2,7 @@ class CategoriesController < ApplicationController
   
   respond_to :html
 
-=begin  
-  def index
-    @categories = Category.all
-    respond_with(@categories)
-  end
-=end
-  
   def show
-    
     @category = Category.find_by_slug(params[:category_id])
     
     if @category == nil # Try to
@@ -18,6 +10,8 @@ class CategoriesController < ApplicationController
     end
     
     return redirect_to "/404", :layout => false if @category == nil
+    
+    @articles = Article.published.where(:category_id => @category).page(params[:page]).per(5)
     
     respond_with(@category)
   end

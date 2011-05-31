@@ -1,0 +1,28 @@
+%h1=link_to "Kategorije", admin_categories_path()
+
+%p
+	=link_to "Nova kategorija", new_admin_category_path()
+
+%table#categories.a
+	%thead
+		%tr
+			%th Kategorija (Slug)
+			%th Članki
+			%th.tools Orodja
+	%tbody
+		- @categories.each do |category|
+			%tr
+				%td
+					=link_to category, category_path(category)
+					\(
+					=category.to_param
+					\)
+				%td{:style => 'text-align:center;'}
+					=category.articles.count
+				%th
+					=link_to "Uredi", edit_admin_category_path(category)
+	%tfoot
+		%tr
+			%td{:colspan => 4}
+				=paginate @categories, :param_name => :categories_page
+

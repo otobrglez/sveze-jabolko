@@ -1,0 +1,39 @@
+%h1=link_to "Članki", admin_articles_path()
+
+%p
+	=link_to "Nov članek", new_admin_article_path()
+
+%table#articles.a
+	%thead
+		%tr
+			%th Naslov
+			%th Čas
+			%th Pub
+			%th.tools Orodja
+
+	%tbody
+		- @articles.each do |article|
+			%tr
+				%td
+					%strong=link_to article, article_path(article.category, article)
+					%br/
+					=link_to article.author, author_path(article.author)
+					v
+					=link_to article.category, category_path(article.category)
+				%td{:style => "text-align:center;" }
+					=time_ago_in_words article.updated_at
+				%td{:style => "text-align:center;" }
+					-if article.published?
+						Da
+					-else
+						Ne
+				%th
+					-#
+						=link_to "Objavi"
+						|
+					=link_to "Uredi", edit_admin_article_path(article)
+	%tfoot
+		%tr
+			%td{:colspan => 6}
+				=paginate @articles, :param_name => :articles_page
+

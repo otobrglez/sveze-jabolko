@@ -29,7 +29,7 @@ img {border:0}
 #header {height:191px; position:relative}
 #logo {position:absolute; top:95px; left:-1px; width:360px; height:70px}
 
-#topnav {position:absolute; top:18px; left:-11px; height:24px; width:650px}
+#topnav {position:absolute; top:18px; left:-11px; height:24px; /* width:650px */ }
 #topnav li {float:left; height:24px; margin:0 20px 0 0}
 #topnav li.disabled a span {color:#888}
 #topnav li.disabled a:hover {background:none}
@@ -325,4 +325,16 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 		color:#333;
 		font-weight:bold;
 	}
+}
+
+h1, h1 a { 
+	font: 40px 'Myriad Pro', Arial, sans-serif;
+	color: #4D4D4D;
+	line-height: 45px;
+}
+
+h2, h2 a { 
+	font: 30px 'Myriad Pro', Arial, sans-serif;
+	color: #4D4D4D;
+	line-height: 35px;
 }

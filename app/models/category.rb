@@ -8,7 +8,7 @@ class Category < ActiveRecord::Base
   end
   
   def to_param
-    return self.slug if self.slug != nil || self.slug == ""
+    return self.slug if self.slug != nil && self.slug != ""
     "#{self.id}-#{self.title}".parameterize
   end
   

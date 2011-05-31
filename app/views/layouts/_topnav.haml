@@ -20,3 +20,8 @@
 	%li
 		=link_to "http://forum.jabolko.org" do
 			%span Forum
+	- if user_signed_in?
+		%li
+			=link_to admin_path() do
+				%span Administracija
+			

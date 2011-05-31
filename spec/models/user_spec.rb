@@ -15,7 +15,6 @@ describe User do
   end
   
   it "has some social media stuff" do
-    
     # Some profile pictures
     @user.should respond_to :twitter_name
     @user.should respond_to :facebook_name

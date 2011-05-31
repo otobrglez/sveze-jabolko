@@ -1,0 +1,14 @@
+=simple_form_for([:admin,@category]) do |f|
+	%ul
+		%li
+			=f.input :title
+		%li
+			=f.input :slug
+	
+		%li
+			= link_to "Nazaj", admin_categories_path()
+			- unless f.object.new_record?
+				|
+				=link_to "Odstrani", admin_category_path(f.object), :method => :delete
+				|
+			=f.button :submit

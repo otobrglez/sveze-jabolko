@@ -9,7 +9,8 @@ class Article < ActiveRecord::Base
   
   has_and_belongs_to_many :sources
   
-  # default_scope :order => "created_at DESC"
+  default_scope order("created_at DESC")
+  scope :published, where(:published => true)
   
   #self.per_page = 5
   paginates_per 5
@@ -19,12 +20,12 @@ class Article < ActiveRecord::Base
   end
   
   def to_param
-    return self.slug if self.slug != nil || self.slug == ""
+    return self.slug if self.slug != nil && self.slug != ""
     "#{self.id}-#{self.title}".parameterize
   end
   
   def published?
-    return self.published
+    return self.published == 1
   end
   
 

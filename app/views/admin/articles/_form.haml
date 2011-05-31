@@ -1,0 +1,47 @@
+:css
+	#article input[type="text"],
+	#article textarea{ width:95% }
+
+=form_for([:admin,@article]) do |f|
+	%ul#article
+		%li
+			%strong=f.label :title, "Naslov"
+			%br/
+			=f.text_field :title
+		%li
+			%strong=f.label :slug, "Slug"
+			%br/
+			=f.text_field :slug
+			
+		%li
+			%strong=f.label :category, "Kategorija"
+			=f.collection_select :category_id, Category.all, :id, :to_s
+		
+		%li
+			%strong=f.label :author, "Avtor"
+			=f.collection_select :author_id, User.all, :id, :to_s
+		
+		%li
+			%strong=f.label :intro, "Uvod"
+			%br/
+			=f.text_area :intro, :rows => 5
+		
+		%li
+			%strong=f.label :body, "Vsebina"
+			%br/
+			=f.text_area :body
+			
+		%li
+			%strong=f.label :published, "Objavljeno?"
+			=f.check_box :published
+		
+		%li
+			=link_to "Nazaj", admin_articles_path()
+			
+			- unless f.object.new_record?
+				|
+				=link_to "Odstrani", admin_article_path(f.object), :method => :delete
+				|
+				
+			=f.submit "Shrani"
+			

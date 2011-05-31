@@ -14,6 +14,8 @@ gem 'uglifier'
 gem 'jquery-rails'
 gem 'devise'
 gem 'kaminari'
+gem 'inherited_resources'
+gem 'simple_form'
 
 group :test, :development do
   gem 'turn', :require => false

@@ -3,13 +3,13 @@ class ArticlesController < ApplicationController
   respond_to :html
   
   def index
-    @articles = Article.page params[:page]
-    
+    @articles = Article.published.page(params[:page])
     respond_with(@articles)
   end
   
   def show
-    @article = Article.find_by_id(params[:id])
+    @article = Article.find_by_slug(params[:id])
+    @article = Article.find(params[:id]) if @article == nil
     
     return redirect_to "/404", :layout => false if @article == nil
     

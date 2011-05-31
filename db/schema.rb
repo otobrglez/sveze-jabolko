@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110531084235) do
+ActiveRecord::Schema.define(:version => 20110531174622) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(:version => 20110531084235) do
     t.string   "image"
     t.text     "intro"
     t.text     "body"
-    t.boolean  "published",   :default => false
     t.integer  "category_id"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "published",   :default => 0
   end
 
   create_table "articles_sources", :id => false, :force => true do |t|

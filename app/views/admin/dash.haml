@@ -1,0 +1,20 @@
+%h1=link_to "Administrativna konzola", admin_path()
+
+:css
+	#tools-list li{
+		margin-bottom:10px;
+	}
+
+
+%ul#tools-list
+	%li
+		%h2=link_to "Članki", admin_articles_path()
+		%p Administracija člankov, prispevkov in strani
+	%li
+		%h2=link_to "Kategorije", admin_categories_path()
+		%p Administracija kategorij člankov
+	%li
+		%h2=link_to "Uporabniki", admin_categories_path()
+		%p Upravljanje z uporabniškimi računi in profili
+
+				

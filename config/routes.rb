@@ -1,9 +1,15 @@
 SvezeJabolko::Application.routes.draw do
-  # get "categories/show"
-
-  devise_for :users, :path => "administrator"
+  
 
   root :to => "articles#index"
+
+  match "admin", :controller => "admin", :action => "dash", :as => "admin", :via => [:get]
+  devise_for :users, :path => "admin"
+  namespace "admin" do
+    resources :categories #, :except => [:show]
+    resources :articles #, :except => [:show,:index]
+    resources :users
+  end
 
   match "avtorji/:user_id" => "authors#show", :as => :author
   match "avtorji" => "authors#index", :as => :authors
@@ -13,6 +19,11 @@ SvezeJabolko::Application.routes.draw do
   match ":category_id/:id" => "articles#show", :as => :article
   match ":category_id" => "categories#show", :as => :category
   
+=begin  
+  match "admin", :controller => "admin/articles", :action => "index", :as => "admin", :via => [:get]
+   devise_for :users, :path => "admin"
+   
+=end   
   #resources :categories, :only => [:show, :index], :via => [:get] do
   #  resources :articles, :only => [:show, :index], :via => [:get]
   #end
