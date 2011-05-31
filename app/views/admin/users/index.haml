@@ -15,7 +15,7 @@
 				%th=user.id
 				%th=link_to(user, author_path(user))
 				%td=user.email
-				%th=time_ago_in_words user.last_sign_in_at
+				%th=(time_ago_in_words user.last_sign_in_at) if user.last_sign_in_at != nil
 				%th=user.articles.count
 				%th
 					=link_to "Uredi", [:edit,:admin,user]
