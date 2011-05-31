@@ -33,6 +33,15 @@
 					%li
 						=link_to "http://forum.jabolko.org" do
 							%span Forum
+				#about
+					%h1 Apple uporabniki slovenije
+					%p Združenje uporabnikov tehnologij podjetja Apple.
+					%a#twitter_sidebar(href="http://twitter.com/jabolkoorg" target="_blank")
+						%img(src="http://sveze-jabolko-common.s3.amazonaws.com/images/twitter_sidebar.png")
+					%a#facebook_sidebar(href="http://www.facebook.com/group.php?gid=15631334625" target="_blank")
+						%img(src="http://sveze-jabolko-common.s3.amazonaws.com/images/facebook_sidebar.png")
+					%a#koornk_sidebar(href="http://feeds.feedburner.com/jabolkoorg-sok" target="_blank")
+						%img(src="http://sveze-jabolko-common.s3.amazonaws.com/images/rss_header.png")
 			#main
 				=yield
 			
@@ -43,9 +52,8 @@
 			#clear/
 			
 		#infobox
+			%p infobox
 		
 		#footer	
-
-		-#
 			= link_to "Sign in", new_user_session_path
 			= link_to "Register", new_user_registration_path
