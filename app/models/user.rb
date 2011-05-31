@@ -23,5 +23,4 @@ class User < ActiveRecord::Base
     return self.is_developer
   end
   
-  
 end

@@ -1,0 +1,51 @@
+!!!
+%html
+	%head
+		= stylesheet_link_tag    "application"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+	%body
+		#container
+			#header
+				#logo
+					=link_to root_path() do
+						%img(src="http://sveze-jabolko-common.s3.amazonaws.com/images/jabolko.png")
+					
+				%ul#topnav
+					%li.selected
+						=link_to root_path() do
+							%span Domov
+					%li
+						=link_to :url => "Novice" do
+							%span Novice
+					%li
+						=link_to :url => "Mac" do
+							%span Mac
+					%li
+						=link_to :url => "iPhone / iPod" do
+							%span iPhone / iPad
+					%li
+						=link_to :url => "iPad" do
+							%span iPad
+					%li
+						=link_to :url => "Šnelkurs" do
+							%span Šnelkurs
+					%li
+						=link_to "http://forum.jabolko.org" do
+							%span Forum
+			#main
+				=yield
+			
+			#sidebar
+				%p Sidebar
+				
+				
+			#clear/
+			
+		#infobox
+		
+		#footer	
+
+		-#
+			= link_to "Sign in", new_user_session_path
+			= link_to "Register", new_user_registration_path
