@@ -5,6 +5,8 @@ gem 'rails', '3.1.0.rc1'
 # gem "rails", :git => "git://github.com/rails/rails.git"
 # gem "sprockets", :git => "git://github.com/sstephenson/sprockets.git"
 
+gem 'rake', '~> 0.8.7'
+
 gem 'sass'
 gem 'haml'
 #gem 'coffee-script'
