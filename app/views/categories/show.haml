@@ -1,2 +1,5 @@
+%h1{:style => "display:none"}=@category
 
-%h1=@category
+%p= @category.description if @category.description != nil
+
+%div#articles=render @category.articles

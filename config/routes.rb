@@ -1,7 +1,7 @@
 SvezeJabolko::Application.routes.draw do
   # get "categories/show"
 
-  devise_for :users
+  devise_for :users, :path => "administrator"
 
   root :to => "articles#index"
 
@@ -9,7 +9,7 @@ SvezeJabolko::Application.routes.draw do
   match "avtorji" => "authors#index", :as => :authors
   match "404" => "application#missing_page", :as => :missing_page
   
-  match "kategorije" => "categories#index", :as => :categories
+  #match "kategorije" => "categories#index", :as => :categories
   match ":category_id/:id" => "articles#show", :as => :article
   match ":category_id" => "categories#show", :as => :category
   

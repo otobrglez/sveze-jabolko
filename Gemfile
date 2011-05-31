@@ -13,6 +13,7 @@ gem 'haml'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'devise'
+gem 'kaminari'
 
 group :test, :development do
   gem 'turn', :require => false

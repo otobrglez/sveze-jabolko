@@ -141,6 +141,8 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 .star {font-size:16px; color:#8bc53f}
 #nocomment {color:#999}
 #main .heading {color:#3fa9f5; font-size:23px; margin:30px 0 25px}
+
+/*
 .pagination_wrap {margin:25px 0 0; border-top: 1px solid #d9d9d9; padding:25px 0 24px; height:26px; position:relative; width:670px; overflow:hidden}
 .pagination {margin:0 auto; height:26px}
 .pagination a, .pagination .current, .pagination .gap {display:block; float:left}
@@ -154,6 +156,8 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 .pagination a.prev_page, .pagination a.prev_page:hover {background: url($aws+"../images/prev.png") no-repeat 0 0; padding:0 0 0 12px; left:0}
 .pagination .disabled {display:none}
 .pagination .gap {color:#666; line-height:24px}
+*/
+
 #infoboxbg {background:#f1f1f1; border-top:1px solid #c0c0c0; border-bottom:1px solid #c0c0c0; position:relative; height:292px}
 #infobox {height:292px; position:absolute; left:50%; margin:0 0 0 -475px}
 #infobox .left, #infobox .right {width:290px; height:242px; float:left; position:absolute; top:25px}
@@ -302,3 +306,23 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 .syntaxhighlighter .color1, .syntaxhighlighter .color1 a {color: #808080 !important}
 .syntaxhighlighter .color2, .syntaxhighlighter .color2 a {color: #ff1493 !important}
 .syntaxhighlighter .color3, .syntaxhighlighter .color3 a {color: red !important}
+
+
+/* New past this line */
+
+.pagination_wrap{
+	margin-top:10px;
+	margin-bottom:10px;
+	
+	line-height:20px;
+	font-size:16px;
+	a{
+		line-height:20px;
+		font-size:16px;
+	}
+	
+	span.current{
+		color:#333;
+		font-weight:bold;
+	}
+}

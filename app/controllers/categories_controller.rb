@@ -1,11 +1,13 @@
 class CategoriesController < ApplicationController
   
   respond_to :html
-  
+
+=begin  
   def index
     @categories = Category.all
     respond_with(@categories)
   end
+=end
   
   def show
     

@@ -1,6 +1,7 @@
 %h1 Kategorije
 
-%ul
-	- @categories.each do |category|
-		%li
-			=link_to category, category_path(category)
+#categories
+	%ul
+		- @categories.each do |category|
+			%li.category{:id => "category-#{category.to_param}"}
+				=link_to category, category_path(category)

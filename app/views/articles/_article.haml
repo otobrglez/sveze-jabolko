@@ -1,0 +1,26 @@
+
+.article{:id => "article-#{article.id}"}
+	=link_to article_path(article.category, article), :class => "mainimage" do
+		%img.mainimage(src="http://jabolko.s3.amazonaws.com/website/images/articles/255/255_00.jpg")
+
+
+	%h2=link_to article, article_path(article.category, article)
+
+	.meta.clear
+		.numofcom
+			=link_to "0", article_path(article.category, article)
+		%span.created_at
+			=link_to article.author, author_path(article.author)
+			\,
+			=article.created_at
+			v
+			=link_to article.category, category_path(article.category)
+			z značkami
+
+	.content
+		=article.intro
+
+	.readmore
+		=link_to "Preberi cel članek", article_path(article.category, article)
+		
+%hr/

@@ -11,6 +11,9 @@ class Article < ActiveRecord::Base
   
   # default_scope :order => "created_at DESC"
   
+  #self.per_page = 5
+  paginates_per 5
+  
   def to_s
     "#{self.title}"
   end
@@ -23,5 +26,8 @@ class Article < ActiveRecord::Base
   def published?
     return self.published
   end
+  
+
+
   
 end

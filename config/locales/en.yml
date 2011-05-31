@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  views:
+    pagination:
+      previous: "&laquo; Nazaj"
+      next: "Naprej &raquo;"
+      last: "Zadnja stran"
+      first: "Prva stran"
+      truncate: "..."
