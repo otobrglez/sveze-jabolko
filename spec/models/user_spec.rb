@@ -23,7 +23,7 @@ describe User do
     @user.should respond_to :home_url
     
     # Url validation
-    @user.should have(1).error_on(:home_url)
+    @user.should have(0).error_on(:home_url)
     @user.home_url = "http://jabolko.org"
     @user.should have(0).error_on(:home_url)
   end

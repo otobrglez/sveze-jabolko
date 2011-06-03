@@ -16,6 +16,8 @@ gem 'devise'
 gem 'kaminari'
 gem 'inherited_resources'
 gem 'simple_form'
+gem 'gravatar_image_tag'
+gem 'acts-as-taggable-on'
 
 group :test, :development do
   gem 'turn', :require => false

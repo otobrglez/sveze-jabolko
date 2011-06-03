@@ -30,7 +30,7 @@ describe Article do
   end
   
   it "by default articles are not published" do
-    @article.published.should == false
+    @article.published.should == 0 # 0 Published articles
     @article.published?.should == false
   end
   
@@ -48,6 +48,17 @@ describe Article do
     
     @article.author = User.new :name => "Oto Brglez"
     @article.should have(0).error_on(:author)
+  end
+  
+  it "responds to tags" do
+    @article.should respond_to :tags
+    @article.should respond_to :tag_list
+  end
+  
+  it "has some tags" do
+    @article = Article.new
+    @article.tag_list = "danes je lep dan dan"
+    @article.tag_list.size.should == 4
   end
 
 end

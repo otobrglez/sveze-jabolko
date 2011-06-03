@@ -1,8 +1,9 @@
 
 .article{:id => "article-#{article.id}"}
-	=link_to article_path(article.category, article), :class => "mainimage" do
-		%img.mainimage(src="http://jabolko.s3.amazonaws.com/website/images/articles/255/255_00.jpg")
 
+	-if article.image
+		=link_to article_path(article.category, article), :class => "mainimage" do
+			%img.mainimage{:src => article.image, :title => article, :alt => article}
 
 	%h2=link_to article, article_path(article.category, article)
 

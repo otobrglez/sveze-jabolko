@@ -29,7 +29,7 @@ module SvezeJabolko
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :sl
 
     # Please note that JavaScript expansions are *ignored altogether* if the asset
     # pipeline is enabled (see config.assets.enabled below). Put your defaults in

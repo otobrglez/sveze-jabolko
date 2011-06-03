@@ -1,19 +1,35 @@
 class Article < ActiveRecord::Base
   belongs_to :category
-  belongs_to :author, :class_name => "User"
+  
+  has_and_belongs_to_many :authors, :class_name => "User", :association_foreign_key => "author_id"
   
   validates_presence_of :title
   validates_presence_of :category
   validates_presence_of :intro, :body
   validates_presence_of :author
+  validates_presence_of :image
+  
+  validates_format_of :image,
+    :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
   
   has_and_belongs_to_many :sources
   
   default_scope order("created_at DESC")
   scope :published, where(:published => true)
   
-  #self.per_page = 5
-  paginates_per 5
+  # Plugins
+  acts_as_taggable_on  :tags    # acts-as-taggable-on
+  paginates_per         5       # kaminari
+  
+  def author=(value)
+    self.authors = []
+    self.authors << value
+  end
+  
+  def author
+    return nil if self.authors == nil
+    return self.authors.first
+  end
   
   def to_s
     "#{self.title}"

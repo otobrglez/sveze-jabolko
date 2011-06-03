@@ -5,3 +5,7 @@ Slednji projekt je popolnoma nova različica projekta jabolko.org. Vsa izvorna k
 # Avtorji izvorne kode Jabolko.org v2
 
 * Oto Brglez
+
+# Travis Build Status / CI
+
+[![Build Status](http://travis-ci.org/otobrglez/sveze-jabolko.png)](http://travis-ci.org/otobrglez/sveze-jabolko)
