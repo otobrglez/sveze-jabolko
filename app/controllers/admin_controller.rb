@@ -5,7 +5,6 @@ class AdminController < ApplicationController
   respond_to :html
 
   def dash
-      
     respond_with  do |f|
       f.html{ render "dash"}
     end

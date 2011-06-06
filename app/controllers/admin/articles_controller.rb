@@ -33,7 +33,8 @@ class Admin::ArticlesController < AdminController
     
     respond_to do |format|
       if @article.save
-        format.html { redirect_to(@article, :notice => 'Article was successfully updated.') }
+        flash[:notice] = "Article was successfully updated."
+        format.html { redirect_to article_path(@article.category,@article) }
       else
         format.html { render :action => "edit" }
       end

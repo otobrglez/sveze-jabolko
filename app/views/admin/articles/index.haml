@@ -26,8 +26,7 @@
 %table#articles.a
 	%thead
 		%tr
-			%th Naslov
-			%th Čas
+			%th Naslov / Čas
 			%th Pub
 			%th.tools Orodja
 
@@ -35,16 +34,18 @@
 		- @articles.each do |article|
 			%tr
 				%td
-					%strong=link_to article, article_path(article.category, article)
-					%br/
-					- article.authors.each do |author|
-						=link_to author, author_path(author)
-					
-					
+					%strong
+						=link_to article, article_path(article.category, article)
+						\(
+						- article.authors.each do |author|
+							=link_to author, author_path(author)
+						\)
 					v
 					=link_to article.category, category_path(article.category)
-				%td{:style => "text-align:center;" }
-					=time_ago_in_words article.updated_at
+					%br/
+					-# =time_ago_in_words article.updated_at
+					
+					= article.updated_at
 				%td{:style => "text-align:center;" }
 					-if article.published?
 						Da
