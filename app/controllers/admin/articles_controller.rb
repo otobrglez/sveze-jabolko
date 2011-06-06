@@ -26,39 +26,29 @@ class Admin::ArticlesController < AdminController
 
   def update
     @article ||= Article.find(params[:id])
+    params[:article][:slug] = nil if params[:article][:slug] == ""
     @article.update_attributes(params[:article])
     
-    if params[:article][:slug] == ""
-      @article.slug = nil 
-      @article.save
-      flash[:notice] = "Article \"#{@article}\" was updated."
-      return redirect_to :action => "index"
-    end
-    
-    flash[:notice_item] = "Article updated" 
-    respond_with(@article) do |f|
-      f.html { render :action => :edit }
+    respond_to do |format|
+      if @article.save
+        format.html { redirect_to(@article, :notice => 'Article was successfully updated.') }
+      else
+        format.html { render :action => "edit" }
+      end
     end
   end
   
   def create
     @article = Article.new(params[:article])
-    if @article.valid?
-      @article.save
-      flash[:notice] = "Article stored."
+
+    respond_to do |format|
+      if @article.save
+        format.html { redirect_to(@article, :notice => 'Article was successfully created.') }
+      else
+        format.html { render :action => "new" }
+      end
     end
     
-    respond_with(@article) do |f|
-      f.html {
-        if @article.published? && @article.valid?
-          redirect_to article_url(article.category,article)
-        elsif not @article.published? && @article.valid?
-          redirect_to admin_articles_url()
-        else
-          render :action => :edit
-        end
-      }
-    end
   end
   
   def destroy

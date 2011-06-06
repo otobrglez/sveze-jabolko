@@ -1,13 +1,19 @@
 %h1=link_to "Uporabniki", admin_users_path()
 
+%p.type
+	= link_to t("all_types"), [:admin,:users]
+	= link_to t("admins"), admin_users_path(:is_admin => 1)
+	= link_to t("author"), admin_users_path(:is_author => 1)
+	= link_to t("developers"), admin_users_path(:is_developer => 1)
+	
+
 %table#users.a
 	%thead
 		%tr
 			%th{:style => "width:40px"} ID
 			%th Naziv
 			%th Email
-			%th Prijava
-			%th Št. č.
+			-# %th Prijava
 			%th.tools Orodja
 	%tbody
 		- @users.each do |user|
@@ -15,8 +21,8 @@
 				%th=user.id
 				%th=link_to(user, author_path(user))
 				%td=user.email
-				%th=(time_ago_in_words user.last_sign_in_at) if user.last_sign_in_at != nil
-				%th=user.articles.count
+				-# %th=(time_ago_in_words user.last_sign_in_at) if user.last_sign_in_at != nil
+				
 				%th
 					=link_to "Uredi", [:edit,:admin,user]
 

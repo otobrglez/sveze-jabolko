@@ -11,13 +11,25 @@
 		.numofcom
 			=link_to "0", article_path(article.category, article)
 		%span.created_at
-			=link_to article.author, author_path(article.author)
+			- article.authors.each do |author|
+				=link_to article.author, author_path(author)
+			
 			\,
 			=article.created_at
 			v
 			=link_to article.category, category_path(article.category)
-			z značkami
-
+			
+			- if article.tag_list.size == 1
+				z značko
+				= link_to article.tag_list.first, tag_path(article.tag_list.first)
+			- elsif article.tag_list.size == 2
+				z značkama
+				= link_to article.tag_list.first, tag_path(article.tag_list.first)			
+			- elsif article.tag_list.size > 2
+				z značkami
+				- article.tag_list.each do |tag|
+					= link_to tag, tag_path(tag)
+			
 	.content
 		=article.intro
 

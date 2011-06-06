@@ -34,3 +34,23 @@ table.a {
 		width:110px;
 	}
 }
+
+#form_errors{
+	display:block; 
+	border:0px solid red;
+	width:98%;
+	margin-top:10px; margin-bottom:10px;
+	background-color:pink;
+	border-top:3px solid red;
+	border-bottom:3px solid red;
+	
+	li{ color:red; padding:3px;}
+}
+
+#admin_tools{
+	border-bottom:1px solid #CCC;
+	margin-bottom:10px;
+	
+	a{ height:20px; line-height:20px; margin-right:10px;}
+	
+}

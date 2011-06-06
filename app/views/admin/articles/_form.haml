@@ -1,8 +1,16 @@
 :css
 	#article input[type="text"],
 	#article textarea{ width:95% }
+	#errors{ display:block; width:95%; border:1px solid red; }
 
 =form_for([:admin,@article]) do |f|
+
+	-if f.object.errors.any?
+		#form_errors
+			%ul
+				- f.object.errors.full_messages.each do |e|
+					%li=e
+
 	%ul#article
 		%li
 			%strong=f.label :title, "Naslov"
@@ -22,9 +30,8 @@
 			=f.collection_select :category_id, Category.all, :id, :to_s
 		
 		%li
-			%strong=f.label :author, "Avtor"
-			=f.collection_select :author_id, User.all, :id, :to_s
-		
+			%strong=f.label :tags_list, "Značke"
+			=f.text_field :tag_list
 		%li
 			%strong=f.label :intro, "Uvod"
 			%br/

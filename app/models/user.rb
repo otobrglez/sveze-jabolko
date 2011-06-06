@@ -31,8 +31,6 @@ class User < ActiveRecord::Base
     "#{self.id}-#{self.name}".parameterize
   end
   
-  def to_s
-    "#{self.name}"
-  end
+  def to_s() "#{self.name}"; end
   
 end

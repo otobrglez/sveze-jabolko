@@ -58,7 +58,31 @@ describe Article do
   it "has some tags" do
     @article = Article.new
     @article.tag_list = "danes je lep dan dan"
+    @article.tag_list.size.should == 1
+    @article.tag_list = "danes, je, lep, dan dan"
     @article.tag_list.size.should == 4
+  end
+  
+  it "has some Redcarpet support" do
+    niz = "To je spletna stran [Jabolko.org](http://jabolko.org)"
+    
+    require "redcarpet"
+    test_b = Redcarpet.new(niz).to_html
+    
+    @article = Article.new
+    @article.body = niz
+    @article.body_html.should == test_b
+  end
+  
+  it "body_html should also work on nil" do
+    @article = Article.new
+    @article.body_html.should == nil
+  end
+  
+  it "intro_html should also work" do
+    @article = Article.new
+    @article.intro = "# Demo"
+    @article.intro_html.should == "<h1>Demo</h1>\n"
   end
 
 end

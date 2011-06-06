@@ -6,7 +6,6 @@ gem 'rails', '3.1.0.rc1'
 # gem "sprockets", :git => "git://github.com/sstephenson/sprockets.git"
 
 gem 'rake', '~> 0.8.7'
-
 gem 'sass'
 gem 'haml'
 #gem 'coffee-script'
@@ -18,6 +17,7 @@ gem 'inherited_resources'
 gem 'simple_form'
 gem 'gravatar_image_tag'
 gem 'acts-as-taggable-on'
+gem 'redcarpet', :git => 'git://github.com/tanoku/redcarpet.git'
 
 group :test, :development do
   gem 'turn', :require => false

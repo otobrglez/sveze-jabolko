@@ -18,7 +18,7 @@ class Article < ActiveRecord::Base
   scope :published, where(:published => true)
   
   # Plugins
-  acts_as_taggable_on  :tags    # acts-as-taggable-on
+  acts_as_taggable  #:tags    # acts-as-taggable-on
   paginates_per         5       # kaminari
   
   def author=(value)
@@ -31,9 +31,7 @@ class Article < ActiveRecord::Base
     return self.authors.first
   end
   
-  def to_s
-    "#{self.title}"
-  end
+  def to_s() "#{self.title}"; end
   
   def to_param
     return self.slug if self.slug != nil && self.slug != ""
@@ -44,7 +42,14 @@ class Article < ActiveRecord::Base
     return self.published == 1
   end
   
-
-
+  def body_html
+    return nil if self.body == nil
+    return Redcarpet.new(self.body).to_html
+  end
   
+  def intro_html
+    return nil if self.intro == nil
+    return Redcarpet.new(self.intro).to_html
+  end    
+
 end

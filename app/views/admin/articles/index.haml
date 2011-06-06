@@ -37,7 +37,10 @@
 				%td
 					%strong=link_to article, article_path(article.category, article)
 					%br/
-					=link_to article.author, author_path(article.author)
+					- article.authors.each do |author|
+						=link_to author, author_path(author)
+					
+					
 					v
 					=link_to article.category, category_path(article.category)
 				%td{:style => "text-align:center;" }

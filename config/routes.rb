@@ -6,16 +6,15 @@ SvezeJabolko::Application.routes.draw do
   match "admin", :controller => "admin", :action => "dash", :as => "admin", :via => [:get]
   devise_for :users, :path => "admin"
   namespace "admin" do
-    resources :categories #, :except => [:show]
-    resources :articles #, :except => [:show,:index]
-    resources :users
+    resources :categories, :articles, :tags, :users
   end
 
   match "avtorji/:user_id" => "authors#show", :as => :author
   match "avtorji" => "authors#index", :as => :authors
   match "404" => "application#missing_page", :as => :missing_page
-  
-  #match "kategorije" => "categories#index", :as => :categories
+
+  match "tag/:tag_id" => "tags#show", :as => :tag
+
   match ":category_id/:id" => "articles#show", :as => :article
   match ":category_id" => "categories#show", :as => :category
   
