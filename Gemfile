@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'gravatar_image_tag'
 gem 'acts-as-taggable-on'
 gem 'redcarpet', :git => 'git://github.com/tanoku/redcarpet.git'
+gem 'newrelic_rpm'
 
 group :test, :development do
   gem 'turn', :require => false
