@@ -21,6 +21,7 @@ class Admin::ArticlesController < AdminController
   
   def new
     @article = Article.new
+    @article.authors << current_user
     respond_with(@article)
   end
 
@@ -43,8 +44,6 @@ class Admin::ArticlesController < AdminController
   
   def create
     @article = Article.new(params[:article])
-    @article.authors << current_user
-
     respond_to do |format|
       if @article.save
         format.html { redirect_to(@article, :notice => 'Article was successfully created.') }
@@ -52,11 +51,9 @@ class Admin::ArticlesController < AdminController
         format.html { render :action => "new" }
       end
     end
-    
   end
   
   def destroy
-    
     if @article.destroy
       flash[:notice] = "Article destroyed!"
     end

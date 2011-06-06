@@ -1,12 +1,7 @@
-GIT
-  remote: git://github.com/tanoku/redcarpet.git
-  revision: 382d82fa466503f51024c1a13d27bc7deead8aa0
-  specs:
-    redcarpet (1.15.2)
-
 GEM
   remote: http://rubygems.org/
   specs:
+    RedCloth (4.2.7)
     ZenTest (4.5.0)
     actionmailer (3.1.0.rc1)
       actionpack (= 3.1.0.rc1)
@@ -158,6 +153,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
   acts-as-taggable-on
   autotest
   devise
@@ -170,7 +166,6 @@ DEPENDENCIES
   rails (= 3.1.0.rc1)
   rake (~> 0.8.7)
   rcov
-  redcarpet!
   rspec
   rspec-rails
   ruby-debug19

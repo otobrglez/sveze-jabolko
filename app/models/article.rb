@@ -47,12 +47,14 @@ class Article < ActiveRecord::Base
   
   def body_html
     return nil if self.body == nil
-    return Redcarpet.new(self.body).to_html
+    return RedCloth.new(self.body).to_html
+    #return Redcarpet.new(self.body).to_html
   end
   
   def intro_html
     return nil if self.intro == nil
-    return Redcarpet.new(self.intro).to_html
+    return RedCloth.new(self.intro).to_html
+    #return Redcarpet.new(self.intro).to_html
   end    
 
 end

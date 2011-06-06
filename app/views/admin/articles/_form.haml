@@ -41,6 +41,8 @@
 			%strong=f.label :body, "Vsebina"
 			%br/
 			=f.text_area :body
+			%small
+				=link_to "Urejevalnik uporablja Textile markup", "http://redcloth.org/"
 			
 		%li
 			%strong=f.label :published, "Objavljeno?"

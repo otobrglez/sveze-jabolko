@@ -64,10 +64,11 @@ describe Article do
   end
   
   it "has some Redcarpet support" do
-    niz = "To je spletna stran [Jabolko.org](http://jabolko.org)"
+    niz = "To je spletna stran \"Jabolko.org\":http://jabolko.org"
     
     require "redcarpet"
-    test_b = Redcarpet.new(niz).to_html
+    #test_b = Redcarpet.new(niz).to_html
+    test_b = RedCloth.new(niz).to_html
     
     @article = Article.new
     @article.body = niz
@@ -81,8 +82,8 @@ describe Article do
   
   it "intro_html should also work" do
     @article = Article.new
-    @article.intro = "# Demo"
-    @article.intro_html.should == "<h1>Demo</h1>\n"
+    @article.intro = "Demo"
+    @article.intro_html.should == "<p>Demo</p>"
   end
 
 end
