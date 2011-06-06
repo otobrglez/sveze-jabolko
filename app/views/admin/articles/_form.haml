@@ -45,8 +45,19 @@
 		%li
 			%strong=f.label :published, "Objavljeno?"
 			=f.check_box :published
+		%li
+			%br/
+			%strong Avtorji
+			%ul
+				- User.authors.each do |author|
+					%li
+						%label
+							= author
+							= check_box_tag "article[author_ids][]", author.id, @article.authors.include?(author)
+					
 		
 		%li
+			%br/
 			=link_to "Nazaj", admin_articles_path()
 			
 			- unless f.object.new_record?

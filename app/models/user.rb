@@ -11,9 +11,12 @@ class User < ActiveRecord::Base
   validates_format_of :home_url,
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix,
     :if => Proc.new { |user| user.home_url != "" && user.home_url != nil }
-    
   
   has_many :articles, :foreign_key => "author_id"
+  
+  scope :admins, where(:is_admin => 1)
+  scope :authors, where(:is_author => 1)
+  scope :developers, where(:is_developer => 1)
   
   def is_admin?
     return self.is_admin == 1

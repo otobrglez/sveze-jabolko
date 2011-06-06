@@ -31,7 +31,7 @@
 					= link_to tag, tag_path(tag)
 			
 	.content
-		=article.intro
+		=sanitize article.intro_html
 
 	.readmore
 		=link_to "Preberi cel članek", article_path(article.category, article)

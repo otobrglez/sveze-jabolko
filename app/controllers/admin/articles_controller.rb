@@ -27,6 +27,8 @@ class Admin::ArticlesController < AdminController
   def update
     @article ||= Article.find(params[:id])
     params[:article][:slug] = nil if params[:article][:slug] == ""
+    params[:article][:author_ids] ||= []
+    
     @article.update_attributes(params[:article])
     
     respond_to do |format|
@@ -40,6 +42,7 @@ class Admin::ArticlesController < AdminController
   
   def create
     @article = Article.new(params[:article])
+    @article.authors << current_user
 
     respond_to do |format|
       if @article.save
