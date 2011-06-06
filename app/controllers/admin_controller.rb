@@ -13,7 +13,7 @@ class AdminController < ApplicationController
 
   private
     def is_administration
-      if current_user.is_admin
+      if user_signed_in? && current_user.is_admin
         @is_administration = 1
       end
     end

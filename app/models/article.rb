@@ -18,7 +18,10 @@ class Article < ActiveRecord::Base
   scope :published, where(:published => true)
   
   # Plugins
-  acts_as_taggable  #:tags    # acts-as-taggable-on
+  
+  acts_as_taggable_on :tags
+  
+  #acts_as_taggable_on  #:tags    # acts-as-taggable-on
   paginates_per         5       # kaminari
   
   def author=(value)
