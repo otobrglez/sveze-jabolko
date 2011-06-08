@@ -66,7 +66,7 @@ describe Article do
   it "has some Redcarpet support" do
     niz = "To je spletna stran \"Jabolko.org\":http://jabolko.org"
     
-    require "redcarpet"
+    #require "redcarpet"
     #test_b = Redcarpet.new(niz).to_html
     test_b = RedCloth.new(niz).to_html
     

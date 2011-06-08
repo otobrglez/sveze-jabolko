@@ -34,7 +34,7 @@ class Admin::ArticlesController < AdminController
     
     respond_to do |format|
       if @article.save
-        flash[:notice] = "Article was successfully updated."
+        flash[:notice] = I18n.t("flash.actions.#{action_name}.notice")
         format.html { redirect_to article_path(@article.category,@article) }
       else
         format.html { render :action => "edit" }
@@ -46,7 +46,7 @@ class Admin::ArticlesController < AdminController
     @article = Article.new(params[:article])
     respond_to do |format|
       if @article.save
-        format.html { redirect_to(@article, :notice => 'Article was successfully created.') }
+        format.html { redirect_to(@article, :notice => I18n.t("flash.actions.#{action_name}.notice")) }
       else
         format.html { render :action => "new" }
       end

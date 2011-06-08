@@ -4,4 +4,8 @@ class Admin::TagsController < AdminController
   actions :all, :except => [:index]
   defaults :route_prefix => 'admin'
   
+  def index
+    @tags = Article.tag_counts_on(:tags)
+  end
+  
 end

@@ -1,0 +1,7 @@
+sl:
+  admin:
+    articles:
+      edit:
+        editing: "Urejanje članka"
+      new:
+        new: "Nov članek"

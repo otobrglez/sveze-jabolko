@@ -16,6 +16,9 @@ class Admin::UsersController < AdminController
   end
   
   def update
+    params[:user].delete(:password) if params[:user][:password].blank?
+    params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+    
     update! do |success, failure|
       success.html { redirect_to admin_users_url() }
       failure.html { render :action => :edit}

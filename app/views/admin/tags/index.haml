@@ -1,0 +1,11 @@
+%h2= t "tags"
+
+%table.a
+	%thead
+		%tr
+			%th=Article.human_attribute_name(:tag)
+	%tbody
+		- @tags.each do |tag|
+			%tr
+				%td{:style=>"text-align:left;"}
+					=link_to tag, tag_path(tag)

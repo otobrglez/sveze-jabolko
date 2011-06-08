@@ -18,11 +18,10 @@ class Article < ActiveRecord::Base
   scope :published, where(:published => true)
   
   # Plugins
-  
-  acts_as_taggable_on :tags
-  
-  #acts_as_taggable_on  #:tags    # acts-as-taggable-on
+  acts_as_taggable_on :tags     # acts_as_taggable_on
   paginates_per         5       # kaminari
+  
+  after_initialize :set_no_image
   
   def author=(value)
     self.authors = []
@@ -55,6 +54,11 @@ class Article < ActiveRecord::Base
     return nil if self.intro == nil
     return RedCloth.new(self.intro).to_html
     #return Redcarpet.new(self.intro).to_html
-  end    
+  end
+  
+  private
+    def set_no_image
+      self.image||="http://sveze-jabolko-common.s3.amazonaws.com/images/nomainimage.jpg"
+    end
 
 end

@@ -1,0 +1,30 @@
+sl:
+  activerecord:
+    models:
+      article: "Članek"
+      category: "Kategorija"
+      source: "Vir"
+      tags: Značke
+    attributes:
+      article:
+        title: "Naslov"
+        category: "Kategorija"
+        intro: "Uvod"
+        body: "Vsebina"
+        author: "Avtor"
+        image: "Slika"
+        tag_list: "Značke"
+        created_at: Ustvarjeno
+        published: Objavljeno
+      category:
+        title: "Naslov"
+      source:
+        title: "Naslov"
+        url: "Povezava"
+      user:
+        name: "Ime in Priimek"
+        password: "Geslo"
+        username: "Uporabniško ime"
+        user: "Uporabnik"
+      tags:
+        tag: "Značka"

@@ -2,7 +2,9 @@
 	#article input[type="text"],
 	#article textarea{ width:95% }
 	#errors{ display:block; width:95%; border:1px solid red; }
-
+	ul#article li{ margin-top:10px; }
+	#article li.authors li { margin:0px; padding:0px }
+	
 =form_for([:admin,@article]) do |f|
 
 	-if f.object.errors.any?
@@ -13,59 +15,60 @@
 
 	%ul#article
 		%li
-			%strong=f.label :title, "Naslov"
+			%strong=f.label :title, Article.human_attribute_name(:title)
 			%br/
 			=f.text_field :title
 		%li
-			%strong=f.label :image, "Image"
+			%strong=f.label :image, Article.human_attribute_name(:image)
 			%br/
 			=f.text_field :image
 		%li
-			%strong=f.label :slug, "Slug"
+			%strong=f.label :slug, Article.human_attribute_name(:slug)
 			%br/
 			=f.text_field :slug
 			
 		%li
-			%strong=f.label :category, "Kategorija"
+			%strong=f.label :category, Article.human_attribute_name(:category)
 			=f.collection_select :category_id, Category.all, :id, :to_s
 		
 		%li
-			%strong=f.label :tags_list, "Značke"
+			%strong=f.label :tags_list, Article.human_attribute_name(:tags)
 			=f.text_field :tag_list
 		%li
-			%strong=f.label :intro, "Uvod"
+			%strong=f.label :intro, Article.human_attribute_name(:intro)
 			%br/
 			=f.text_area :intro, :rows => 5
-		
+			%div{:style=>"text-align:right; width:95%"}
+				=link_to "* Urejevalnik uporablja Textile markup", "http://redcloth.org/"
 		%li
-			%strong=f.label :body, "Vsebina"
+			%strong=f.label :body, Article.human_attribute_name(:body)
 			%br/
 			=f.text_area :body
-			%small
+			%br/
+			%div{:style=>"text-align:right; width:95%"}
 				=link_to "Urejevalnik uporablja Textile markup", "http://redcloth.org/"
 			
 		%li
-			%strong=f.label :published, "Objavljeno?"
+			%strong=f.label :published, Article.human_attribute_name(:published)
 			=f.check_box :published
-		%li
+		%li.authors
 			%br/
-			%strong Avtorji
+			%strong= Article.human_attribute_name(:authors)
 			%ul
 				- User.authors.each do |author|
 					%li
 						%label
 							= author
 							= check_box_tag "article[author_ids][]", author.id, @article.authors.include?(author)
-					
-		
+
 		%li
 			%br/
-			=link_to "Nazaj", admin_articles_path()
+			=link_to t("back"), admin_articles_path()
 			
 			- unless f.object.new_record?
 				|
-				=link_to "Odstrani", admin_article_path(f.object), :method => :delete
+				=link_to t("destroy"), admin_article_path(f.object), :method => :delete
 				|
 				
-			=f.submit "Shrani"
+			=f.submit t("save")
 			

@@ -1,11 +1,16 @@
 =simple_form_for([:admin,@user]) do |f|
+	-if f.object.errors.any?
+		#form_errors
+			%ul
+				- f.object.errors.full_messages.each do |e|
+					%li=e
 	%ul
 		%li
 			=f.input :name
 		%li
 			=f.input :email
 		%li
-			=f.input :password
+			=f.input :password, :required => false
 		%li
 			=f.input :home_url
 		%li
