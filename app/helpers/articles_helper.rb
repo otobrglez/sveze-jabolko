@@ -12,7 +12,7 @@ module ArticlesHelper
     
     tags = nil
     if article.tag_list.size != 0
-      tags = article.tag_list.to_a.map { |t| link_to(t,tag_path(t)) }.join(", ").strip
+      tags = article.tag_list.to_a.map { |t| link_to(t.downcase,tag_path(t)) }.join(", ").strip
       tags = I18n.t(:with_tags) + " #{tags}"
     end
     

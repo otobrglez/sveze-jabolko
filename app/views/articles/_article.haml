@@ -9,12 +9,26 @@
 	.meta.clear
 		.numofcom
 			=link_to "0", article_path(article.category, article)
+		
 		%span.created_at
 			=sanitize article_created(article)
+	
 	.content
-		=sanitize article.intro_html
-
-	.readmore
-		=link_to "Preberi cel članek", article_path(article.category, article)
+		- if (defined? mode).nil?
+			=sanitize article.intro_html
+		- elsif mode == :show
+			=sanitize article.body_html
+			- if article.sources.size != 0
+				%p
+					Viri:
+					- article.sources.each do |source|
+						=link_to source, source.url
+		
+	- if (defined? mode).nil?
+		.readmore
+			=link_to "Preberi cel članek", article_path(article.category, article)
+	- elsif mode == :show
+		-# Meta...
+		
 		
 %hr/

@@ -1,10 +1,6 @@
-%h1{:style => "display:none"}
-	Članki z značko
-	
--# %p= @category.description if @category.description != nil
+%h1= page_title "Članki z značko '#{params[:tag_id].downcase}'"
 
 %div#articles=render @articles
-
 .pagination_wrap
 	.pagination
 		= paginate @articles

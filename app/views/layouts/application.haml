@@ -6,6 +6,7 @@
 		= stylesheet_link_tag    "application"
 		= javascript_include_tag "application"
 		= csrf_meta_tags
+		%title=page_title
 		
 	%body{ :class => [ (user_signed_in?? "signed_in" : nil), |
 		((user_signed_in? && current_user.is_admin?)? "is_admin":nil ) ].join(" ").strip }

@@ -1,18 +1,4 @@
+- page_title @article.to_s
+
 #blog_article
-	.article
-		
-		=image_tag @article.image
-		%h2=@article
-		
-		.meta.clear
-			.numofcom 0
-			%span=@article.created_at
-
-
-	=@article.body
-
-	=@article.created_at
-
-	=link_to @article.author, author_path(@article.author)
-	=link_to @article.category, category_path(@article.category)
-
+	= render :partial => @article, :locals => {:mode => :show}
