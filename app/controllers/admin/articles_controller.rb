@@ -3,7 +3,6 @@ class Admin::ArticlesController < AdminController
   respond_to :html
   
   before_filter :find_article, :only => [:edit, :update, :destroy]
-  before_filter :fix_sources
   
   def index
     if params[:category_id] != nil
@@ -32,7 +31,7 @@ class Admin::ArticlesController < AdminController
     @article ||= Article.find(params[:id])
     params[:article][:slug] = nil if params[:article][:slug] == ""
     params[:article][:author_ids] ||= []
-    params[:article][:tag_list] = params[:article][:tag_list].downcase
+    # params[:article][:tag_list] = params[:article][:tag_list].downcase
     
     @article.update_attributes(params[:article])
     
@@ -47,11 +46,12 @@ class Admin::ArticlesController < AdminController
   end
   
   def create
-    params[:article][:tag_list] = params[:article][:tag_list].downcase
+    # params[:article][:tag_list] = params[:article][:tag_list].downcase
     @article = Article.new(params[:article])
     respond_to do |format|
       if @article.save
-        format.html { redirect_to(@article, :notice => I18n.t("flash.actions.#{action_name}.notice")) }
+        flash[:notice] = I18n.t("flash.actions.#{action_name}.notice")
+        format.html { redirect_to article_path(@article.category,@article) }
       else
         format.html { render :action => "new" }
       end
@@ -72,10 +72,6 @@ class Admin::ArticlesController < AdminController
     def find_article
       @article = Article.find_by_slug(params[:id])
       @article = Article.find(params[:id]) if @article == nil
-    end
-    
-    def fix_sources
-      
     end
 
 end

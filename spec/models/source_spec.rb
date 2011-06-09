@@ -12,7 +12,7 @@ describe Source do
   end
   
   it "has many articles" do
-    @source.should respond_to :articles
+    @source.should respond_to :article
   end
 
   it "url format should be perfect" do
