@@ -1,6 +1,8 @@
-%h1= page_title "Članki z značko '#{params[:tag_id].downcase}'"
+%h2.heading2= page_title "Članki z značko '#{params[:tag_id].downcase}'"
 
-%div#articles=render @articles
+-# .order_switcher <- missing
+
+%div#articles=render :collection => @articles, :partial => 'articles/simple_article'
 .pagination_wrap
 	.pagination
 		= paginate @articles

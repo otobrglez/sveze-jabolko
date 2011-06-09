@@ -11,8 +11,15 @@ class Article < ActiveRecord::Base
   validates_presence_of :author
   validates_presence_of :image
   
+  #validates_presence_of :small_image
+  
   validates_format_of :image,
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+  #,  :if => Proc.new { |a| a.image != "" && a.image != nil }
+  
+  #validates_format_of :small_image,
+  #  :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+  
   
   has_many :sources
   accepts_nested_attributes_for :sources, :allow_destroy => true
@@ -63,6 +70,7 @@ class Article < ActiveRecord::Base
   private
     def set_no_image
       self.image||="http://sveze-jabolko-common.s3.amazonaws.com/images/nomainimage.jpg"
+      # self.small_image||="http://jabolkoorg.s3.amazonaws.com/website/images/articles/nomainimage.jpg"
     end
 
 end
