@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110603093239) do
+ActiveRecord::Schema.define(:version => 20110608202729) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,11 +23,6 @@ ActiveRecord::Schema.define(:version => 20110603093239) do
     t.datetime "updated_at"
     t.integer  "published",      :default => 0
     t.integer  "comments_count", :default => 0
-  end
-
-  create_table "articles_sources", :id => false, :force => true do |t|
-    t.integer "source_id"
-    t.integer "article_id"
   end
 
   create_table "articles_users", :id => false, :force => true do |t|
@@ -48,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20110603093239) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "article_id"
   end
 
   create_table "taggings", :force => true do |t|

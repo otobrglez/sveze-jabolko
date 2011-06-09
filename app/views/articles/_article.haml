@@ -18,12 +18,17 @@
 			=sanitize article.intro_html
 		- elsif mode == :show
 			=sanitize article.body_html
-			- if article.sources.size != 0
-				%p
-					Viri:
+			- if article.sources != nil && article.sources.size != 0
+				-if article.sources.size == 1
+					=t(:source)
+					\:
+					=link_to article.sources[0].title, article.sources[0].url
+				-elsif  article.sources.size > 1
+					=t(:sources)
+					\:
 					- article.sources.each do |source|
 						=link_to source, source.url
-		
+					
 	- if (defined? mode).nil?
 		.readmore
 			=link_to "Preberi cel članek", article_path(article.category, article)

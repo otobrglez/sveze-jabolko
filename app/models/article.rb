@@ -1,3 +1,5 @@
+require_dependency "source"
+
 class Article < ActiveRecord::Base
   belongs_to :category
   
@@ -12,7 +14,8 @@ class Article < ActiveRecord::Base
   validates_format_of :image,
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
   
-  has_and_belongs_to_many :sources
+  has_many :sources
+  accepts_nested_attributes_for :sources, :allow_destroy => true
   
   default_scope order("created_at DESC")
   scope :published, where(:published => true)

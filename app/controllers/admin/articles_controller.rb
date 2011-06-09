@@ -3,6 +3,7 @@ class Admin::ArticlesController < AdminController
   respond_to :html
   
   before_filter :find_article, :only => [:edit, :update, :destroy]
+  before_filter :fix_sources
   
   def index
     if params[:category_id] != nil
@@ -16,12 +17,14 @@ class Admin::ArticlesController < AdminController
   end
   
   def edit
+    @article.sources << Source.new if @article.sources.size == 0
     respond_with(@article)
   end
   
   def new
     @article = Article.new
     @article.authors << current_user
+    @article.sources << Source.new if @article.new_record?
     respond_with(@article)
   end
 
@@ -67,6 +70,10 @@ class Admin::ArticlesController < AdminController
     def find_article
       @article = Article.find_by_slug(params[:id])
       @article = Article.find(params[:id]) if @article == nil
+    end
+    
+    def fix_sources
+      
     end
 
 end

@@ -29,6 +29,7 @@ sl:
       
   back: Nazaj
   destroy: Odstrani
+  delete: Odstrani
   save: Shrani
   no: Ne
   new: Nov
@@ -43,4 +44,6 @@ sl:
   tags: Značke
   with_tags: "z značkami"
   in: v
+  source: Vir
+  sources: Viri
   

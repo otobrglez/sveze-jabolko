@@ -4,6 +4,7 @@
 	#errors{ display:block; width:95%; border:1px solid red; }
 	ul#article li{ margin-top:10px; }
 	#article li.authors li { margin:0px; padding:0px }
+	ul.sources{ margin-left:30px; border-bottom:1px solid #CCC; padding-bottom:5px; }
 	
 =form_for([:admin,@article]) do |f|
 
@@ -34,20 +35,39 @@
 		%li
 			%strong=f.label :tags_list, Article.human_attribute_name(:tags)
 			=f.text_field :tag_list
+			
 		%li
 			%strong=f.label :intro, Article.human_attribute_name(:intro)
 			%br/
 			=f.text_area :intro, :rows => 5
 			%div{:style=>"text-align:right; width:95%"}
-				=link_to "* Urejevalnik uporablja Textile markup", "http://redcloth.org/"
+				=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
 		%li
 			%strong=f.label :body, Article.human_attribute_name(:body)
 			%br/
 			=f.text_area :body
 			%br/
 			%div{:style=>"text-align:right; width:95%"}
-				=link_to "Urejevalnik uporablja Textile markup", "http://redcloth.org/"
+				=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
+				
+		%li
+			%strong Sources
 			
+			%ul.sources
+				= f.fields_for :sources do |s|
+					%li
+						%strong=s.label :title
+						%br/
+						=s.text_field :title
+					%li
+						%strong=s.label :url
+						%br/
+						=s.text_field :url
+					- unless @article.new_record?
+						%li
+							%strong=t(:delete)
+							= s.check_box :_destroy
+
 		%li
 			%strong=f.label :published, Article.human_attribute_name(:published)
 			=f.check_box :published
