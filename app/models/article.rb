@@ -19,6 +19,7 @@ class Article < ActiveRecord::Base
   
   default_scope order("created_at DESC")
   scope :published, where(:published => true)
+  scope :recommended, where(:recommended => 1)
   
   # Plugins
   acts_as_taggable_on :tags     # acts_as_taggable_on

@@ -32,6 +32,7 @@ class Admin::ArticlesController < AdminController
     @article ||= Article.find(params[:id])
     params[:article][:slug] = nil if params[:article][:slug] == ""
     params[:article][:author_ids] ||= []
+    params[:article][:tag_list] = params[:article][:tag_list].downcase
     
     @article.update_attributes(params[:article])
     
@@ -46,6 +47,7 @@ class Admin::ArticlesController < AdminController
   end
   
   def create
+    params[:article][:tag_list] = params[:article][:tag_list].downcase
     @article = Article.new(params[:article])
     respond_to do |format|
       if @article.save

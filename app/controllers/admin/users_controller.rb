@@ -7,7 +7,7 @@ class Admin::UsersController < AdminController
   before_filter :find_user, :only => [:edit, :show, :update, :destroy]
   
   def index
-    @users = User.page(params[:users_page]).per(10)
+    @users = User.page(params[:users_page]).where(params[:is_admin]).per(10)
     respond_with(@users)
   end
   

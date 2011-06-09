@@ -28,6 +28,7 @@
 		%tr
 			%th=Article.human_attribute_name(:title)
 			%th=Article.human_attribute_name(:published)
+			%th=Article.human_attribute_name(:views)
 			%th.tools= t("tools")
 
 	%tbody
@@ -43,6 +44,7 @@
 						=t("yes")
 					-else
 						=t("no")
+				%td(align="center")=article.views
 				%th
 					=link_to t("edit"), edit_admin_article_path(article)
 	%tfoot

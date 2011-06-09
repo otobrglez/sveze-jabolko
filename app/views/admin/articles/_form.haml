@@ -94,9 +94,14 @@
 							%a.clone-source(href="#clone")
 								=t(:clone)
 							
+
+		%li
+			%strong=f.label :recommended, Article.human_attribute_name(:recommended)
+			=f.check_box :recommended
 		%li
 			%strong=f.label :published, Article.human_attribute_name(:published)
 			=f.check_box :published
+				
 		%li.authors
 			%br/
 			%strong= Article.human_attribute_name(:authors)

@@ -28,7 +28,9 @@
 							&raquo;
 							=link_to t("articles"), [:admin,:articles]
 							=link_to t("categories"), [:admin,:categories]
+							=link_to t("tags"), [:admin,:tags]
 							=link_to t("users"), [:admin,:users]
+							
 			
 				-if (not flash) && (flash[:errors].empty?)
 					#errors=flash[:errors]

@@ -11,6 +11,10 @@ class ArticlesController < ApplicationController
     @article = Article.find_by_slug(params[:id])
     @article = Article.find(params[:id]) if @article == nil
     
+    # Save view
+    @article.views = @article.views+1
+    @article.save
+    
     return redirect_to "/404", :layout => false if @article == nil
     
     respond_with(@article)
