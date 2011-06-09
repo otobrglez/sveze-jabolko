@@ -34,6 +34,7 @@ sl:
   no: Ne
   new: Nov
   all: Vsi
+  add: Dodaj
   tools: Orodja
   yes: Da
   edit: Uredi
@@ -46,4 +47,5 @@ sl:
   in: v
   source: Vir
   sources: Viri
+  clone: Kloniraj
   

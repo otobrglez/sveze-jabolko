@@ -13,7 +13,7 @@ class Source < ActiveRecord::Base
   #attr_accessor :url
   
   def to_s
-    "#{self.title} - #{self.url}"
+    "#{self.title}"
   end
   
 end
