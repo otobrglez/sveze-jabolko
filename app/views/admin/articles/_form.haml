@@ -11,7 +11,6 @@
 	
 		$("a.clone-source").live("click",function(e){
 			e.preventDefault();
-			//var new_item = $("ul.sources:last").clone();			
 			new_item = $(this).parent().parent().clone();
 			new_item.appendTo($("div.sources-list"));
 			
@@ -23,8 +22,6 @@
 					"article[sources_attributes]["+i+"][url]"
 				);
 			});
-			
-			
 		});
 	
 	});
