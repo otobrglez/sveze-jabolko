@@ -1,10 +1,10 @@
 class RemoveSkypeNameFromArticle < ActiveRecord::Migration
   def up
-    remove_column :articles, :skype_name
-    Article.reset_column_information
+    remove_column :users, :skype_name
+    Users.reset_column_information
   end
 
   def down
-    add_column :articles, :skype_name, :string
+    add_column :users, :skype_name, :string
   end
 end
