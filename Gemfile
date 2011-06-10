@@ -20,6 +20,7 @@ gem 'acts-as-taggable-on'
 # gem 'redcarpet', :git => 'git://github.com/tanoku/redcarpet.git'
 gem 'RedCloth' # , :git => 'git://github.com/jgarber/redcloth.git' # , :tag => 'v4.2.7'
 # gem 'newrelic_rpm'
+gem 'gravtastic'
 
 group :test, :development do
   gem 'turn', :require => false

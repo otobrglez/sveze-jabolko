@@ -1,0 +1,15 @@
+#writer
+	#writer_image
+		= image_tag @author.gravatar_url
+		
+	%h2.name=@author
+	-if @author.about
+		#writer_about=sanitize @author.about_html
+	.clear
+
+#writer_links=@author.author_links_html
+
+%div#articles=render :collection => @articles, :partial => 'articles/simple_article'
+.pagination_wrap
+	.pagination
+		= paginate @articles

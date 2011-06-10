@@ -1,19 +1,34 @@
+# include ActionView::Helpers
+
 class User < ActiveRecord::Base
+  
+  include AuthorsHelper
+  
+  include Gravtastic
+  gravtastic :size => 120
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+    :name, :home_url, :twitter_name, :facebook_name, :github_name,
+    :about, :is_admin, :is_author, :is_developer
+  
+  #Deprecated : :skype_name, 
   
   validates_presence_of :name
   validates_uniqueness_of :name
   
+  validates_presence_of :about,
+    :if => Proc.new { |user| user.is_author?  && user.about == ""}
+  
   validates_format_of :home_url,
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix,
     :if => Proc.new { |user| user.home_url != "" && user.home_url != nil }
-  
-  has_many :articles, :foreign_key => "author_id"
-  
+
+  has_and_belongs_to_many :articles, :class_name => "Article",
+    :foreign_key => "author_id"
+    
   scope :admins, where(:is_admin => 1)
   scope :authors, where(:is_author => 1)
   scope :developers, where(:is_developer => 1)
@@ -34,6 +49,15 @@ class User < ActiveRecord::Base
     "#{self.id}-#{self.name}".parameterize
   end
   
+  def about_html
+    return nil if self.about == nil
+    return RedCloth.new(self.about).to_html
+  end
+  
   def to_s() "#{self.name}"; end
+  
+  def author_links_html
+    return author_links(self)
+  end
   
 end

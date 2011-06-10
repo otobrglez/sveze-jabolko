@@ -21,7 +21,10 @@ class Admin::UsersController < AdminController
     
     update! do |success, failure|
       success.html { redirect_to admin_users_url() }
-      failure.html { render :action => :edit}
+      failure.html {
+        flash[:notice] = "Failed to update..."
+        render :action => :edit
+      }
     end
   end  
   

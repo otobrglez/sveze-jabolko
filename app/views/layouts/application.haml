@@ -32,10 +32,13 @@
 							=link_to t("users"), [:admin,:users]
 							
 			
-				-if (not flash) && (flash[:errors].empty?)
+				-if flash[:errors]
 					#errors=flash[:errors]
-					
-				-if (not flash) && (not flash[:notice].empty?)
+				
+				-if flash[:error]
+					#error=flash[:error]
+				
+				-if	flash[:notice]
 					#notices=flash[:notice]
 			
 				=yield
