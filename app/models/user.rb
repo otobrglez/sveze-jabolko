@@ -33,6 +33,19 @@ class User < ActiveRecord::Base
   scope :authors, where(:is_author => 1)
   scope :developers, where(:is_developer => 1)
   
+  scope :authors_with_numbers,
+    select("
+      users.*, (
+        SELECT COUNT(*) FROM articles_users
+        LEFT JOIN articles
+        ON articles.id = articles_users.article_id
+        WHERE articles.published = 1 AND
+        articles_users.author_id = users.id
+      ) as p_count
+    ")
+    .where("users.is_author = 1")
+    .order("p_count DESC")
+  
   def is_admin?
     return self.is_admin == 1
   end

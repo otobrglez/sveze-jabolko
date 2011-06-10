@@ -1,0 +1,6 @@
+%h2.heading2= page_title t(:authors_list)
+=render :collection => @authors, :partial => 'authors/author'
+
+.pagination_wrap
+	.pagination
+		= paginate @authors

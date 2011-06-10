@@ -1,0 +1,14 @@
+.writer_summary
+	.writer_image
+		= link_to author_path(author) do
+			=image_tag author.gravatar_url(:size => 48)
+	%h3=link_to author, author_path(author)
+	
+	.writer_about
+		- if author.about?
+			= sanitize author.about_html
+		.articles_count
+			= t(:number_of_articles)
+			= link_to author_path(author) do
+				=author.p_count
+%hr/
