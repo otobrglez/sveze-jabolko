@@ -13,7 +13,9 @@ SvezeJabolko::Application.routes.draw do
   match "404" => "application#missing_page", :as => :missing_page
 
   match "tag/:tag_id" => "tags#show", :as => :tag
-
+  match "znacke" => "tags#index", :as => :tags
+  # match "tags" => "tags#index", :as => :tags
+  
   match ":category_id/:id" => "articles#show", :as => :article
   match ":category_id" => "categories#show", :as => :category
   

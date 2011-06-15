@@ -14,8 +14,18 @@
 			- Article.top_viewed.each do |article|
 				%li
 					=link_to article, article_path(article.category, article)
-				
 	.menu
+		.heading Vsebina
+		%p Najdi vsebino po avtorjih in značkah
+		%ul.list
+			%li
+				%a=link_to "Seznam avtorjev", authors_path()
+			%li
+				%a=link_to "Seznam značk", tags_path()
+			%li
+				%a(href="mailto:sodeluj@jabolko.org" target="_self") Postani avtor
+			%li
+				%a(href="mailto:info@jabolko.org" target="_self") Prijavi napako
 	
 	.menu
 	

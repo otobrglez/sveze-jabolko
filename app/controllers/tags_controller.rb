@@ -9,4 +9,8 @@ class TagsController < ApplicationController
     respond_with(@articles)
   end
   
+  def index
+    
+  end
+  
 end
