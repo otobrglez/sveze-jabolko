@@ -3,9 +3,7 @@ class AuthorsController < ApplicationController
   respond_to :html
   
   def show
-    @author = User.authors
-      .limit(1)
-      .find_by_id(params[:user_id])
+    @author = User.authors.limit(1).find_by_id(params[:user_id])
 
     return redirect_to "/404", :layout => false if @author == nil
     

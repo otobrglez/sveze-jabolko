@@ -3,4 +3,20 @@
 		.oglasni_prostor
 			%a(href="mailto:info@jabolko.org?Subject=Želim oglaševati na Jabolko.org") Oglasni prostor
 			%a(href="http://www.razvijalci.si/" class="banner" target="_blank")
-				%img(alt="Najava_razvijalcev" height="148" src="http://sveze-jabolko-common.s3.amazonaws.com/images/banners/najava_razvijalcev.jpg" width="258")
+				%img(alt="Najava_razvijalcev" height="148" |
+					src="http://sveze-jabolko-common.s3.amazonaws.com/images/banners/najava_razvijalcev.jpg" width="258")
+	-# %div.clear/
+	
+	.menu
+		.heading Priljubljeno
+		%p Najbolj priljubljeni članki na blogu.
+		%ul.list
+			- Article.top_viewed.each do |article|
+				%li
+					=link_to article, article_path(article.category, article)
+				
+	.menu
+	
+	.menu
+	
+	.menu

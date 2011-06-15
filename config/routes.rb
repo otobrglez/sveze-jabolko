@@ -1,6 +1,5 @@
 SvezeJabolko::Application.routes.draw do
   
-
   root :to => "articles#index"
 
   match "admin", :controller => "admin", :action => "dash", :as => "admin", :via => [:get]

@@ -28,6 +28,16 @@ class Article < ActiveRecord::Base
   scope :published, where(:published => true)
   scope :recommended, where(:recommended => 1)
   
+  def self.top_viewed(limit=10)
+    with_exclusive_scope do
+      where(:published => true)
+      .where(:recommended => 1)
+      .limit(limit)
+      .order("views DESC")
+    end
+  end
+  
+  
   # Plugins
   acts_as_taggable_on :tags     # acts_as_taggable_on
   paginates_per         5       # kaminari

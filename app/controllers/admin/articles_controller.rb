@@ -46,7 +46,6 @@ class Admin::ArticlesController < AdminController
   end
   
   def create
-    # params[:article][:tag_list] = params[:article][:tag_list].downcase
     @article = Article.new(params[:article])
     respond_to do |format|
       if @article.save
