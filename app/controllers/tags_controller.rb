@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   end
   
   def index
-    
+    @tags = Article.tag_counts_on(:tags)
   end
   
 end

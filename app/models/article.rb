@@ -15,11 +15,10 @@ class Article < ActiveRecord::Base
   
   validates_format_of :image,
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
-  #,  :if => Proc.new { |a| a.image != "" && a.image != nil }
+    #, :if => Proc.new { |a| a.image != "" && a.image != nil }
   
   #validates_format_of :small_image,
   #  :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
-  
   
   has_many :sources
   accepts_nested_attributes_for :sources, :allow_destroy => true
@@ -36,7 +35,6 @@ class Article < ActiveRecord::Base
       .order("views DESC")
     end
   end
-  
   
   # Plugins
   acts_as_taggable_on :tags     # acts_as_taggable_on
@@ -68,19 +66,16 @@ class Article < ActiveRecord::Base
   def body_html
     return nil if self.body == nil
     return RedCloth.new(self.body).to_html
-    #return Redcarpet.new(self.body).to_html
   end
   
   def intro_html
     return nil if self.intro == nil
     return RedCloth.new(self.intro).to_html
-    #return Redcarpet.new(self.intro).to_html
   end
   
   private
     def set_no_image
       self.image||="http://sveze-jabolko-common.s3.amazonaws.com/images/nomainimage.jpg"
-      # self.small_image||="http://jabolkoorg.s3.amazonaws.com/website/images/articles/nomainimage.jpg"
     end
 
 end
