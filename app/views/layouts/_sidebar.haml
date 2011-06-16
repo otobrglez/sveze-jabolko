@@ -5,7 +5,29 @@
 			%a(href="http://www.razvijalci.si/" class="banner" target="_blank")
 				%img(alt="Najava_razvijalcev" height="148" |
 					src="http://sveze-jabolko-common.s3.amazonaws.com/images/banners/najava_razvijalcev.jpg" width="258")
-	-# %div.clear/
+	
+	#tabed_module.menu
+		.heading Zadnji komentarji
+		%p Seznam zadnjih komentarjev na foromu.
+		.tabs
+			.tabNav
+				%ul.tabNav
+					%li.selected
+						%a(href="http://forum.jabolko.org") Forum
+					%li
+						=link_to "Blog", root_path()
+			.tabContent
+				#forum
+					%ul.list
+						- sidebar_forum_posts(7).each do |post|
+							%li
+								= link_to post["url"] do
+									= sanitize post["topic_title"]
+									
+				#blog{:style => "display:none"}
+					%ul.list
+						%li
+							%a(href="http://aaaa") aaaa...
 	
 	.menu
 		.heading Priljubljeno
@@ -26,7 +48,4 @@
 				%a(href="mailto:sodeluj@jabolko.org" target="_self") Postani avtor
 			%li
 				%a(href="mailto:info@jabolko.org" target="_self") Prijavi napako
-	
-	.menu
-	
 	.menu
