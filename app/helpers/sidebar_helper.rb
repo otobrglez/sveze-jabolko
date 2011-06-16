@@ -6,8 +6,15 @@ module SidebarHelper
   
   def sidebar_forum_posts(limit=7)
     require "net/http"
+    
     url = "http://forum.jabolko.org/izmenjava.php?a=posts"
-    posts = JSON.parse(Net::HTTP.get_response(URI.parse(url)).body).slice(0,limit)
+    
+    begin
+      posts = JSON.parse(Net::HTTP.get_response(URI.parse(url)).body).slice(0,limit)
+    rescue => e
+      posts = []
+    end
+    
     posts
   end
 

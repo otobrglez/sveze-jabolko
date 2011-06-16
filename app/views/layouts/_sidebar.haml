@@ -19,10 +19,13 @@
 			.tabContent
 				#forum
 					%ul.list
-						- sidebar_forum_posts(7).each do |post|
+						-if sidebar_forum_posts(7).each do |post|
 							%li
 								= link_to post["url"] do
 									= sanitize post["topic_title"]
+						- end.empty?
+							%li # Napaka pri obdelavi vira!
+						
 									
 				#blog{:style => "display:none"}
 					%ul.list
