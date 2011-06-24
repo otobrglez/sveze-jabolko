@@ -16,6 +16,7 @@ SvezeJabolko::Application.routes.draw do
   match "znacke" => "tags#index", :as => :tags
   # match "tags" => "tags#index", :as => :tags
   
+  match "blog/:id" => "articles#show", :as => :blog
   match ":category_id/:id" => "articles#show", :as => :article
   match ":category_id" => "categories#show", :as => :category
   
