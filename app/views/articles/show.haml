@@ -2,3 +2,5 @@
 
 #blog_article
 	= render :partial => @article, :locals => {:mode => :show}
+	
+#comments_wrap=disqus_thread(@article)

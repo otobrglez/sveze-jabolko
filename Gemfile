@@ -30,6 +30,7 @@ group :test, :development do
 	gem 'rspec'
 	gem 'rspec-rails'
 	gem 'autotest'	
+	gem 'autotest-growl'
 	gem 'rcov'
 end
 
