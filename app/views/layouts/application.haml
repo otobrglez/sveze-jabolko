@@ -6,7 +6,14 @@
 		= stylesheet_link_tag    "application"
 		= javascript_include_tag "application"
 		= csrf_meta_tags
+		
 		%title=page_title
+		
+		%link(type="application/atom+xml" rel="alternate" title="Jabolko.org Sok" |
+			href="http://feeds.feedburner.com/jabolkoorg-sok")
+		
+		%link(rel="shortcut icon" href="/images/favicon.ico")
+		%link(rel="apple-touch-icon" href="/images/iphone_57x57.png")
 		
 	%body{ :class => [ (user_signed_in?? "signed_in" : nil), |
 		((user_signed_in? && current_user.is_admin?)? "is_admin":nil ) ].join(" ").strip }
