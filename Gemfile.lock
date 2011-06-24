@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/rafaeldx7/ruby-bitly.git
+  revision: 4dbe5d70f0db7bcae98db6d8015555dccca4a6de
+  specs:
+    ruby-bitly (0.1.5)
+      rest-client (~> 1.6.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -103,6 +110,8 @@ GEM
     rake (0.8.7)
     rcov (0.9.9)
     responders (0.6.4)
+    rest-client (1.6.3)
+      mime-types (>= 1.16)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -170,8 +179,10 @@ DEPENDENCIES
   rails (= 3.1.0.rc1)
   rake (~> 0.8.7)
   rcov
+  rest-client
   rspec
   rspec-rails
+  ruby-bitly!
   ruby-debug19
   sass
   simple_form

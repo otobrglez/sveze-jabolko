@@ -50,4 +50,5 @@ sl:
   clone: Kloniraj
   read_full_article: Preberi cel članek
   authors_list: Seznam avtorjev
-  number_of_articles: Število objav:
+  number_of_articles: "Število objav:"
+  publish_article: Objavi članek

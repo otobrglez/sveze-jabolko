@@ -21,6 +21,8 @@ gem 'acts-as-taggable-on'
 gem 'RedCloth' # , :git => 'git://github.com/jgarber/redcloth.git' # , :tag => 'v4.2.7'
 # gem 'newrelic_rpm'
 gem 'gravtastic'
+gem 'rest-client'
+gem 'ruby-bitly', :git => 'git://github.com/rafaeldx7/ruby-bitly.git', :require => 'ruby-bitly'
 
 group :test, :development do
   gem 'turn', :require => false

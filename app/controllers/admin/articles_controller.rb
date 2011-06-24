@@ -2,7 +2,7 @@ class Admin::ArticlesController < AdminController
   
   respond_to :html
   
-  before_filter :find_article, :only => [:edit, :update, :destroy]
+  before_filter :find_article, :only => [:edit, :update, :destroy, :publish, :publish_article]
   
   def index
     if params[:category_id] != nil
@@ -64,6 +64,45 @@ class Admin::ArticlesController < AdminController
     
     respond_with(@destroy) do |f|
       f.html { redirect_to :action => :index }
+    end
+  end
+  
+  def publish
+    flash[:notice] = "Article is not valid!" if not @article.valid?
+    
+    respond_with(@article)
+  end
+  
+  def publish_article
+    
+    if not @article.valid?
+      flash[:notice] = "Article is not valid!"
+    else
+      
+      # Set publish flag to 1
+      @article.published = 1
+      
+      url = article_url(@article.category,@article)
+      if ENV["RAILS_ENV"] != "production"
+        url = "http://www.jabolko.org" + article_path(@article.category,@article)
+      end
+      
+      # Get Short URL
+      bitly = Bitly.shorten(url,BITLY["username"], BITLY["api_key"])
+      
+      # Set short_url  
+      @article.short_url = bitly.url
+      
+      # Publish to Twitter
+      #TODO: Publish to twitter
+      
+      if @article.save
+        flash[:notice] = "Article published..."
+      end
+    end
+    
+    respond_with(@article) do |f|
+      f.html { render :action => :publish}
     end
   end
   

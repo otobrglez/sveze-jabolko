@@ -1,0 +1,12 @@
+defaults: &defaults
+  username: jabolko
+  api_key: R_f8ae3a21bf09a705fcf06cf0bd569349
+  
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

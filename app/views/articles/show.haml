@@ -2,5 +2,6 @@
 
 #blog_article
 	= render :partial => @article, :locals => {:mode => :show}
-	
+
+#share_article=share_article(@article)
 #comments_wrap=disqus_thread(@article)

@@ -52,4 +52,5 @@ SvezeJabolko::Application.configure do
   
   # Devise
   config.action_mailer.default_url_options = { :host => 'http://sveze-jabolko.heroku.com/' }
+
 end

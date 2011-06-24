@@ -1,0 +1,15 @@
+<% if article.short_url? %>
+<a href="http://twitter.com/home?status=Berem%20%27#<%= article.title %>%27%20<%= article.short_url %>%20(via%20@jabolkoorg)"
+class="twitter"
+target="_blank">Twitter</a>
+<% end %> 
+
+<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.jabolko.org<%= article_path(article.category,article) %>&amp;title=<%= article %>"
+class="linkedin"
+target="_blank">LinkedIn</a> 
+
+<a href="http://www.facebook.com/sharer.php?u=http://www.jabolko.org<%= article_path(article.category,article) %>&amp;t=<%= article %>"
+class="facebook"
+target="_blank">Facebook</a>
+
+<div class="clear"></div>

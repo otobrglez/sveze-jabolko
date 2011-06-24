@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110610085640) do
+ActiveRecord::Schema.define(:version => 20110624104259) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20110610085640) do
     t.integer  "comments_count", :default => 0
     t.integer  "views",          :default => 0
     t.integer  "recommended",    :default => 0
+    t.string   "short_url"
   end
 
   create_table "articles_users", :id => false, :force => true do |t|

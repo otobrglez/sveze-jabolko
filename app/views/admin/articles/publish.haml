@@ -1,0 +1,9 @@
+%h2= page_title "Publishing article"
+%br/
+
+= render :partial => "articles/simple_article", :locals => {:simple_article => @article}
+
+= form_for([:admin,@article], :url => publish_admin_article_path(@article)) do |f|
+	= link_to t("articles"), [:admin,:articles]
+	|
+	=f.submit t("publish_article")
