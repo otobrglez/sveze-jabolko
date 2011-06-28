@@ -1,0 +1,31 @@
+:css
+	ul#banner label{ width:90%; display:block; font-weight:bold; }
+	ul#banner li{ margin-bottom:10px; }
+
+- SimpleForm.html5 = false 
+= simple_form_for([:admin,@banner], :html => {:novalidate => false}) do |f|
+	-if f.object.errors.any?
+		#form_errors
+			%ul
+				- f.object.errors.full_messages.each do |e|
+					%li=e
+	
+	%ul#banner
+					
+		%li= f.input :image_url
+		%li= f.input :link
+		%li= f.input :title
+		%li= f.input :position
+		%li= f.input :hidden
+		%li= f.input :from_date
+		%li= f.input :to_date
+		%li= f.input :width
+		%li= f.input :height
+	
+		%li
+			= link_to "Nazaj", [:admin,:banners]
+			- unless f.object.new_record?
+				|
+				=link_to "Odstrani", [:admin,f.object], :method => :delete
+				|
+			=f.button :submit

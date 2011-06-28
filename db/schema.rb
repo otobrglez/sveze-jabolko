@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110624104259) do
+ActiveRecord::Schema.define(:version => 20110627112438) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -31,6 +31,21 @@ ActiveRecord::Schema.define(:version => 20110624104259) do
   create_table "articles_users", :id => false, :force => true do |t|
     t.integer "article_id"
     t.integer "author_id"
+  end
+
+  create_table "banners", :force => true do |t|
+    t.string   "image_url"
+    t.string   "link"
+    t.string   "title"
+    t.string   "position"
+    t.integer  "number_of_clicks", :default => 0
+    t.integer  "hidden",           :default => 0
+    t.date     "from_date"
+    t.date     "to_date"
+    t.integer  "width",            :default => 256
+    t.integer  "height",           :default => 148
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "categories", :force => true do |t|

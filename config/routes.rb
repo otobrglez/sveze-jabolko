@@ -5,7 +5,7 @@ SvezeJabolko::Application.routes.draw do
   match "admin", :controller => "admin", :action => "dash", :as => "admin", :via => [:get]
   devise_for :users, :path => "admin"
   namespace "admin" do
-    resources :categories, :tags, :users
+    resources :categories, :tags, :users, :banners
     resources :articles do
       get :publish, :on => :member, :via => [:get]
       post :publish, :on => :member, :to => "articles#publish_article"
@@ -21,6 +21,8 @@ SvezeJabolko::Application.routes.draw do
   match "tag/:tag_id" => "tags#show", :as => :tag
   match "znacke" => "tags#index", :as => :tags
   # match "tags" => "tags#index", :as => :tags
+  
+  match "v/:id" => "banners#visit", :as => :banner_visit
   
   match "blog/:id" => "articles#show", :as => :blog
   match ":category_id/:id" => "articles#show", :as => :article

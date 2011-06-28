@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc1'
+gem 'rails', '3.1.0.rc4'
 
 # gem "rails", :git => "git://github.com/rails/rails.git"
 # gem "sprockets", :git => "git://github.com/sstephenson/sprockets.git"
 
-gem 'rake', '~> 0.8.7'
+# gem 'rake', '~> 0.8.7'
 gem 'sass'
 gem 'haml'
 #gem 'coffee-script'
@@ -21,19 +21,32 @@ gem 'acts-as-taggable-on'
 gem 'RedCloth' # , :git => 'git://github.com/jgarber/redcloth.git' # , :tag => 'v4.2.7'
 # gem 'newrelic_rpm'
 gem 'gravtastic'
-gem 'rest-client'
-gem 'ruby-bitly', :git => 'git://github.com/rafaeldx7/ruby-bitly.git' #, :require => 'ruby-bitly'
+#gem 'rest-client'
+#gem 'restclient'
+#gem 'ruby-bitly', :git => 'git://github.com/rafaeldx7/ruby-bitly.git' #, :require => 'ruby-bitly'
+gem 'ruby-bitly'
 
 group :test, :development do
   gem 'turn', :require => false
 	gem 'sqlite3'
 	gem 'unicorn'
 	gem 'ruby-debug19', :require => 'ruby-debug'
-	gem 'rspec'
-	gem 'rspec-rails'
 	gem 'autotest'	
 	gem 'autotest-growl'
-	gem 'rcov'
+	gem 'rcov' 
+	
+	gem 'rspec', '>= 2.6'
+	gem 'rspec-rails', '>= 2.6'
+	
+	gem 'factory_girl', '>= 2.0.0.beta'
+	gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git', :tag => 'v1.1.beta1'
+	
+	# gem 'machinist', '>= 2.0.0.beta2'
+	
+	
+	gem 'rails3-generators'
+	#gem 'rspec'
+	#gem 'rspec-rails'
 end
 
 group :development do

@@ -1,0 +1,19 @@
+%h1= link_to page_title("Banners"), admin_banners_path()
+
+%p
+	=link_to t("banners.new"), new_admin_banner_path()
+
+%br/
+
+:css
+	ul#banners li.banner{ position:relative; margin-bottom:10px; }
+	ul#banners li.banner .image { position:absolute; display:inline-block }
+	ul#banners li.banner .tools { position:absolute; display:inline-block; right:20px; top:0px }
+	ul#banners .number_of_clicks{ font-weight:bold; text-decoration:underline; }
+	
+	
+	.banner .image { border:1px solid #CCC; }
+	ul#banners li.banner .meta_i{ margin-left:120px; margin-right:200px }
+
+%ul#banners
+	= render @banners
