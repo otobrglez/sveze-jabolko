@@ -1,0 +1,12 @@
+defaults: &defaults
+  api_secret: 's24A7NGLYWmBrmuyk6WdVmycfr6ki8ClFZl92SjifLscWCeSSbjWqYFwQ2LQgVeC'
+  api_key: 'IqHh54KyN8IQ5KnvWiViCMtBvXZo5sYW7nMhi1HWsDhNUtFukWZgSwOLSOQhwp7K'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

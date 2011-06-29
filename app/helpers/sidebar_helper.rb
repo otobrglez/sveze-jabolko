@@ -10,9 +10,11 @@ module SidebarHelper
     url = "http://forum.jabolko.org/izmenjava.php?a=posts"
     
     begin
+      logger.info "Fetching: sidebar_forum_posts - Started."
       posts = JSON.parse(Net::HTTP.get_response(URI.parse(url)).body).slice(0,limit)
     rescue => e
       posts = []
+      logger.info "Fetching: sidebar_forum_posts - Failed!"      
     end
     
     posts
