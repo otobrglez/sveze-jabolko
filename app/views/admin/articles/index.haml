@@ -39,13 +39,13 @@
 						=link_to article, article_path(article.category, article)
 					%br/
 					= sanitize article_created(article)
-				%td{:style => "text-align:center;" }
+				%td{:style => "text-align:center;", :valign => "middle" }
 					-if article.published?
 						=t("yes")
 					-else
 						=t("no")
-				%td(align="center")=article.views
-				%th
+				%td(align="center" valign="middle")=article.views
+				%th(valign="middle")
 					=link_to t("edit"), edit_admin_article_path(article)
 	%tfoot
 		%tr

@@ -5,11 +5,15 @@ SvezeJabolko::Application.routes.draw do
   match "admin", :controller => "admin", :action => "dash", :as => "admin", :via => [:get]
   devise_for :users, :path => "admin"
   namespace "admin" do
-    resources :categories, :tags, :users, :banners
+    resources :categories, :users, :banners
     resources :articles do
       get :publish, :on => :member, :via => [:get]
       post :publish, :on => :member, :to => "articles#publish_article"
       put :publish, :on => :member, :to => "articles#publish_article"
+    end
+    
+    resources :tags do
+      get :search, :on => :collection, :via => [:get]
     end
     
   end
