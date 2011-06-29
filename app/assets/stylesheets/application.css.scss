@@ -19,7 +19,7 @@ blockquote:before, blockquote:after, q:before, q:after {content: ''; content: no
 del {text-decoration: line-through}
  table {border-collapse: collapse; border-spacing: 0}
 body, textarea {font-size:12px; font-family:Arial, sans-serif}
-body {background: url("images/bg.png") repeat-x 0 0}
+body {background: url("/images/bg.png") repeat-x 0 0}
 a {text-decoration:none; color:#3FA9F5; outline: 0}
 img {border:0}
 .clear {clear:both}
@@ -37,10 +37,10 @@ img {border:0}
 #topnav li.disabled a:hover span {background:none}
 #topnav a, #topnav a span {display:block; height:24px}
 #topnav a span {font-size:15px; color:#fff; line-height:24px; padding:0 11px}
-#topnav a:hover, #topnav .selected a {background:url("images/topnav_bgl.png") no-repeat left 0}
-#topnav a:hover span, #topnav .selected a span {background:url("images/topnav_bgr.png") no-repeat right 0}
+#topnav a:hover, #topnav .selected a {background:url("/images/topnav_bgl.png") no-repeat left 0}
+#topnav a:hover span, #topnav .selected a span {background:url("/images/topnav_bgr.png") no-repeat right 0}
 
-.module_search {background:url("images/search.png") no-repeat 0 0; width:260px; height:32px; position:absolute; top:13px; right:0}
+.module_search {background:url("/images/search.png") no-repeat 0 0; width:260px; height:32px; position:absolute; top:13px; right:0}
 #module_search_form_inputbox {border:0; color:#808080; font-size:13px; height:22px; left:32px; padding:0; position:absolute; top:6px; width:220px; font-family:Arial, sans-serif}
 #about {height:130px; width:260px; border-left:1px solid #d9d9d9; position:absolute; right:0; top:61px; padding:0 0 0 19px}
 #about h1 {color:#2E2F2E; font:22px 'Myriad Pro',Arial; left:19px; padding:20px 0 5px; position:absolute; top:0; width:300px}
@@ -51,7 +51,7 @@ img {border:0}
 #koornk_sidebar {right:0; top:83px; height:24px; width:24px}
 #sidebar {width:260px; float:right; margin:0 0 20px}
 #rss {height:64px; width:260px; border-bottom:1px solid #d9d9d9; margin:30px 0 0}
-#rss a {height:35px; width:200px; display:block; background:url("images/rss_sidebar.png") no-repeat 0 0; color:#2e2f2e; font:25px 'Myriad Pro', Arial; padding:7px 0 0 60px; text-decoration:underline; text-align:right}
+#rss a {height:35px; width:200px; display:block; background:url("/images/rss_sidebar.png") no-repeat 0 0; color:#2e2f2e; font:25px 'Myriad Pro', Arial; padding:7px 0 0 60px; text-decoration:underline; text-align:right}
 #main {width:670px; float:left; padding:30px 0 0; border-right:1px solid #D9D9D9; position:relative}
 .article {position:relative; width:650px}
 #blog_article {border-bottom:1px solid #D9D9D9; padding:0 0 10px}
@@ -65,7 +65,7 @@ img {border:0}
 .article ul {list-style-type:disc}
 .article ol {list-style-type:decimal}
 .meta {height:59px; width:650px; margin:0 0 10px}
-.numofcom {width:42px; height:59px; background:url("images/numofcom.png") no-repeat 0 0; float:right; text-align:center}
+.numofcom {width:42px; height:59px; background:url("/images/numofcom.png") no-repeat 0 0; float:right; text-align:center}
 .numofcom a {display:block; font-size:23px; height:41px; line-height:41px; text-align:center; width:42px}
 .article .created_at {color:#989898; border-bottom:1px solid #d5d5d5; padding:0 0 8px; position:relative; top:26px}
 .article .content, .readmore {font-size:14px; color:#4d4d4d}
@@ -105,9 +105,9 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 #tabed_module div.tabNav {height:35px}
 .menu ul.tabNav {display:block; width:292px; height:84px}
 .menu ul.tabNav li {display:block; float:left; width:76px; height:28px; margin:0 16px 8px 0}
-.menu ul.tabNav li.selected {background: url("images/arrow.png") no-repeat center bottom}
-.menu ul.tabNav a {display:block; text-align:center; height:22px; width:76px; background:url("images/tab.gif") no-repeat 0 0; color:#808080; line-height:22px; font-size:10px}
-.menu ul.tabNav a:hover, .menu ul.tabNav li.selected a {background:url("images/tabh.gif") no-repeat 0 0; color:#ffffff}
+.menu ul.tabNav li.selected {background: url("/images/arrow.png") no-repeat center bottom}
+.menu ul.tabNav a {display:block; text-align:center; height:22px; width:76px; background:url("/images/tab.gif") no-repeat 0 0; color:#808080; line-height:22px; font-size:10px}
+.menu ul.tabNav a:hover, .menu ul.tabNav li.selected a {background:url("/images/tabh.gif") no-repeat 0 0; color:#ffffff}
 #comments_wrap {border-top: 1px solid #d9d9d9; margin:30px 0 30px; padding:30px 0 0}
 #komentarji, #disqus_thread {width:650px}
 #dsq-content #dsq-global-toolbar {margin:0 0 1em !important}
@@ -138,7 +138,7 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 .comment_body_error, .comment_name_error, .comment_email_error, .comment_www_holder_error {float:right; position:relative}
 .comment_body_error {top:-49px; left:-31px}
 .comment_name_error, .comment_email_error, .comment_www_holder_error {right:333px; top:-49px}
-#comment_submit {background: url("images/submit_button.gif") no-repeat 0 0; height:36px; width:189px; border:0; color:#4d4d4d; padding:0px 13px; font:23px 'Myriad Pro', Arial, sans-serif; margin:0 0 25px}
+#comment_submit {background: url("/images/submit_button.gif") no-repeat 0 0; height:36px; width:189px; border:0; color:#4d4d4d; padding:0px 13px; font:23px 'Myriad Pro', Arial, sans-serif; margin:0 0 25px}
 .star {font-size:16px; color:#8bc53f}
 #nocomment {color:#999}
 #main .heading {color:#3fa9f5; font-size:23px; margin:30px 0 25px}
@@ -147,14 +147,14 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 .pagination_wrap {margin:25px 0 0; border-top: 1px solid #d9d9d9; padding:25px 0 24px; height:26px; position:relative; width:670px; overflow:hidden}
 .pagination {margin:0 auto; height:26px}
 .pagination a, .pagination .current, .pagination .gap {display:block; float:left}
-.pagination a, .pagination .current {background:url("images/pagnav_l.gif") no-repeat 0 0; line-height:26px; margin:0 3px; color:#3fa9f5}
-.pagination a span, .pagination .current span {background:url("images/pagnav_r.gif") no-repeat right 0; padding:6px 8px; line-height:14px; display:block}
-.pagination a:hover span, .pagination .current span {background:url("images/pagnav_rh.gif") no-repeat right 0; padding:6px 8px}
-.pagination .current, .pagination a:hover {border:0; background:url("images/pagnav_lh.gif") no-repeat 0 0; color:#fff}
+.pagination a, .pagination .current {background:url("/images/pagnav_l.gif") no-repeat 0 0; line-height:26px; margin:0 3px; color:#3fa9f5}
+.pagination a span, .pagination .current span {background:url("/images/pagnav_r.gif") no-repeat right 0; padding:6px 8px; line-height:14px; display:block}
+.pagination a:hover span, .pagination .current span {background:url("/images/pagnav_rh.gif") no-repeat right 0; padding:6px 8px}
+.pagination .current, .pagination a:hover {border:0; background:url("/images/pagnav_lh.gif") no-repeat 0 0; color:#fff}
 .pagination .prev_page, .pagination .next_page, .pagination .prev_page:hover, .pagination .next_page:hover {border:0; width:auto; height:auto; line-height:13px; position:absolute; top:25px; margin:6px 0; color:#3fa9f5}
 .pagination a.next_page span, .pagination a.prev_page span {background:none; padding:0}
-.pagination a.next_page {background: url("images/next.png") no-repeat right 0; padding:0 12px 0 0; right:0; right:20px}
-.pagination a.prev_page, .pagination a.prev_page:hover {background: url("images/prev.png") no-repeat 0 0; padding:0 0 0 12px; left:0}
+.pagination a.next_page {background: url("/images/next.png") no-repeat right 0; padding:0 12px 0 0; right:0; right:20px}
+.pagination a.prev_page, .pagination a.prev_page:hover {background: url("/images/prev.png") no-repeat 0 0; padding:0 0 0 12px; left:0}
 .pagination .disabled {display:none}
 .pagination .gap {color:#666; line-height:24px}
 */
@@ -173,10 +173,10 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 #infobox .links {position:relative}
 #infobox .secondcol {position:absolute; top:0; left:153px}
 #share_article a {margin:0 19px 0 0; width:45px; height:45px; display:block; text-indent:-9999em; float:left}
-#share_article .delicious {background:url("images/social_sharing.gif") no-repeat 0 0}
-#share_article .twitter {background:url("images/social_sharing.gif") no-repeat -45px 0}
-#share_article .linkedin {background:url("images/social_sharing.gif") no-repeat -90px 0}
-#share_article .facebook {background:url("images/social_sharing.gif") no-repeat right 0}
+#share_article .delicious {background:url("/images/social_sharing.gif") no-repeat 0 0}
+#share_article .twitter {background:url("/images/social_sharing.gif") no-repeat -45px 0}
+#share_article .linkedin {background:url("/images/social_sharing.gif") no-repeat -90px 0}
+#share_article .facebook {background:url("/images/social_sharing.gif") no-repeat right 0}
  .heading2 {font-size:36px; color:#4d4d4d; font-family:'Myriad Pro', Arial; font-weight:normal; border-bottom:1px solid #D5D5D5; margin:0 0 30px; height:43px; position:relative}
 .order_switcher {position:absolute; right:0; top:40px; height:16px; width:250px; height:16px; text-align:right; margin:0 30px 0 0}
 .order_switcher span {margin:0 0 0 20px}
@@ -203,10 +203,10 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 #writer_image {margin:0 0 0 -155px; height:120px; width:120px; overflow:hidden; float:left; border:1px solid #D9D9D9}
 #writer_links {border-top:1px solid #D9D9D9; border-bottom:1px solid #D9D9D9; clear:both; height:40px; margin:0 0 35px}
 #writer_website_icon, #writer_twitter_icon, #writer_facebook_icon, #writer_github_icon {float:left; height:20px; margin:10px 0; padding:0 0 0 30px; line-height:21px; font-size:11px}
-#writer_website_icon {background:url("images/writer_icons.gif") no-repeat 0 0}
-#writer_facebook_icon {background:url("images/writer_icons.gif") no-repeat 0 -40px}
-#writer_twitter_icon {background:url("images/writer_icons.gif") no-repeat -2px -20px; padding:0 0 0 27px}
-#writer_github_icon {background:url("images/github_icon_small.png") no-repeat 0 0; }
+#writer_website_icon {background:url("/images/writer_icons.gif") no-repeat 0 0}
+#writer_facebook_icon {background:url("/images/writer_icons.gif") no-repeat 0 -40px}
+#writer_twitter_icon {background:url("/images/writer_icons.gif") no-repeat -2px -20px; padding:0 0 0 27px}
+#writer_github_icon {background:url("/images/github_icon_small.png") no-repeat 0 0; }
 #writer_links_seperator {height:20px; margin:10px; width:1px; background:#D9D9D9; float:left}
  #tags_link {list-style-type:disc; padding:0 0 0 14px; margin:0 0 25px; color:#808080}
 #tags_link a {font-size:14px; line-height:21px}
@@ -219,7 +219,7 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 .page .created_at {color:#989898; display:block; margin:5px 0 0; border-bottom:1px solid #d5d5d5; padding:0 0 8px; position:static; top:26px}
  .shortcuts_table {margin:0 0 20px}
 .shortcuts_table td {font-size:12px; padding:8px; color:#4D4D4D; line-height:16px}
-.shortcuts_table .tableSubHead1, .shortcuts_table .tableSubHead2 {background:url("images/tablebg.gif") repeat-x 0 0; color:#fff; height:31px; font-weight:bold; padding:9px 0 0 8px}
+.shortcuts_table .tableSubHead1, .shortcuts_table .tableSubHead2 {background:url("/images/tablebg.gif") repeat-x 0 0; color:#fff; height:31px; font-weight:bold; padding:9px 0 0 8px}
 .shortcuts_table .alternateRows {background:#f1f1f1}
 .shortcuts_table .col1 {width:65%}
 .shortcuts_table .col2 {width:35%}
@@ -227,13 +227,13 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 .oglasni_prostor a, .oglasni_prostor a:hover {font-size:10px; color:#989898; display: block}
 #banner260x150 .banner img {display:block}
 #banner260x150 .banner {margin:5px 0 0; border:1px solid #e7e7e7}
- #floating_banner {position:fixed; right:0; left:0; bottom:-3px; height:69px; background:url("images/floating_banner/bg.png") repeat-x 0 0; z-index:10; display:none}
+ #floating_banner {position:fixed; right:0; left:0; bottom:-3px; height:69px; background:url("/images/floating_banner/bg.png") repeat-x 0 0; z-index:10; display:none}
 #floating_banner_content {width:950px; margin:0 0 0 18px; position:relative; height:69px}
 .floating_banner_books {position:absolute; top:-93px; left:0}
 .floating_banner_title {position:absolute; bottom:11px; left:0}
 .floating_banner_close {position:absolute; top:15px; right:10px}
  #google_search {width:260px; position:absolute; top:13px; right:0}
-.module_search {background:url("images/search.png") no-repeat 0 0; width:260px; height:32px}
+.module_search {background:url("/images/search.png") no-repeat 0 0; width:260px; height:32px}
 .gsc-search-box {padding:0}
 .gsc-search-button, .gsc-clear-button {display:none}
 #search_results_wrapper #q {border:1px solid #E6E6E6; color:#808080; display:block; font-size:16px; height:20px; padding:7px 14px; width:539px}
@@ -261,11 +261,11 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 .syntaxhighlighter.collapsed .toolbar {font-size: 80% !important; padding: .2em 0 .5em .5em !important; position: static !important}
 .syntaxhighlighter .toolbar a.item, .syntaxhighlighter .toolbar .item {display: block !important; float: left !important; margin-left: 8px !important; background-repeat: no-repeat !important; overflow: hidden !important; text-indent: -5000px !important}
 .syntaxhighlighter.collapsed .toolbar .item {display: none !important}
-.syntaxhighlighter.collapsed .toolbar .item.expandSource {background-image: url("images/magnifier.png") !important; display: inline !important; text-indent: 0 !important; width: auto !important; float: none !important; height: 16px !important; padding-left: 20px !important}
-.syntaxhighlighter .toolbar .item.viewSource {background-image: url("images/page_white_code.png") !important}
-.syntaxhighlighter .toolbar .item.printSource {background-image: url("images/printer.png") !important}
+.syntaxhighlighter.collapsed .toolbar .item.expandSource {background-image: url("/images/magnifier.png") !important; display: inline !important; text-indent: 0 !important; width: auto !important; float: none !important; height: 16px !important; padding-left: 20px !important}
+.syntaxhighlighter .toolbar .item.viewSource {background-image: url("/images/page_white_code.png") !important}
+.syntaxhighlighter .toolbar .item.printSource {background-image: url("/images/printer.png") !important}
 .syntaxhighlighter .toolbar .item.copyToClipboard {text-indent: 0 !important; background: none !important; overflow: visible !important}
-.syntaxhighlighter .toolbar .item.about {background-image: url("images/help.png") !important}
+.syntaxhighlighter .toolbar .item.about {background-image: url("/images/help.png") !important}
  .syntaxhighlighter.printing, .syntaxhighlighter.printing .line.alt1 .content, .syntaxhighlighter.printing .line.alt2 .content, .syntaxhighlighter.printing .line.highlighted .number, .syntaxhighlighter.printing .line.highlighted.alt1 .content, .syntaxhighlighter.printing .line.highlighted.alt2 .content, {background: none !important}
  .syntaxhighlighter.printing .line .number {color: #bbb !important}
  .syntaxhighlighter.printing .line .content {color: #000 !important}
