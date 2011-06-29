@@ -1,0 +1,6 @@
+production:
+  access_key_id: 'AKIAJMXBBB7NUHED24AA'
+  secret_access_key: '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'
+  bucket: "sveze-jabolko-common"
+  # prefix: "https://my_bucket.s3.amazonaws.com"
+  

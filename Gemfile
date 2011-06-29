@@ -25,6 +25,9 @@ gem 'gravtastic'
 #gem 'restclient'
 #gem 'ruby-bitly', :git => 'git://github.com/rafaeldx7/ruby-bitly.git' #, :require => 'ruby-bitly'
 gem 'ruby-bitly'
+gem 'asset_id'
+gem 's3'
+
 
 group :test, :development do
   gem 'turn', :require => false
