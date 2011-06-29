@@ -6,6 +6,11 @@ Slednji projekt je popolnoma nova različica projekta jabolko.org. Vsa izvorna k
 
 * Oto Brglez
 
+# Deploy
+
+	git push heroku master ; git push origin master
+	./static_deploy.sh
+
 # Travis Build Status / CI
 
 [![Build Status](http://travis-ci.org/otobrglez/sveze-jabolko.png)](http://travis-ci.org/otobrglez/sveze-jabolko)
