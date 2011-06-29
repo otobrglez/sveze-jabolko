@@ -21,7 +21,8 @@
 			#header
 				#logo
 					=link_to root_path() do
-						%img(src="http://sveze-jabolko-common.s3.amazonaws.com/images/jabolko.png")
+						=image_tag "jabolko.png"
+						-# %img(src="http://sveze-jabolko-common.s3.amazonaws.com/images/jabolko.png")
 				
 				=render :partial => 'layouts/topnav'	
 				=render :partial => 'layouts/about'
