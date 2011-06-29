@@ -21,8 +21,13 @@ namespace :as3 do
     files.each do |f|
       if File.file? "#{path}/#{f}" # Make folder
         puts "Saving #{f}"
+        
+        mimetype = `file -ib #{path}/#{f}`.gsub(/\n/,"")
+        mimetype = mimetype[0,mimetype.index(';')]
+        
         new_object = bucket.objects.build(f)
         new_object.content = open("#{path}/#{f}")
+        new_object.content_type = mimetype
         new_object.save
         puts "- Done."       
       end
