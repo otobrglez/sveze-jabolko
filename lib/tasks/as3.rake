@@ -1,12 +1,11 @@
+#require "rubygems"
+#require 's3'
 
 namespace :as3 do  
   desc "Uploads compiled assets (public/assets) to Amazone AS3"
   task :upload do
-    #require "rubygems"
-    #require 's3'
     
     AS3_CONFIG = YAML.load_file("#{Rails.root.to_s}/config/as3.yml")[Rails.env]
-    
     service = S3::Service.new(:access_key_id =>AS3_CONFIG["access_key_id"],
                               :secret_access_key =>AS3_CONFIG["secret_access_key"])
     
@@ -20,25 +19,27 @@ namespace :as3 do
     
     files.each do |f|
       if File.file? "#{path}/#{f}" # Make folder
-        puts "Saving #{f}"
         
+        # MIME type
         mimetype = `file -ib #{path}/#{f}`.gsub(/\n/,"")
         mimetype = mimetype[0,mimetype.index(';')]
+        mimetype = "application/javascript" if "#{path}/#{f}" =~ /\.js/
+        mimetype = "text/css" if "#{path}/#{f}" =~ /\.css/
         
-        new_object = bucket.objects.build(f)
-        new_object.content = open("#{path}/#{f}")
-        new_object.content_type = mimetype
-        new_object.save
-        puts "- Done."       
+        # Don't upload existing
+        begin
+          existing = bucket.objects.find(f)
+          # puts "File: #{f} - Not updated!"       
+        rescue => e
+          new_object = bucket.objects.build(f)
+          new_object.content = open("#{path}/#{f}")
+          new_object.content_type = mimetype
+          new_object.save      
+          puts "File: #{f} - Upload complete."       
+        end
       end
     end
     
-    #debugger
-    
-    t = 1
-    
-    #AWS::S3::DEFAULT_HOST.replace "s3-eu-west-1.amazonaws.com" # If using EU bucket
-    #AssetID::Asset.asset_paths += ['favicon.png'] # Configure additional asset paths
-    #AssetID::S3.upload
+   puts "Done."
   end
 end
