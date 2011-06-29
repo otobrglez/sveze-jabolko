@@ -10,6 +10,10 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    POpen4 (0.1.4)
+      Platform (>= 0.4.0)
+      open4
+    Platform (0.4.0)
     RedCloth (4.2.7)
     ZenTest (4.5.0)
     actionmailer (3.1.0.rc4)
@@ -85,6 +89,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.3)
+    open4 (1.1.0)
     orm_adapter (0.0.5)
     pg (0.11.0)
     polyglot (0.3.1)
@@ -177,6 +182,8 @@ GEM
       raindrops (~> 0.6)
     warden (1.0.4)
       rack (>= 1.0)
+    yui-compressor (0.9.6)
+      POpen4 (>= 0.1.4)
 
 PLATFORMS
   ruby
@@ -212,3 +219,4 @@ DEPENDENCIES
   turn
   uglifier
   unicorn
+  yui-compressor

@@ -29,9 +29,10 @@ gem 'ruby-bitly'
 # gem 's3'
 # gem 'aws-s3'
 gem 's3'
-
+# gem 'yui'
 
 group :test, :development do
+	gem 'yui-compressor'
   gem 'turn', :require => false
 	gem 'sqlite3'
 	gem 'unicorn'
@@ -47,7 +48,6 @@ group :test, :development do
 	gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git', :tag => 'v1.1.beta1'
 	
 	# gem 'machinist', '>= 2.0.0.beta2'
-	
 	
 	gem 'rails3-generators'
 	#gem 'rspec'

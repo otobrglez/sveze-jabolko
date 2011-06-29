@@ -8,12 +8,6 @@ SvezeJabolko::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = true # true if heroku
-
-  # Compress both stylesheets and JavaScripts
-  config.assets.js_compressor  = :uglifier
-  # config.assets.css_compressor = :scss
 
   # Specifies the header that your server uses for sending files
   # (comment out if your front-end server doesn't support this)
@@ -31,17 +25,18 @@ SvezeJabolko::Application.configure do
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://sveze-jabolko-common.s3.amazonaws.com"
-  
-  config.action_controller.asset_host = Proc.new do |source|
-   'http://sveze-jabolko-common.s3.amazonaws.com'
-  end
-  config.action_controller.asset_path = Proc.new do |source|
-   AssetID::Asset.fingerprint(source)
-  end
-  
 
+  # Compress both stylesheets and JavaScripts
+  config.assets.js_compressor  = :uglifier
+  config.assets.css_compressor = :yui # :scss
+  
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server
+  config.action_controller.asset_host = "http://sveze-jabolko-common.s3.amazonaws.com"
+  
+  # Disable Rails's static asset server (Apache or nginx will already do this)
+  config.serve_static_assets = false # true if heroku
+
+  
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
