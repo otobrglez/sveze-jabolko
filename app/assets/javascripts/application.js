@@ -1,10 +1,25 @@
-// This is a manifest file that'll be compiled into including all the files listed below.
-// Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
-// be included in the compiled file accessible from http://example.com/assets/application.js
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
+// By Oto Brglez - <oto.brglez@opalab.com>
 //
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
+
+$(function(){
+	
+	/* Switching tabs */
+	if($("#tabed_module").length != 0){
+		
+		$("#tabed_module .tabNav a").bind("click",function(e){
+			if(e.preventDefault) e.preventDefault();
+			$("#tabed_module .tabNav a").parent().removeClass("selected");
+			$(this).parent().addClass("selected");
+			
+			var who = $(this).parent().hasClass("blog")?"blog":"forum";
+			$("#tabed_module .tabContent #blog, #tabed_module .tabContent #forum").css("display","none");
+			$("#tabed_module .tabContent #"+who).css("display","block");
+		});
+		
+	};
+	
+});
