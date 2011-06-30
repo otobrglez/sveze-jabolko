@@ -2,4 +2,5 @@
 
 rake assets:clean ; \
 			 RAILS_ENV=production rake assets:precompile ; \
-			 rake as3:upload
+			 rake as3:upload ; \
+			 rake assets:clean
