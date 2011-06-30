@@ -1,0 +1,5 @@
+#banner260x150
+	.oglasni_prostor
+		%a(href="mailto:info@jabolko.org?Subject=Želim oglaševati na Jabolko.org") Oglasni prostor
+		- Banner.for_position('a').each do |banner|
+			= render :partial => "admin/banners/sidebar_banner", :locals => {:banner => banner}

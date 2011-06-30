@@ -1,0 +1,40 @@
+.heading Zadnji komentarji
+%p Seznam zadnjih komentarjev na foromu.
+.tabs
+	.tabNav
+		%ul.tabNav
+			%li.selected.blog
+				=link_to "Blog", root_path()
+			%li.forum
+				%a(href="http://forum.jabolko.org") Forum
+
+	.tabContent
+		#blog
+			- cache("disqus_posts", :expires_in => 30.minutes) do
+				%ul.list
+					-if disqus_posts(7).each do |post|
+						%li
+							.image
+								=image_tag post["author"]["avatar"]["permalink"], :width => 32, |
+									:height => 32, :alt => post["author"]["name"], :title => post["author"]["name"]
+							.title
+								=link_to post["thread"]["link"]+"#comment-#{post['parent']}" do
+									- if post["raw_message"].length > 30
+										= sanitize post["raw_message"].slice(0,35)+"..."
+									-else
+										= sanitize post["raw_message"]
+					- end.empty?
+						%li # Napaka pri obdelavi vira!
+						
+		#forum{:style => "display:none"}
+			- cache("sidebar_forum_posts", :expires_in => 30.minutes) do
+				%ul.list
+					-if sidebar_forum_posts(7).each do |post|
+						%li
+							= link_to post["url"] do
+								- if post["topic_title"].length > 30
+									= sanitize post["topic_title"].slice(0,35)+"..."
+								-else
+									= sanitize post["topic_title"]
+					- end.empty?
+						%li # Napaka pri obdelavi vira!

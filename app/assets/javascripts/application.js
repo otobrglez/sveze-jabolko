@@ -19,7 +19,20 @@ $(function(){
 			$("#tabed_module .tabContent #blog, #tabed_module .tabContent #forum").css("display","none");
 			$("#tabed_module .tabContent #"+who).css("display","block");
 		});
-		
+	};
+	
+	/* Switching feeds */
+	if($("#feedParser").length != 0){
+		$("#feedParser .tabNav li a").bind("click",function(e){
+			if(e.preventDefault) e.preventDefault();
+			$("#feedParser .tabNav li a").parent().removeClass("selected");
+			$(this).parent().addClass("selected");
+			
+			var who = $(this).attr("class");
+			$("#feedParser .tabContent .feed").css("display","none");
+			$("#feedParser .tabContent .feed#"+who).css("display","block");
+			
+		});
 	};
 	
 });

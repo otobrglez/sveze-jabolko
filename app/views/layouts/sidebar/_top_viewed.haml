@@ -1,0 +1,12 @@
+.heading Priljubljeno
+%p Najbolj priljubljeni članki na blogu.
+- cache("top_viewed", :expires_in => 30.minutes) do
+	%ul.list
+		- Article.top_viewed.each do |article|
+			%li
+				.image
+					= image_tag article.image, :width => 32, :height => 32, |
+						:alt => article, :title => article
+				.title
+					=link_to article_path(article.category, article) do
+						= article.to_s
