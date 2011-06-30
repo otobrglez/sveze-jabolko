@@ -40,13 +40,13 @@
 							-if sidebar_forum_posts(7).each do |post|
 								%li
 									= link_to post["url"] do
-										= sanitize post["topic_title"].slice(0,30)+"..."
+										= sanitize post["topic_title"]
 							- end.empty?
 								%li # Napaka pri obdelavi vira!
 								
 
 	
-	.menu
+	#top_viewed.menu
 		.heading Priljubljeno
 		%p Najbolj priljubljeni članki na blogu.
 		- cache("top_viewed", :expires_in => 1.hour) do
@@ -57,7 +57,9 @@
 							= image_tag article.image, :width => 30, :height => 30, |
 								:alt => article, :title => article
 						.title
-							=link_to article, article_path(article.category, article)
+							=link_to article_path(article.category, article) do
+								= article.to_s
+								-# .slice(0,30)+"..."
 	.menu
 		.heading Vsebina
 		%p Najdi vsebino po avtorjih in značkah
