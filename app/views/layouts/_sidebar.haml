@@ -24,17 +24,23 @@
 						%ul.list
 							-if disqus_posts(7).each do |post|
 								%li
-									=link_to post["thread"]["link"] do
-										= sanitize post["thread"]["title"]
+									.image
+										=image_tag post["author"]["avatar"]["permalink"], :width => 30, :height => 30, |
+											:alt => post["author"]["name"], :title => post["author"]["name"]
+									.title
+										=link_to post["thread"]["link"] do
+											= sanitize post["raw_message"].slice(0,30)+"..."
+											-# = sanitize post["thread"]["title"]
 							- end.empty?
 								%li # Napaka pri obdelavi vira!
+								
 				#forum{:style => "display:none"}
 					- cache("sidebar_forum_posts", :expires_in => 1.hour) do
 						%ul.list
 							-if sidebar_forum_posts(7).each do |post|
 								%li
 									= link_to post["url"] do
-										= sanitize post["topic_title"]
+										= sanitize post["topic_title"].slice(0,30)+"..."
 							- end.empty?
 								%li # Napaka pri obdelavi vira!
 								
@@ -43,10 +49,15 @@
 	.menu
 		.heading Priljubljeno
 		%p Najbolj priljubljeni članki na blogu.
-		%ul.list
-			- Article.top_viewed.each do |article|
-				%li
-					=link_to article, article_path(article.category, article)
+		- cache("top_viewed", :expires_in => 1.hour) do
+			%ul.list
+				- Article.top_viewed.each do |article|
+					%li
+						.image
+							= image_tag article.image, :width => 30, :height => 30, |
+								:alt => article, :title => article
+						.title
+							=link_to article, article_path(article.category, article)
 	.menu
 		.heading Vsebina
 		%p Najdi vsebino po avtorjih in značkah
