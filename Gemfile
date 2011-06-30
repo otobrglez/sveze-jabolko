@@ -30,6 +30,7 @@ gem 'ruby-bitly'
 # gem 'aws-s3'
 gem 's3'
 # gem 'yui'
+gem 'feedzirra', :git => 'git://github.com/pauldix/feedzirra.git', :tag => 'v0.0.24'
 
 group :test, :development do
 	gem 'yui-compressor'

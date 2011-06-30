@@ -5,8 +5,6 @@
 			- Banner.for_position('a').each do |banner|
 				= render :partial => "admin/banners/sidebar_banner", :locals => {:banner => banner}
 				
-	
-	
 	#tabed_module.menu
 		.heading Zadnji komentarji
 		%p Seznam zadnjih komentarjev na foromu.
@@ -20,7 +18,7 @@
 
 			.tabContent
 				#blog
-					- cache("disqus_posts", :expires_in => 1.hour) do
+					- cache("disqus_posts", :expires_in => 30.minutes) do
 						%ul.list
 							-if disqus_posts(7).each do |post|
 								%li
@@ -37,7 +35,7 @@
 								%li # Napaka pri obdelavi vira!
 								
 				#forum{:style => "display:none"}
-					- cache("sidebar_forum_posts", :expires_in => 1.hour) do
+					- cache("sidebar_forum_posts", :expires_in => 30.minutes) do
 						%ul.list
 							-if sidebar_forum_posts(7).each do |post|
 								%li
@@ -52,7 +50,7 @@
 	#top_viewed.menu
 		.heading Priljubljeno
 		%p Najbolj priljubljeni članki na blogu.
-		- cache("top_viewed", :expires_in => 1.hour) do
+		- cache("top_viewed", :expires_in => 30.minutes) do
 			%ul.list
 				- Article.top_viewed.each do |article|
 					%li
@@ -74,4 +72,24 @@
 				%a(href="mailto:sodeluj@jabolko.org" target="_self") Postani avtor
 			%li
 				%a(href="mailto:info@jabolko.org" target="_self") Prijavi napako
-	.menu
+	
+	#feedParser.menu
+		.heading RSS iz Apple.com
+		%p Novice, posodobitve, programi in napovedniki
+		.tabs
+			.tabNav
+				%ul.tabNav
+					- i = 0
+					- apple_feeds_list.each do |key,val| 
+						%li{:class => i==0?"selected":""}=link_to val["title"], "#feed-#{key}"
+						- i = i+1
+			.tabContent
+				- i = 0
+				- apple_feeds.each do |feed|
+					.feed{:id => "feed-#{feed[:key]}", :style => i==0?"display: block;":"display: none;"}
+						%ul.list
+							- feed[:feed_data].entries.slice(0,10).each do |entry|
+								%li=link_to entry.title, entry.url
+					
+					- i = i+1
+	

@@ -1,0 +1,28 @@
+defaults: &defaults
+  hot_news:
+    title: Hot News
+    feed: http://images.apple.com/main/rss/hotnews/hotnews.rss
+  top_free_apps:
+    title: Top Free Apps
+    feed: http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml
+  top_paid_apps:
+    title: Top Paid Apps
+    feed: http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/toppaidapplications/limit=10/xml
+  updates:
+    title: Updates
+    feed: http://rss.support.apple.com/?channel=DOWNLOADS
+  support:
+    title: Support
+    feed: http://rss.support.apple.com/
+  movie_trailers:
+    title: Movie Trailers
+    feed: http://trailers.apple.com/trailers/home/rss/newtrailers.rss
+    
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
