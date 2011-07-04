@@ -9,4 +9,8 @@ module ApplicationHelper
     end
   end
   
+  def location()
+    { :class => "#{controller_name}-#{action_name}", :id => "#{controller_name}"}
+  end
+  
 end

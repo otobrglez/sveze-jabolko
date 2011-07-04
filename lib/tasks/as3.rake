@@ -26,6 +26,9 @@ namespace :as3 do
         mimetype = "application/javascript" if "#{path}/#{f}" =~ /\.js/
         mimetype = "text/css" if "#{path}/#{f}" =~ /\.css/
         
+        # CGI::rfc1123_date( time)
+        # Expires
+        
         # Don't upload existing
         begin
           existing = bucket.objects.find(f)

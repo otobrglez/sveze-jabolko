@@ -2,10 +2,10 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
- *= require_tree .
  *= require vendor 
 */
+
+// = require_self // = require_tree .
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, del, em, img, ins, small, strike, strong, sub, sup, tt, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0;  font-size: 100%; vertical-align: baseline; background: transparent; font-family:Arial, sans-serif}
 body {line-height: 1}
@@ -381,4 +381,65 @@ h2, h2 a {
 .menu .tabContent ul.list a {
 	left:0px; margin-left:10px;
 	width:auto;
+}
+
+table.a {
+	margin-bottom:15px;
+	margin-top:15px;
+	width:98%;
+	
+	font-size:14px;
+	line-height:16px;
+	
+	border-collapse:collapse;
+	border-top:1px solid #CCC;
+	border-left:1px solid #CCC;
+
+	td,th{
+		padding:3px;
+		border-bottom:1px solid #CCC;
+		border-right:1px solid #CCC;
+	}
+	
+	thead{
+		td,th{ background-color:#eee;}
+	}
+	
+	tfoot{
+		td,th{
+			text-align:center;
+			border:none;
+		}
+	}
+	
+	thead th.tools,
+	thead td.tools{
+		width:110px;
+	}
+}
+
+#form_errors{
+	display:block; 
+	border:0px solid red;
+	width:98%;
+	margin-top:10px; margin-bottom:10px;
+	background-color:pink;
+	border-top:3px solid red;
+	border-bottom:3px solid red;
+	
+	li{ color:red; padding:3px;}
+}
+
+#admin_tools{
+	border-bottom:1px solid #CCC;
+	margin-bottom:10px;
+	
+	a{ height:20px; line-height:20px; margin-right:10px;}
+	
+}
+
+.field_with_errors input,
+.field_with_errors textarea
+{
+	border:1px solid red;
 }

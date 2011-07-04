@@ -1,0 +1,41 @@
+!!!
+%html
+	%head
+		%meta(charset="utf-8")
+		
+		= stylesheet_link_tag    "administration"
+		%script(src="http://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js" type="text/javascript")
+		
+		= csrf_meta_tags
+		
+		%title=page_title
+		
+		%link(type="application/atom+xml" rel="alternate" title="Jabolko.org Sok" |
+			href="http://feeds.feedburner.com/jabolkoorg-sok")
+		
+		%link{:rel => "shortcut icon", :href => image_path('favicon.ico')}
+		%link{:rel => "apple-touch-icon", :href=> image_path('iphone_57x57.png')}
+		
+	%body{location}
+		-# { :class => [ (user_signed_in?? "signed_in" : nil), ((user_signed_in? && current_user.is_admin?)? "is_admin":nil ) ].join(" ").strip }
+	
+		#admin-deck
+			#wrap
+				#nav= render :partial => "layouts/administration/nav"
+		
+				#content
+					-if flash[:errors]
+						#errors=flash[:errors]
+		
+					-if flash[:error]
+						#error=flash[:error]
+		
+					-if	flash[:notice]
+						#notices=flash[:notice]
+	
+					=yield
+				#footer
+					%p Powered by RoR ;)
+	
+	:javascript
+		head.js("#{javascript_path("application")}");
