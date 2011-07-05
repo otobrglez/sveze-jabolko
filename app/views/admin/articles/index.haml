@@ -1,4 +1,4 @@
-%h1= link_to page_title("Članki"), admin_articles_path()
+%h1= link_to page_title(t(".articles")), admin_articles_path()
 
 %p=link_to t("articles.new"), new_admin_article_path()
 
@@ -42,7 +42,7 @@
 					-if article.published?
 						=t("yes")
 					-else
-						=t("no")
+						= link_to t("publish"), publish_admin_article_path(article), :style => "color:green"
 				%td(align="center" valign="middle")=article.views
 				%th(valign="middle")
 					=link_to t("edit"), edit_admin_article_path(article)

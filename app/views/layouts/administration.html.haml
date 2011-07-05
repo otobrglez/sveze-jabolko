@@ -39,7 +39,9 @@
 	
 					=yield
 				#footer
-					%p Powered by RoR ;)
+					%p
+						&copy;
+						=link_to "Jabolko.org", "http://www.jabolko.org"
 	
 	:javascript
 		head.js("#{javascript_path("application")}");

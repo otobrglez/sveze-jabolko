@@ -1,4 +1,5 @@
-%h2= page_title "Publishing article"
+%h1= link_to page_title("Publishing article"), admin_articles_path()
+
 %br/
 
 = render :partial => "articles/simple_article", :locals => {:simple_article => @article}
