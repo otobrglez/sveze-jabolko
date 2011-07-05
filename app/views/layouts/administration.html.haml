@@ -3,7 +3,11 @@
 	%head
 		%meta(charset="utf-8")
 		
-		= stylesheet_link_tag    "administration"
+		= stylesheet_link_tag    "application"
+		:css
+			body{
+				background:none; margin:0px; padding:0px; margin-top:20px;
+				background-color:#f4f4f4;}
 		%script(src="http://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js" type="text/javascript")
 		
 		= csrf_meta_tags

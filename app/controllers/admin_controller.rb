@@ -7,7 +7,7 @@ class AdminController < ApplicationController
 
   def dash
     respond_with  do |f|
-      f.html{ render "dash"}
+      f.html{ redirect_to [:admin, :articles]}
     end
   end
 
