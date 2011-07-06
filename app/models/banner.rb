@@ -17,7 +17,11 @@ class Banner < ActiveRecord::Base
     .where("? between from_date AND to_date", for_date)
     .where("hidden = 0")
     .order("RANDOM()")
-    #.order_by("RAND()")
+    .limit(
+      [(2 if position=='a'),
+        (4 if position=='b'),
+        (1 if position=='c')].compact.first
+    )
   end
   
 end

@@ -1,6 +1,7 @@
 %li.banner
 	.image
-		=image_tag banner.image_url, :width => 100
+		=image_tag banner.image_url, |
+			:width => banner.width, :height => banner.height
 
 	.meta_i
 		%ul

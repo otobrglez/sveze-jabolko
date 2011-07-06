@@ -1,9 +1,13 @@
 %h1=link_to "Uporabniki", admin_users_path()
 
+
 %p.type
 	= link_to t("all_types"), [:admin,:users]
+	|
 	= link_to t("admins"), admin_users_path(:is_admin => 1)
+	|
 	= link_to t("author"), admin_users_path(:is_author => 1)
+	|
 	= link_to t("developers"), admin_users_path(:is_developer => 1)
 	
 

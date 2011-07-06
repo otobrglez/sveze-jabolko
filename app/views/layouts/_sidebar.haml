@@ -1,6 +1,11 @@
 #sidebar
 	#banner_space=render :partial => 'layouts/sidebar/banner'
 	#tabed_module.menu=render :partial => 'layouts/sidebar/tabed_module'
+	
+	.banner_holder#pos-c
+		- Banner.for_position('c').each do |banner|
+			= render :partial => "admin/banners/sidebar_banner", :locals => {:banner => banner}
+				
 	#top_viewed.menu=render :partial => 'layouts/sidebar/top_viewed'
 	#sidebar_content.menu=render :partial => 'layouts/sidebar/content'
 	#feedParser.menu=render :partial => 'layouts/sidebar/feed_parser'

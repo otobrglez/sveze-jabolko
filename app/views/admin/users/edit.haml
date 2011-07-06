@@ -1,7 +1,4 @@
-%h1
-	Urejanje
-	"
-	= @user
-	"
+%h1= link_to page_title("Urejanje uporabnika: #{@user}"), admin_articles_path()
+	
 
 = render "form"

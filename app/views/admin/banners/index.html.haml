@@ -10,10 +10,15 @@
 	ul#banners li.banner .image { position:absolute; display:inline-block }
 	ul#banners li.banner .tools { position:absolute; display:inline-block; right:20px; top:0px }
 	ul#banners .number_of_clicks{ font-weight:bold; text-decoration:underline; }
+	#wrap ul#banners{ border:none; background-color:white; }
 	
-	
-	.banner .image { border:1px solid #CCC; }
+	.banner .image {
+		border:1px solid #eee;
+		height:110px; overflow: hidden;
+	}
 	ul#banners li.banner .meta_i{ margin-left:120px; margin-right:200px }
+	li.banner{ border-bottom:1px solid #CCC; }
+	ul#banners li{ padding:2px; margin-top:3px; }
 
 %ul#banners
 	= render @banners
