@@ -75,6 +75,8 @@
 				%ul
 					%li
 						%a(href="#intro-tab")=Article.human_attribute_name(:intro)
+					%li
+						%a(href="#intro-preview") Predogled uvoda
 					%li	
 						%a(href="#body-tab")=Article.human_attribute_name(:body)
 					%li
@@ -83,6 +85,8 @@
 					=f.text_area :intro, :rows => 15
 					%div{:style=>"text-align:right; width:95%"}
 						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
+				#intro-preview
+					.body=""
 				#body-tab
 					=f.text_area :body, :rows => 15
 					%br/
