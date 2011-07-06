@@ -33,12 +33,11 @@
 				- if @is_administration != nil 
 					- if user_signed_in? && current_user.is_admin?
 						#admin_tools
-							=link_to t("administration"), admin_path()
-							&raquo;
 							=link_to t("articles"), [:admin,:articles]
 							=link_to t("categories"), [:admin,:categories]
 							=link_to t("tags"), [:admin,:tags]
 							=link_to t("users"), [:admin,:users]
+							=link_to t("banners"), [:admin, :banners]
 							
 				-if flash[:errors]
 					#errors=flash[:errors]

@@ -6,10 +6,11 @@
 	#user textarea{ width:95% }
 	#errors{ display:block; width:95%; border:1px solid red; }
 	ul#user li{
-		margin-top:10px;
+		margin-top:2px; margin-left:5px; margin-right:5px;
 	}
 	#user li.authors li { margin:0px; padding:0px }
 	ul.sources{ margin-left:30px; border-bottom:1px solid #CCC; padding-bottom:5px; }
+	li.about label{ width:90%; display:block; }
 
 - SimpleForm.html5 = false 
 =simple_form_for([:admin,@user],:html => {:novalidate => false}) do |f|
@@ -33,7 +34,7 @@
 			=f.input :facebook_name
 		%li
 			=f.input :github_name
-		%li
+		%li.about
 			=f.input :about, :input_html => { :rows => 5 } 
 			%br/
 			%div{:style=>"text-align:right; width:95%"}

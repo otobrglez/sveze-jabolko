@@ -26,7 +26,39 @@
 					padding-right:10px;
 					font-size:18px;
 				}
-			}			
+			}	
+			
+			li.root{
+				float:right;
+				a{ color:blue; }
+			}
+			
+			li a{
+				background-position: left center;
+				background-repeat:no-repeat;
+				padding-left:20px;
+				margin-left:5px; 
+			}
+			
+			li.articles a{
+				background-image: url("<%= asset_path 'articles.png' %>");
+			}
+			
+			li.categories a{
+				background-image: url("<%= asset_path 'categories.png' %>");
+			}
+			
+			li.users a{
+				background-image: url("<%= asset_path 'users.png' %>");
+			}
+			
+			li.tags a{
+				background-image: url("<%= asset_path 'tags.png' %>");
+			}
+			
+			li.banners a{
+				background-image: url("<%= asset_path 'banners.png' %>");
+			}
 		}
 		
 		ul{

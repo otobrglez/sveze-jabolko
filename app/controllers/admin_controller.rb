@@ -3,7 +3,7 @@ class AdminController < ApplicationController
   before_filter :authenticate_user!
   before_filter :is_administration
   respond_to :html
-  layout 'administration'
+  # layout 'administration'
 
   def dash
     respond_with  do |f|
