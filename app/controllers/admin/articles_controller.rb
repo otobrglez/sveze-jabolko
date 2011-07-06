@@ -1,6 +1,6 @@
 class Admin::ArticlesController < AdminController
   
-  respond_to :html
+  respond_to :html, :js
   
   before_filter :find_article, :only => [:edit, :update, :destroy, :publish, :publish_article]
   
@@ -103,6 +103,16 @@ class Admin::ArticlesController < AdminController
     
     respond_with(@article) do |f|
       f.html { render :action => :publish}
+    end
+  end
+  
+  def preview
+    content = params[:content]
+    content = "" if params[:content] == "" || params[:content] == nil
+    
+    html = RedCloth.new(content).to_html
+    respond_with(html) do |f|
+      f.js { render :json => {:content => html}.to_json }
     end
   end
   

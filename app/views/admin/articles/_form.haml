@@ -16,12 +16,12 @@
 		margin:0px; padding:0px;
 		width:100%;
 	}
+	#article-preview .body p {margin:0 0 20px !important; line-height:21px}
+	
 	
 	.ui-widget-content{ background-image:none; }
 :javascript
 	$(function(){
-	
-		$("#content-tabs").tabs();
 	
 		$("a.clone-source").live("click",function(e){
 			e.preventDefault();
@@ -77,15 +77,19 @@
 						%a(href="#intro-tab")=Article.human_attribute_name(:intro)
 					%li	
 						%a(href="#body-tab")=Article.human_attribute_name(:body)
+					%li
+						%a(href="#article-preview" id="article-preview-b") Predogled vsebine
 				#intro-tab
-					=f.text_area :intro, :rows => 10
+					=f.text_area :intro, :rows => 15
 					%div{:style=>"text-align:right; width:95%"}
 						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
 				#body-tab
-					=f.text_area :body, :rows => 10
+					=f.text_area :body, :rows => 15
 					%br/
 					%div{:style=>"text-align:right; width:95%"}
 						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
+				#article-preview
+					.body=""
 				
 		%li
 			%strong Sources

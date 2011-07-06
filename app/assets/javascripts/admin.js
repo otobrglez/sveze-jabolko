@@ -1,2 +1,22 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+/* Admin JS */
+
+$(function(){
+	
+	if($("form ul#article").length != 0){
+		
+		$("#content-tabs").tabs();
+		$("#content-tabs").bind("tabsselect", function(event, ui){
+			if(ui.index == 2){
+				var content=$("textarea#article_body").val();
+				$.getJSON('/admin/articles/preview.js',
+					{content: content},
+					function(data){
+						$("#article-preview .body").html(data.content);
+					});
+				
+			};
+		});
+		
+	};
+	
+});

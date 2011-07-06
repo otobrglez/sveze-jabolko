@@ -10,6 +10,8 @@ SvezeJabolko::Application.routes.draw do
       get :publish, :on => :member, :via => [:get]
       post :publish, :on => :member, :to => "articles#publish_article"
       put :publish, :on => :member, :to => "articles#publish_article"
+      get :preview, :on => :collection, :to => "articles#preview"
+
     end
     
     resources :tags do
