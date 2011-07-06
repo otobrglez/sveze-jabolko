@@ -2,12 +2,26 @@
 	#article input[type="text"],
 	#article textarea{ width:95% }
 	#errors{ display:block; width:95%; border:1px solid red; }
-	ul#article li{ margin-top:10px; }
+	ul#article li{ margin-top:2px; margin-left:5px; margin-right:5px; }
 	#article li.authors li { margin:0px; padding:0px }
 	ul.sources{ margin-left:30px; border-bottom:1px solid #CCC; padding-bottom:5px; }
+	#content-tabs{ background-color:white; }
+	#content-tabs ul, #content-tabs li{
+		background-color:white;
+	}
+	#intro-tab, #body-tab{
+		background-color:white; margin:0px; padding:0px;
+		margin:3px;}
+	#intro-tab textarea, #body-tab textarea{
+		margin:0px; padding:0px;
+		width:100%;
+	}
 	
+	.ui-widget-content{ background-image:none; }
 :javascript
 	$(function(){
+	
+		$("#content-tabs").tabs();
 	
 		$("a.clone-source").live("click",function(e){
 			e.preventDefault();
@@ -55,20 +69,23 @@
 		%li
 			%strong=f.label :tags_list, Article.human_attribute_name(:tags)
 			=f.text_field :tag_list
-			
-		%li
-			%strong=f.label :intro, Article.human_attribute_name(:intro)
-			%br/
-			=f.text_area :intro, :rows => 5
-			%div{:style=>"text-align:right; width:95%"}
-				=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
-		%li
-			%strong=f.label :body, Article.human_attribute_name(:body)
-			%br/
-			=f.text_area :body
-			%br/
-			%div{:style=>"text-align:right; width:95%"}
-				=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
+		
+		%li{:style => "background-color:white;"}
+			#content-tabs
+				%ul
+					%li
+						%a(href="#intro-tab")=Article.human_attribute_name(:intro)
+					%li	
+						%a(href="#body-tab")=Article.human_attribute_name(:body)
+				#intro-tab
+					=f.text_area :intro, :rows => 10
+					%div{:style=>"text-align:right; width:95%"}
+						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
+				#body-tab
+					=f.text_area :body, :rows => 10
+					%br/
+					%div{:style=>"text-align:right; width:95%"}
+						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
 				
 		%li
 			%strong Sources

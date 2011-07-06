@@ -4,8 +4,8 @@
 		%meta(charset="utf-8")
 		
 		= stylesheet_link_tag    "application"
-		-# = javascript_include_tag "application"		
-		%script(src="http://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js" type="text/javascript")
+		= javascript_include_tag "application"		
+		-# %script(src="http://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js" type="text/javascript")
 		
 		= csrf_meta_tags
 		
@@ -58,6 +58,3 @@
 	
 		=render :partial => 'layouts/infobox'
 		=render :partial => 'layouts/footer'
-	
-	:javascript
-		head.js("#{javascript_path("application")}");
