@@ -80,8 +80,8 @@ class Importer
       pre_article[:source] = Source.new pre_article[:source]
     end
     
-    pre_article[:author] = User.find_by_name(pre_article[:author]).first
-    pre_article[:category] = Category.find_by_slug(pre_article[:category]).first
+    pre_article[:author] = User.find_by_name(pre_article[:author])
+    pre_article[:category] = Category.find_by_slug(pre_article[:category])
     article = Article.new pre_article
   end
   
