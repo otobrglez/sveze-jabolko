@@ -81,7 +81,7 @@ class Importer
     pre_article[:author] = user
 
     category = Category.find_by_slug(pre_article[:category])
-    raise "Category must be set!!! Now: #{pre_article[:category]}"
+    raise "Category must be set!!! Now: #{pre_article[:category]}" if category == nil
     pre_article[:category] = category
     
     article = Article.new pre_article
