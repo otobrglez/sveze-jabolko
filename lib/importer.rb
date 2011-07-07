@@ -59,8 +59,8 @@ class Importer
         image: "#{a[3]}",
         intro: "#{a[4]}",
         body: "#{a[5]}",
-        created_at: DateTime.parse ("#{a[7]}"),
-        updated_at: DateTime.parse ("#{a[8]}"),
+        created_at: DateTime.parse("#{a[7]}"),
+        updated_at: DateTime.parse("#{a[8]}"),
         views: "#{a[11]}".to_i,
         short_url: "#{a[13]}",
         
