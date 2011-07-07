@@ -48,7 +48,6 @@ class Importer
         sources s
       ON
         a.source_id = s.id
-      LIMIT 20
       ")
       
     articles.map do |a|
@@ -63,7 +62,7 @@ class Importer
         updated_at: DateTime.parse("#{a[8]}"),
         views: "#{a[11]}".to_i,
         short_url: "#{a[13]}",
-        
+        published: ("#{a[6]}".strip == "t")?1:0, #.to_i,
         tag_list: "#{a[15]}",
         author: "#{a[14]}",
         category: "#{a[16]}",
