@@ -16,23 +16,23 @@
 %table#users.a
 	%thead
 		%tr
-			%th{:style => "width:40px"} ID
+			%th{:style => "width:32px"} &nbsp;
 			%th Naziv
 			%th Email
-			-# %th Prijava
 			%th.tools Orodja
 	%tbody
 		- @users.each do |user|
 			%tr
-				%th=user.id
+				%th{:align => 'center'}
+					=link_to author_path(user) do
+						=image_tag user.gravatar_url(:size => 32)
 				%th=link_to(user, author_path(user))
-				%td=user.email
-				-# %th=(time_ago_in_words user.last_sign_in_at) if user.last_sign_in_at != nil
-				
+				%td=user.email				
 				%th
 					=link_to "Uredi", [:edit,:admin,user]
 
-	%tfoot
+	
 		%tr
 			%td{:colspan => 4}
 				=paginate @users, :param_name => :users_page
+				&nbsp;
