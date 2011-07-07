@@ -52,7 +52,7 @@ class Importer
       
     articles.map do |a|
       out = {
-        # id: a[0],
+        id: a[0],
         title: a[1],
         slug: "#{a[0]}-#{a[2]}".strip,
         image: "#{a[3]}",
@@ -77,12 +77,14 @@ class Importer
     pre_article[:source] = Source.new pre_article[:source] if pre_article[:source] != nil
     
     user = User.find_by_name(pre_article[:author])
-    raise "User must be set!!! Now: #{pre_article[:author]}" if user == nil
+    raise "User must be set!!! #{pre_article[:id]} - Now: #{pre_article[:author]}" if user == nil
     pre_article[:author] = user
 
     category = Category.find_by_slug(pre_article[:category])
-    raise "Category must be set!!! Now: #{pre_article[:category]}" if category == nil
+    raise "Category must be set!!! #{pre_article[:id]} - Now: #{pre_article[:category]}" if category == nil
     pre_article[:category] = category
+    
+    pre_article[:id] = nil
     
     article = Article.new pre_article
   end
