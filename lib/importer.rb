@@ -79,7 +79,6 @@ class Importer
     pre_article[:author] = User.find_by_name(pre_article[:author])
     if pre_article[:author] == nil
       puts "!!!ERROR!!!"
-      break
     end
     pre_article[:category] = Category.find_by_slug(pre_article[:category])
     article = Article.new pre_article
