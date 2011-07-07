@@ -59,8 +59,8 @@ class Importer
         image: "#{a[3]}",
         intro: "#{a[4]}",
         body: "#{a[5]}",
-        #created_at: "#{a[7]}",
-        #updated_at: "#{a[8]}",
+        created_at: DateTime.parse ("#{a[7]}"),
+        updated_at: DateTime.parse ("#{a[8]}"),
         views: "#{a[11]}".to_i,
         short_url: "#{a[13]}",
         
@@ -75,11 +75,9 @@ class Importer
   end
   
   def self.build_article(pre_article)
-    
     pre_article[:source] = Source.new pre_article[:source] if pre_article[:source] != nil
     pre_article[:author] = User.find_by_name(pre_article[:author])
     pre_article[:category] = Category.find_by_slug(pre_article[:category])
-    
     article = Article.new pre_article
   end
   
