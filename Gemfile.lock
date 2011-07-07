@@ -12,6 +12,16 @@ GIT
       sax-machine (>= 0.0.12)
 
 GIT
+  remote: git://github.com/plataformatec/devise.git
+  revision: dba8f91f99dce0e102ad2e6aa78b142a92833bc3
+  tag: v1.4.0
+  specs:
+    devise (1.4.0)
+      bcrypt-ruby (~> 2.1.2)
+      orm_adapter (~> 0.0.3)
+      warden (~> 1.0.3)
+
+GIT
   remote: git://github.com/thoughtbot/factory_girl_rails.git
   revision: cc88e0841773cbe07da7ddcf38058d75456c071e
   tag: v1.1.beta1
@@ -70,10 +80,6 @@ GEM
     builder (3.0.0)
     columnize (0.3.3)
     curb (0.7.15)
-    devise (1.4.0)
-      bcrypt-ruby (~> 2.1.2)
-      orm_adapter (~> 0.0.3)
-      warden (~> 1.0.3)
     diff-lcs (1.1.2)
     erubis (2.7.0)
     execjs (1.2.0)
@@ -213,7 +219,7 @@ DEPENDENCIES
   acts-as-taggable-on
   autotest
   autotest-growl
-  devise
+  devise!
   factory_girl (>= 2.0.0.beta)
   factory_girl_rails!
   fastercsv

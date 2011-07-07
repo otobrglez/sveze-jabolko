@@ -23,7 +23,7 @@ gem 's3'
 gem 'feedzirra', :git => 'git://github.com/pauldix/feedzirra.git', :tag => 'v0.0.24'
 gem 'sqlite3'
 gem 'fastercsv'
-gem 'devise'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :tag => 'v1.4.0'
 
 
 # gem 'newrelic_rpm'
