@@ -6,11 +6,11 @@
 %p.type
 	= link_to t("all_types"), [:admin,:users]
 	|
-	= link_to t("admins"), admin_users_path(:is_admin => 1)
+	= link_to t("admins"), admin_users_path(:role => 'admin')
 	|
-	= link_to t("author"), admin_users_path(:is_author => 1)
+	= link_to t("author"), admin_users_path(:role => 'author')
 	|
-	= link_to t("developers"), admin_users_path(:is_developer => 1)
+	= link_to t("developers"), admin_users_path(:role => 'developer')
 	
 
 %table#users.a
