@@ -69,16 +69,16 @@ class Importer
         category: "#{a[16]}",
       }
       
-      out.merge!({:source => { title: "#{a[12]}", url: "#{a[13]}" }}) if "#{a[12]}".strip != ""
+      # out.merge!({:source => { title: "#{a[12]}", url: "#{a[13]}" }}) if "#{a[12]}".strip != ""
       out
     end
   end
   
   def self.build_article(pre_article)
     
-    if pre_article[:source] != nil
-      pre_article[:source] = Source.new pre_article[:source]
-    end
+    #if pre_article[:source] != nil
+    #  pre_article[:source] = Source.new pre_article[:source]
+    #end
     
     pre_article[:author] = User.find_by_name(pre_article[:author])
     pre_article[:category] = Category.find_by_slug(pre_article[:category])
