@@ -59,8 +59,8 @@ class Importer
         image: "#{a[3]}",
         intro: "#{a[4]}",
         body: "#{a[5]}",
-        created_at: "#{a[7]}",
-        updated_at: "#{a[8]}",
+        #created_at: "#{a[7]}",
+        #updated_at: "#{a[8]}",
         views: "#{a[11]}".to_i,
         short_url: "#{a[13]}",
         
@@ -82,6 +82,7 @@ class Importer
     
     pre_article[:author] = User.find_by_name(pre_article[:author])
     pre_article[:category] = Category.find_by_slug(pre_article[:category])
+    
     article = Article.new pre_article
   end
   
