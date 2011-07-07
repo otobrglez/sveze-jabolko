@@ -32,6 +32,8 @@ gem 's3'
 # gem 'yui'
 gem 'feedzirra', :git => 'git://github.com/pauldix/feedzirra.git', :tag => 'v0.0.24'
 
+gem 'sqlite3'
+
 group :test, :development do
 	gem 'yui-compressor'
   gem 'turn', :require => false
