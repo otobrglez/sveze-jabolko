@@ -11,9 +11,13 @@ class Article < ActiveRecord::Base
   validates_presence_of :author
   validates_presence_of :image
   
-  validates_format_of [:image, :short_url],
+  validates_format_of :image,
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix,
     :if => Proc.new { |a| a.image != "" && a.image != nil }
+  
+  validates_format_of :short_url,
+    :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix,
+    :if => Proc.new { |a| a.short_url != "" && a.short_url != nil }  
   
   has_many :sources
   accepts_nested_attributes_for :sources, :allow_destroy => true
