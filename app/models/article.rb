@@ -11,14 +11,9 @@ class Article < ActiveRecord::Base
   validates_presence_of :author
   validates_presence_of :image
   
-  #validates_presence_of :small_image
-  
-  validates_format_of :image,
-    :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
-    #, :if => Proc.new { |a| a.image != "" && a.image != nil }
-  
-  #validates_format_of :small_image,
-  #  :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+  validates_format_of [:image, :short_url],
+    :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix,
+    :if => Proc.new { |a| a.image != "" && a.image != nil }
   
   has_many :sources
   accepts_nested_attributes_for :sources, :allow_destroy => true
@@ -45,6 +40,11 @@ class Article < ActiveRecord::Base
   def author=(value)
     self.authors = []
     self.authors << value
+  end
+  
+  def source=(value)
+    self.sources = []
+    self.sources << value
   end
   
   def author

@@ -5,42 +5,84 @@ class Importer
     self.db = SQLite3::Database.new(db)
   end
 
-=begin  
-  def import_categories
-    categories = i.db.execute("SELECT * FROM categories ORDER BY id ASC").map do |c|
-      {title: c[1], slug:c[2], id:c[0]}
-    end
-  end
-  
-  def import_staff
-    # users    
-    users = i.db.execute("SELECT * FROM users ORDER BY id ASC").map do |c|
-      {
-        name:"#{c[1]} #{c[2]}",
-        email:c[3],
-        password:"xxxXXXxxx",
-        about:"a",
-        is_admin:1
-      }
-    end
-    
-    writers = i.db.execute("SELECT * FROM writers").map do |c|
-      {
-        name: "#{c[1]} #{c[2]}",
-        password:"xxxXXXasdas",
-        email:c[12],
-        about:c[3],
-        twitter_name: c[5],
-        home_url:c[4],
-        is_author:1
-      }
-    end
-    
-  end
-=end
-  
   def import_articles
+    articles = @db.execute("
+      SELECT
+        a.*,
+        s.name,
+        s.url,
+        (
+          SELECT
+            (w.firstname  || ' ' ||  w.lastname) as author_name
+          FROM
+            writers w,articles_writers aw
+          WHERE
+            aw.article_id = a.id AND
+            aw.writer_id = w.id
+          LIMIT 1
+        ) as author_name,
+        (
+          SELECT
+            GROUP_CONCAT(t.name)
+          FROM
+            taggings tg,
+            tags t
+          WHERE
+            tg.article_id = a.id AND
+            tg.tag_id = t.id
+        ) as tag_list,
+        (
+          SELECT
+            GROUP_CONCAT(c.permalink)
+          FROM
+            articles_categories ac,
+            categories c
+          WHERE
+            ac.article_id = a.id AND
+            ac.category_id = c.id
+          LIMIT 1
+        ) as categories
+      FROM
+        articles a
+      LEFT JOIN
+        sources s
+      ON
+        a.source_id = s.id
+      LIMIT 20
+      ")
+      
+    articles.map do |a|
+      out = {
+        # id: a[0],
+        title: a[1],
+        slug: "#{a[0]}-#{a[2]}".strip,
+        image: "#{a[3]}",
+        intro: "#{a[4]}",
+        body: "#{a[5]}",
+        created_at: "#{a[7]}",
+        updated_at: "#{a[8]}",
+        views: "#{a[11]}".to_i,
+        short_url: "#{a[13]}",
+        
+        tag_list: "#{a[15]}",
+        author: "#{a[14]}",
+        category: "#{a[16]}",
+      }
+      
+      out.merge!({:source => { title: "#{a[12]}", url: "#{a[13]}" }}) if "#{a[12]}".strip != ""
+      out
+    end
+  end
   
+  def self.build_article(pre_article)
+    
+    if pre_article[:source] != nil
+      pre_article[:source] = Source.new pre_article[:source]
+    end
+    
+    pre_article[:author] = User.find_by_name(pre_article[:author]).first
+    pre_article[:category] = Category.find_by_slug(pre_article[:category]).first
+    article = Article.new pre_article
   end
   
 end
