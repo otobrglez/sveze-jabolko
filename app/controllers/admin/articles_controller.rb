@@ -2,7 +2,9 @@ class Admin::ArticlesController < AdminController
   
   respond_to :html, :js
   
+  before_filter :clean_article_source, :only => [:update, :create]
   before_filter :find_article, :only => [:edit, :update, :destroy, :publish, :publish_article]
+  
   
   def index
     if params[:category_id] != nil
@@ -23,7 +25,9 @@ class Admin::ArticlesController < AdminController
   def new
     @article = Article.new
     @article.authors << current_user
+    
     @article.sources << Source.new if @article.new_record?
+    
     respond_with(@article)
   end
 
@@ -120,6 +124,35 @@ class Admin::ArticlesController < AdminController
     def find_article
       @article = Article.find_by_slug(params[:id])
       @article = Article.find(params[:id]) if @article == nil
+    end
+    
+    def clean_article_source
+      
+      if params[:article][:sources_attributes] != nil &&
+         params[:article][:sources_attributes].size == 1
+        if params[:article][:sources_attributes]["0"][:title] == "" && 
+            params[:article][:sources_attributes]["0"][:url] == ""
+            params[:article][:sources_attributes] = []
+        end
+      
+      end
+      
+      
+      #t = 3
+      
+      # debugger
+      
+      
+      #t = 1
+=begin      
+      if params[:sources_attributes] != nil && params[:sources_attributes].size == 1
+        if params[:sources_attributes]["0"]["title"] == "" ||
+          params[:sources_attributes]["0"]["title"] == nil
+          params[:sources_attributes] = nil
+        end
+      end
+=end
+
     end
 
 end
