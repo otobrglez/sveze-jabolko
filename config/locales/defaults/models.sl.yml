@@ -23,8 +23,12 @@ sl:
         authors: Avtorji
         published: Objavljen članek
         slug: "Varen URL"
+        tag: "Značka"
+        tools: Orodja
       category:
         title: "Naslov"
+        number_of_articles: "Člankov"
+        tools: Orodja
       source:
         title: "Naslov"
         url: "Povezava"
@@ -35,3 +39,4 @@ sl:
         user: "Uporabnik"
       tags:
         tag: "Značka"
+        tools: Orodja

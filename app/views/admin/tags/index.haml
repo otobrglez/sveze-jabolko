@@ -1,11 +1,19 @@
-%h2= t "tags"
+%h1= link_to page_title(t("tags")), admin_tags_path()
 
-%table.a
+
+:css
+	table.a td, table.a th{ font-size: 13px; }
+	
+%table#tags.a
 	%thead
 		%tr
 			%th=Article.human_attribute_name(:tag)
+			%th.tools=Article.human_attribute_name(:tools)
 	%tbody
 		- @tags.each do |tag|
 			%tr
 				%td{:style=>"text-align:left;"}
 					=link_to tag, tag_path(tag)
+				%td
+					=t("edit")
+					-# =link_to t("edit"), edit_admin_tag_path(tag)

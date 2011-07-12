@@ -1,4 +1,4 @@
-%h1=link_to "Uporabniki", admin_users_path()
+%h1= link_to page_title("Uporabniki"), admin_users_path()
 
 %p
 	=link_to "Nov uporabnik", new_admin_user_path
@@ -8,7 +8,7 @@
 	|
 	= link_to t("admins"), admin_users_path(:role => 'admin')
 	|
-	= link_to t("author"), admin_users_path(:role => 'author')
+	= link_to t("authors"), admin_users_path(:role => 'author')
 	|
 	= link_to t("developers"), admin_users_path(:role => 'developer')
 	
@@ -23,15 +23,14 @@
 	%tbody
 		- @users.each do |user|
 			%tr
-				%th{:align => 'center'}
+				%td{:align => 'center'}
 					=link_to author_path(user) do
 						=image_tag user.gravatar_url(:size => 32)
-				%th=link_to(user, author_path(user))
+				%td=link_to(user, author_path(user))
 				%td=user.email				
-				%th
+				%td
 					=link_to "Uredi", [:edit,:admin,user]
 
-	
+	%tfoot
 		%tr
-			%td{:colspan => 4}
-				=paginate @users, :param_name => :users_page
+			%td{:colspan => 4}=paginate @users, :param_name => :users_page

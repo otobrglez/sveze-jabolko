@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-    :name, :home_url, :twitter_name, :facebook_name, :github_name,
+    :name, :home_url, :twitter_name, :facebook_name, :github_name, :linkedin_name,
     :about, :is_admin, :is_author, :is_developer
   
   #Deprecated : :skype_name, 

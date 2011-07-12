@@ -217,13 +217,14 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 #writer_about {color:#4d4d4d; line-height:21px; font-size:15px}
 #writer_image {margin:0 0 0 -155px; height:120px; width:120px; overflow:hidden; float:left; border:1px solid #D9D9D9}
 #writer_links {border-top:1px solid #D9D9D9; border-bottom:1px solid #D9D9D9; clear:both; height:40px; margin:0 0 35px}
-#writer_website_icon, #writer_twitter_icon, #writer_facebook_icon, #writer_github_icon {float:left; height:20px; margin:10px 0; padding:0 0 0 30px; line-height:21px; font-size:11px}
+#writer_website_icon, #writer_twitter_icon, #writer_facebook_icon, #writer_github_icon, #writer_linkedin_icon {float:left; height:20px; margin:10px 0; padding:0 0 0 30px; line-height:21px; font-size:11px}
 
 #writer_website_icon {background:url("<%= asset_path 'writer_icons.gif' %>") no-repeat 0 0}
 #writer_facebook_icon {background:url("<%= asset_path 'writer_icons.gif' %>")  no-repeat 0 -40px}
 #writer_twitter_icon {
 	background:url("<%= asset_path 'writer_icons.gif' %>") no-repeat -2px -20px; padding:0 0 0 27px}
 #writer_github_icon {background:url("<%= asset_path 'github_icon_small.png' %>") no-repeat 0 0; }
+#writer_linkedin_icon {background:url("<%= asset_path 'github_icon_small.png' %>") no-repeat 0 0; }
 
 #writer_links_seperator {height:20px; margin:10px; width:1px; background:#D9D9D9; float:left}
  #tags_link {list-style-type:disc; padding:0 0 0 14px; margin:0 0 25px; color:#808080}
@@ -389,6 +390,7 @@ h2, h2 a {
 }
 
 table.a {
+	
 	margin-bottom:15px;
 	margin-top:15px;
 	width:98%;
@@ -419,7 +421,7 @@ table.a {
 	
 	thead th.tools,
 	thead td.tools{
-		width:110px;
+		width:120px;
 	}
 }
 
@@ -429,7 +431,9 @@ table.a th{
 
 table.a td,
 table.a th{
-	color:#4D4D4D
+	color:#4D4D4D;
+	text-align:left;
+	padding-bottom: 7px; padding-left: 7px; padding-right: 3px; padding-top: 7px;
 }
 
 table .article_information{

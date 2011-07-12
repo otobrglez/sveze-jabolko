@@ -1,14 +1,13 @@
-%h1=link_to "Kategorije", admin_categories_path()
+%h1= link_to page_title("Kategorije"), admin_categories_path()
 
-%p
-	=link_to "Nova kategorija", new_admin_category_path()
+%p=link_to "Nova kategorija", new_admin_category_path()
 
 %table#categories.a
 	%thead
 		%tr
-			%th Kategorija (Slug)
-			%th Älanki
-			%th.tools Orodja
+			%th=Category.human_attribute_name(:title)
+			%th=Category.human_attribute_name(:number_of_articles)
+			%th.tools=Category.human_attribute_name(:tools)
 	%tbody
 		- @categories.each do |category|
 			%tr
@@ -17,9 +16,9 @@
 					\(
 					=category.to_param
 					\)
-				%td{:style => 'text-align:center;'}
+				%td
 					=category.articles.count
-				%th
+				%td
 					=link_to "Uredi", edit_admin_category_path(category)
 	%tfoot
 		%tr

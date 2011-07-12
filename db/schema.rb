@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707110918) do
+ActiveRecord::Schema.define(:version => 20110712120634) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20110707110918) do
     t.integer  "is_developer",                          :default => 0
     t.integer  "is_author",                             :default => 0
     t.text     "about"
+    t.string   "linkedin_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

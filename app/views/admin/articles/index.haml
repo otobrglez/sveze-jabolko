@@ -42,7 +42,7 @@
 					-else
 						= link_to t("publish"), publish_admin_article_path(article), :style => "color:green"
 				%td=article.views
-				%td(valign="middle")
+				%td
 					=link_to t("edit"), edit_admin_article_path(article)
 	%tfoot
 		%tr

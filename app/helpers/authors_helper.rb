@@ -9,7 +9,8 @@ module AuthorsHelper
       writer_twitter_icon: "twitter_name",
       writer_facebook_icon: "facebook_name",
      # writer_skype_icon: "skype_name",
-      writer_github_icon: "github_name"
+      writer_github_icon: "github_name",
+      writer_linkedin_icon: "linkedin_name"
     }
     
     mapping.each do |key,value|
@@ -49,7 +50,14 @@ module AuthorsHelper
                 href=\"https://github.com/#{value}\"
                 target=\"_blank\">#{value}</a>
             </div>"                
-        end
+        elsif key == :writer_linkedin_icon
+          out<< "
+            <div id=\"#{key}\">
+              <a
+                href=\"http://www.linkedin.com/in/#{value}\"
+                target=\"_blank\">#{value}</a>
+            </div>"                
+        end        
       end
     end
     
