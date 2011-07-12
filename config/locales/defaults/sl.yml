@@ -36,7 +36,6 @@ sl:
   all: Vsi
   add: Dodaj
   tools: Orodja
-  yes: Da
   edit: Uredi
   administration: Administracija
   articles: Članki
@@ -53,3 +52,6 @@ sl:
   authors_list: Seznam avtorjev
   number_of_articles: "Število objav:"
   publish_article: Objavi članek
+  yes: Da
+  yesp: Da
+  publish: Objavi

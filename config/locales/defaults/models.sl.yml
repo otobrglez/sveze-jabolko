@@ -16,6 +16,7 @@ sl:
         tag_list: "Značke"
         created_at: Ustvarjeno
         published: Objavljeno
+        views: Ogledov
       category:
         title: "Naslov"
       source:

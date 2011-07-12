@@ -1,7 +1,7 @@
-%h1= link_to page_title(t(".articles")), admin_articles_path()
+%h1= link_to page_title("Članki"), admin_articles_path()
 
 %p
-	=link_to t("articles.new"), new_admin_article_path()
+	=link_to "Nov članek", new_admin_article_path()
 
 
 %p.categories
@@ -30,17 +30,16 @@
 				%td
 					=image_tag article.image, :width => 30, :height => 30
 				%td
-					%strong
+					%span
 						=link_to article, article_path(article.category, article)
-					%br/
-					= sanitize article_created(article)
-				%td{:style => "text-align:center;", :valign => "middle" }
+					.article_information= sanitize article_created(article)
+				%td{:valign => "middle" }
 					-if article.published?
-						=t("yes")
+						=t("yesp")
 					-else
 						= link_to t("publish"), publish_admin_article_path(article), :style => "color:green"
-				%td(align="center" valign="middle")=article.views
-				%th(valign="middle" align="center")
+				%td=article.views
+				%td(valign="middle")
 					=link_to t("edit"), edit_admin_article_path(article)
 	%tfoot
 		%tr

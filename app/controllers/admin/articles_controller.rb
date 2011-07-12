@@ -127,32 +127,14 @@ class Admin::ArticlesController < AdminController
     end
     
     def clean_article_source
-      
+
       if params[:article][:sources_attributes] != nil &&
          params[:article][:sources_attributes].size == 1
         if params[:article][:sources_attributes]["0"][:title] == "" && 
             params[:article][:sources_attributes]["0"][:url] == ""
             params[:article][:sources_attributes] = []
         end
-      
       end
-      
-      
-      #t = 3
-      
-      # debugger
-      
-      
-      #t = 1
-=begin      
-      if params[:sources_attributes] != nil && params[:sources_attributes].size == 1
-        if params[:sources_attributes]["0"]["title"] == "" ||
-          params[:sources_attributes]["0"]["title"] == nil
-          params[:sources_attributes] = nil
-        end
-      end
-=end
-
     end
 
 end
