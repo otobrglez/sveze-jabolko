@@ -19,6 +19,7 @@
 	%thead
 		%tr
 			%th &nbsp;
+			%th ID
 			%th=Article.human_attribute_name(:title)
 			%th=Article.human_attribute_name(:published)
 			%th=Article.human_attribute_name(:views)
@@ -29,6 +30,8 @@
 			%tr
 				%td
 					=image_tag article.image, :width => 30, :height => 30
+				%td
+					=article.id
 				%td
 					%span
 						=link_to article, article_path(article.category, article)

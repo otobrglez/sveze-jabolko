@@ -3,3 +3,6 @@ sl:
     pagination:
       last: Zadnja
       first: Prva
+      next: Naprej
+      previous: Nazaj
+      truncate: "..."
