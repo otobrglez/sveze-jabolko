@@ -97,15 +97,15 @@
 						%a(href="#article-preview" id="article-preview-b") Predogled vsebine
 				#intro-tab
 					=f.text_area :intro, :rows => 15
-					%div{:style=>"text-align:right; width:95%"}
-						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank", :class => "redcloth"
+					%div
+						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank", :class => "redcloth", :style => "color:#3FA9F5"
 				#intro-preview
 					.body=""
 				#body-tab
 					=f.text_area :body, :rows => 15
 					%br/
-					%div{:style=>"text-align:right; width:95%"}
-						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank", :class => "redcloth"
+					%div
+						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank", :class => "redcloth", :style => "color:#3FA9F5"
 				#article-preview
 					.body=""
 				
