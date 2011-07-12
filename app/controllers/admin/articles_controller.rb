@@ -42,7 +42,7 @@ class Admin::ArticlesController < AdminController
     respond_to do |format|
       if @article.save
         flash[:notice] = I18n.t("flash.actions.#{action_name}.notice")
-        format.html { redirect_to admin_article_path(@article.category,@article) }
+        format.html { redirect_to edit_admin_article_path(@article) }
       else
         format.html { render :action => "edit" }
       end
@@ -54,7 +54,7 @@ class Admin::ArticlesController < AdminController
     respond_to do |format|
       if @article.save
         flash[:notice] = I18n.t("flash.actions.#{action_name}.notice")
-        format.html { redirect_to admin_article_path(@article.category,@article) }
+        format.html { redirect_to edit_admin_article_path(@article) }
       else
         format.html { render :action => "new" }
       end
