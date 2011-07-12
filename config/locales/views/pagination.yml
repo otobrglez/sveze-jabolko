@@ -1,0 +1,5 @@
+sl:
+  views:
+    pagination:
+      last: Zadnja
+      first: Prva
