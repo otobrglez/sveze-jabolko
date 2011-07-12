@@ -37,8 +37,22 @@
 				);
 			});
 		});
+		
+		
+		$("a.redcloth").bind("click",function(e){
+			if(e.preventDefault) e.preventDefault();
+			
+			$("#redcloth-helper").remove();
+			
+			var data = $('<div id="redcloth-helper">*bold*<br/>_italic_<br/>* seznam s pikicami<br/># seznam s številkami<br/>h3. veliki naslov<br/>h4. mali naslov<br/>h4{margin:0 0 15px}. naslov z odmikom spodaj<br/>"Jabolko.org":http://www.jabolko.org/<br/>');
+			
+			$("body").append(data);
+			$("#redcloth-helper").dialog({title:"RedCloth Pomoč"});
+		});
 	
 	});
+	
+
 	
 =form_for([:admin,@article]) do |f|
 
@@ -84,14 +98,14 @@
 				#intro-tab
 					=f.text_area :intro, :rows => 15
 					%div{:style=>"text-align:right; width:95%"}
-						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank"
+						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank", :class => "redcloth"
 				#intro-preview
 					.body=""
 				#body-tab
 					=f.text_area :body, :rows => 15
 					%br/
 					%div{:style=>"text-align:right; width:95%"}
-						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank"
+						=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank", :class => "redcloth"
 				#article-preview
 					.body=""
 				
