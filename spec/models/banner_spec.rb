@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Banner do
   
   before(:each) do
+    Banner.delete_all
     @banner = Banner.new
   end
 

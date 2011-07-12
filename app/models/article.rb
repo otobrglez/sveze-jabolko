@@ -35,6 +35,39 @@ class Article < ActiveRecord::Base
     end
   end
   
+  def related(limit=10)
+    Article.find_by_sql(%Q{
+      SELECT
+      	a.*,
+      	( SELECT array_agg(t.name) FROM taggings tg, tags t
+      		WHERE tg.taggable_id = a.id AND tg.tag_id = t.id
+      	) as tags,
+      	((SELECT COUNT(*) FROM
+      	((SELECT t.name FROM taggings tg, tags t
+      		WHERE tg.taggable_id = a.id AND tg.tag_id = t.id
+      	) INTERSECT
+      	(SELECT t_2.name FROM taggings tg_2, tags t_2
+      		WHERE tg_2.taggable_id = #{self.id} AND tg_2.tag_id = t_2.id
+      	)) as intersection
+      	)::float /
+      	(SELECT COUNT(*) FROM
+      	((SELECT t.name FROM taggings tg, tags t
+      	WHERE tg.taggable_id = a.id AND tg.tag_id = t.id
+      	) UNION
+      	(SELECT t_2.name FROM taggings tg_2, tags t_2
+      		WHERE tg_2.taggable_id = #{self.id} AND tg_2.tag_id = t_2.id
+      	)) as union_total
+      	)::float) as score
+      FROM
+      	articles a
+      WHERE
+      	a.published = 1 AND
+      	a.id != #{self.id}
+      ORDER BY score DESC, a.created_at DESC
+      LIMIT #{limit}      
+    })
+  end
+  
   # Plugins
   acts_as_taggable_on :tags     # acts_as_taggable_on
   paginates_per         5       # kaminari

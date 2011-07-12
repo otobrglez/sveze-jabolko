@@ -19,8 +19,9 @@ describe User do
     @user.should respond_to :twitter_name
     @user.should respond_to :facebook_name
     @user.should respond_to :github_name
-    @user.should respond_to :skype_name
+    # @user.should respond_to :skype_name
     @user.should respond_to :home_url
+    @user.should respond_to :linkedin_name
     
     # Url validation
     @user.should have(0).error_on(:home_url)
