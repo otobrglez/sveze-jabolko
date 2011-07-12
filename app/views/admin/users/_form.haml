@@ -20,33 +20,22 @@
 				- f.object.errors.full_messages.each do |e|
 					%li=e
 	%ul#user
-		%li
-			=f.input :name
-		%li
-			=f.input :email
-		%li
-			=f.input :password, :required => false
-		%li
-			=f.input :home_url
-		%li
-			=f.input :twitter_name
-		%li
-			=f.input :facebook_name
-		%li
-			=f.input :github_name
-		%li
-			=f.input :linkedin_name
+		%li=f.input :name
+		%li=f.input :email
+		%li=f.input :password, :required => false
+		%li=f.input :home_url
+		%li=f.input :twitter_name, :label => "Twitter"
+		%li=f.input :facebook_name, :label => "Facebook"
+		%li=f.input :github_name, :label => "Github"
+		%li=f.input :linkedin_name, :label => "LinkedIn"
 		%li.about
-			=f.input :about, :input_html => { :rows => 5 } 
+			=f.input :about, :input_html => { :rows => 5 }, :label => "O uporabniku"
+			%div=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank"
 			%br/
-			%div{:style=>"text-align:right; width:95%"}
-				=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/"
-		%li
-			=f.input :is_admin, :as => :boolean
-		%li
-			=f.input :is_author, :as => :boolean
-		%li
-			=f.input :is_developer, :as => :boolean
+			
+		%li=f.input :is_admin, :as => :boolean
+		%li=f.input :is_author, :as => :boolean
+		%li=f.input :is_developer, :as => :boolean
 
 		%li
 			= link_to "Nazaj", [:admin,:users]
