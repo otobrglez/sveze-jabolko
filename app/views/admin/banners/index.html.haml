@@ -1,24 +1,34 @@
-%h1= link_to page_title("Banners"), admin_banners_path()
+%h1= link_to page_title("Oglasi"), admin_banners_path()
 
-%p
-	=link_to t("banners.new"), new_admin_banner_path()
+.ztabs
+	%ul
+		%li=link_to "Nov oglas", new_admin_banner_path()
+		
+.stabs
+	%ul
+		%li=link_to Banner.human_attribute_name(:position), admin_banners_path
+		- "a,b,c".split(",").each do |pos|
+			%li= link_to pos, admin_banners_path(:position => pos)
 
-%br/
-
-:css
-	ul#banners li.banner{ position:relative; margin-bottom:10px; }
-	ul#banners li.banner .image { position:absolute; display:inline-block }
-	ul#banners li.banner .tools { position:absolute; display:inline-block; right:20px; top:0px }
-	ul#banners .number_of_clicks{ font-weight:bold; text-decoration:underline; }
-	#wrap ul#banners{ border:none; background-color:white; }
+%table#banners.a
+	%thead
+		%tr
+			%th &nbsp;
+			%th=Banner.human_attribute_name(:title)
+			%th=Banner.human_attribute_name(:from_date)
+			%th=Banner.human_attribute_name(:to_date)
+			%th=Banner.human_attribute_name(:pos)
+			%th=Banner.human_attribute_name(:number_of_clicks)
+			%th.tools=Banner.human_attribute_name(:tools)
 	
-	.banner .image {
-		border:1px solid #eee;
-		height:110px; overflow: hidden;
-	}
-	ul#banners li.banner .meta_i{ margin-left:120px; margin-right:200px }
-	li.banner{ border-bottom:1px solid #CCC; }
-	ul#banners li{ padding:2px; margin-top:3px; }
-
-%ul#banners
-	= render @banners
+	%tbody
+		-@banners.each do |banner|
+			%tr
+				%td.image=image_tag banner.image_url, :width => 20, :height => 20
+				%td=banner.title
+				%td=banner.from_date.strftime("%e. %b %g")
+				%td=banner.to_date.strftime("%e. %b %g")
+				%td=banner.position
+				%td=banner.number_of_clicks
+				%td.tools
+					= link_to t("edit"), edit_admin_banner_path(banner)

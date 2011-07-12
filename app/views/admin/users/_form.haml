@@ -24,18 +24,18 @@
 		%li=f.input :email
 		%li=f.input :password, :required => false
 		%li=f.input :home_url
-		%li=f.input :twitter_name, :label => "Twitter"
+		%li=f.input :twitter_name, 	:label => "Twitter"
 		%li=f.input :facebook_name, :label => "Facebook"
-		%li=f.input :github_name, :label => "Github"
+		%li=f.input :github_name, 	:label => "Github"
 		%li=f.input :linkedin_name, :label => "LinkedIn"
 		%li.about
 			=f.input :about, :input_html => { :rows => 5 }, :label => "O uporabniku"
 			%div=link_to "* Urejevalnik uporablja RedCloth markup", "http://redcloth.org/", :target => "_blank"
 			%br/
 			
-		%li=f.input :is_admin, :as => :boolean
-		%li=f.input :is_author, :as => :boolean
-		%li=f.input :is_developer, :as => :boolean
+		%li=f.input :is_admin, :as => :boolean, :label => "Je administrator"
+		%li=f.input :is_author, :as => :boolean, :label => "Je avtor"
+		%li=f.input :is_developer, :as => :boolean, :label => "Je razvijalec"
 
 		%li
 			= link_to "Nazaj", [:admin,:users]
@@ -43,4 +43,4 @@
 				|
 				=link_to "Odstrani", [:admin,f.object], :method => :delete
 				|
-			=f.button :submit
+			=f.button :submit, "Posodobi uporabnika"

@@ -25,9 +25,12 @@ class Admin::UsersController < AdminController
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
     
     update! do |success, failure|
-      success.html { redirect_to admin_users_url() }
+      success.html {
+        flash[:notice] = "Uporabnik posodobljen."
+        redirect_to admin_users_url()
+      }
       failure.html {
-        flash[:notice] = "Failed to update..."
+        flash[:error] = "Napaka pri posodobitvi!"
         render :action => :edit
       }
     end

@@ -392,10 +392,9 @@ h2, h2 a {
 table.a {
 	
 	margin-bottom:15px;
-	margin-top:15px;
 	width:98%;
 	
-	font-size:14px;
+	/* font-size:14px; */
 	line-height:16px;
 	
 	border-collapse:collapse;
@@ -433,11 +432,52 @@ table.a td,
 table.a th{
 	color:#4D4D4D;
 	text-align:left;
-	padding-bottom: 7px; padding-left: 7px; padding-right: 3px; padding-top: 7px;
+	
+	padding-bottom: 7px;
+	padding-left: 7px;
+	padding-right: 3px;
+	padding-top: 7px;
 }
 
 table .article_information{
 	font-size:80%;
+}
+
+div.ztabs, div.stabs{
+	display:block;
+	float:none;
+	width:100%;
+	
+	ul,li{
+		list-style:none;
+	}
+	
+	ul{ overflow:hidden; }
+	li{
+		float:left; display:inline-block;
+		a{
+			display:inline-block;
+			padding-left:10px;
+			padding-right:10px;
+			background-color:#f3f3f3;
+			height:30px;
+			line-height:30px;
+			
+			padding-left: 7px;
+			padding-right: 3px;
+		}
+	}
+}
+
+div.ztabs{
+	li a{
+		background:none;
+		border:none;
+	}
+}
+
+div.stabs{
+	
 }
 
 #form_errors{

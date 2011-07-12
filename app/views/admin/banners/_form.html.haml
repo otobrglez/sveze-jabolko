@@ -1,6 +1,6 @@
 :css
-	ul#banner label{ width:90%; display:block; font-weight:bold; }
-	ul#banner li{ margin-bottom:10px; }
+	ul#banner-x label{ width:90%; display:block; font-weight:bold; }
+	ul#banner-x li{ margin-bottom:10px; }
 
 - SimpleForm.html5 = false 
 = simple_form_for([:admin,@banner], :html => {:novalidate => false}) do |f|
@@ -10,17 +10,17 @@
 				- f.object.errors.full_messages.each do |e|
 					%li=e
 	
-	%ul#banner
+	%ul#banner-x
 					
-		%li= f.input :image_url
-		%li= f.input :link
-		%li= f.input :title
-		%li= f.input :position
-		%li= f.input :hidden
+		%li= f.input :image_url, :label => "URL Slike"
+		%li= f.input :link, :lable => "Povezava"
+		%li= f.input :title, :label => "Naslov"
+		%li= f.input :position, :label => "Pozicija"
+		%li= f.input :hidden, :label => "Je skrit"
 		%li= f.input :from_date
 		%li= f.input :to_date
-		%li= f.input :width
-		%li= f.input :height
+		%li= f.input :width, :label => "Višina"
+		%li= f.input :height, :label => "Širina"
 	
 		%li
 			= link_to "Nazaj", [:admin,:banners]
@@ -28,4 +28,4 @@
 				|
 				=link_to "Odstrani", [:admin,f.object], :method => :delete
 				|
-			=f.button :submit
+			=f.button :submit, "Posodobi oglas"

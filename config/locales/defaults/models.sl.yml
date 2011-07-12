@@ -40,3 +40,11 @@ sl:
       tags:
         tag: "Značka"
         tools: Orodja
+      banner:
+        title: Naslov
+        tools: Orodja
+        from_date: Začetek
+        to_date: Konec
+        pos: Poz.
+        number_of_clicks: Št. Klik.
+        position: Pozicija

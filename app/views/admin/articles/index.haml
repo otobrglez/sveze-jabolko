@@ -1,20 +1,15 @@
 %h1= link_to page_title("Članki"), admin_articles_path()
 
-%p
-	=link_to "Nov članek", new_admin_article_path()
+.ztabs
+	%ul
+		%li=link_to "Nov članek", new_admin_article_path()
 
-
-%p.categories
-	=link_to t("categories"), [:admin,:categories]
-	|
-	=link_to t("all"), [:admin,:articles], :class => "category"
-	- @categories.each do |category|
-		|
-		=link_to category, admin_articles_path(:category_id => category.id), | 
-			:class => "category", :id => "category-#{category.id}"
+.stabs
+	%ul
+		%li=link_to t("all"), [:admin,:articles], :class => "category"
+		- @categories.each do |category|
+			%li=link_to category, admin_articles_path(:category_id => category.id), :class => "category", :id => "category-#{category.id}"
 			
-	
-
 %table#articles.a
 	%thead
 		%tr
