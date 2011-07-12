@@ -154,8 +154,8 @@
 					%tr
 						%td{:style => "width:35px;"}
 							= check_box_tag "article[author_ids][]", author.id, @article.authors.include?(author)
-						%td{:style => "width:35px;"}
-							=image_tag author.gravatar_url(:size => 32)
+						%td{:style => "width:35px;", :valign => "middle"}
+							=image_tag author.gravatar_url(:size => 20)
 						%td{:style => "text-align:left;"}
 							= author
 

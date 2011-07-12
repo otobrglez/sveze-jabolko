@@ -29,9 +29,9 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :articles, :class_name => "Article",
     :foreign_key => "author_id"
     
-  scope :admins, where(:is_admin => 1)
-  scope :authors, where(:is_author => 1)
-  scope :developers, where(:is_developer => 1)
+  scope :admins, where(:is_admin => 1).order("name ASC")
+  scope :authors, where(:is_author => 1).order("name ASC")
+  scope :developers, where(:is_developer => 1).order("name ASC")
   
   scope :authors_with_numbers,
     select("
