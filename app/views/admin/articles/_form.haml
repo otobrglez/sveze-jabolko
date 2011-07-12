@@ -75,26 +75,13 @@
 			%strong=f.label :slug, Article.human_attribute_name(:slug)
 			%br/
 			=f.text_field :slug
-		
-		-#	
-			%li
-				%strong=f.label :category, Article.human_attribute_name(:category)
-				=f.collection_select :category_id, Category.all, :id, :to_s
-		
+
 		%li
 			%strong=f.label :category, Article.human_attribute_name(:category)
-			
 			-Category.all.each do |category|
 				%label
-					=radio_button_tag 'article', 'category_id', @article.category_id = category.id
+					=radio_button_tag 'article[category_id]', category.id, @article.category_id.to_s == category.id.to_s
 					=category
-				
-			-#			
-				<% [ 'plain', 'desert', 'green', 'corporate', 'funky' ].each do |theme| %>
-				<br><%= radio_button_tag 'theme', theme, @theme == theme %>
-				<%= label_tag "theme_#{theme}", theme.humanize %>
-				<% end %>
-		
 		%li
 			%strong=f.label :tags_list, Article.human_attribute_name(:tags)
 			=f.text_field :tag_list
