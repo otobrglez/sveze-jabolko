@@ -39,9 +39,6 @@ class Article < ActiveRecord::Base
     Article.find_by_sql(%Q{
       SELECT
       	a.*,
-      	( SELECT array_agg(t.name) FROM taggings tg, tags t
-      		WHERE tg.taggable_id = a.id AND tg.tag_id = t.id
-      	) as tags,
       	((SELECT COUNT(*) FROM
       	((SELECT t.name FROM taggings tg, tags t
       		WHERE tg.taggable_id = a.id AND tg.tag_id = t.id
