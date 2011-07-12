@@ -17,6 +17,12 @@ sl:
         created_at: Ustvarjeno
         published: Objavljeno
         views: Ogledov
+        tags: Značke
+        sources: Viri
+        recommended: Priporočen članek
+        authors: Avtorji
+        published: Objavljen članek
+        slug: "SEO Varen naslov"
       category:
         title: "Naslov"
       source:

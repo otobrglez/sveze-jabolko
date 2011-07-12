@@ -110,7 +110,8 @@
 					.body=""
 				
 		%li
-			%strong Sources
+			%br/
+			%strong=Article.human_attribute_name(:sources)
 			
 			.sources-list
 				= f.fields_for :sources do |s|
@@ -135,8 +136,15 @@
 							
 
 		%li
+			%br/
 			%strong=f.label :recommended, Article.human_attribute_name(:recommended)
 			=f.check_box :recommended
+		
+		- unless f.object.new_record?
+			%li
+				%br/
+				%strong=f.label :published, Article.human_attribute_name(:published)
+				=f.check_box :published		
 				
 		%li.authors
 			%br/
