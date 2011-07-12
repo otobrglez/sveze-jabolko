@@ -41,13 +41,25 @@
 								=link_to t("banners"), [:admin, :banners]
 							
 				-if flash[:errors]
-					#errors=flash[:errors]
+					.ui-widget
+						.ui-state-error.ui-corner-all(style="margin-bottom: 20px; padding: 10px; width:95%")
+							%p
+								%span(class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;")
+								%strong=flash[:errors]
 				
 				-if flash[:error]
-					#error=flash[:error]
+					.ui-widget
+						.ui-state-error.ui-corner-all(style="margin-bottom: 20px; padding: 10px; width:95%")
+							%p
+								%span(class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;")
+								%strong=flash[:error]
 				
 				-if	flash[:notice]
-					#notices=flash[:notice]
+					.ui-widget
+						.ui-state-highlight.ui-corner-all(style="margin-bottom: 20px; padding: 10px; width:95%")
+							%p
+								%span(class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;")
+								%strong=flash[:notice]
 			
 				=yield
 				%br/
