@@ -5,3 +5,5 @@ sl:
         editing: "Urejanje članka"
       new:
         new: "Nov članek"
+      index:
+        published_title: Objavljen

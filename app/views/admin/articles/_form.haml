@@ -4,7 +4,7 @@
 	#errors{ display:block; width:95%; border:1px solid red; }
 	ul#article li{ margin-top:2px; margin-left:5px; margin-right:5px; }
 	#article li.authors li { margin:0px; padding:0px }
-	ul.sources{ margin-left:30px; border-bottom:1px solid #CCC; padding-bottom:5px; }
+	ul.sources{ /* margin-left:30px; */ border-bottom:1px solid #CCC; /* padding-bottom:5px; */}
 	#content-tabs{ background-color:white; }
 	#content-tabs ul, #content-tabs li{
 		background-color:white;
@@ -75,10 +75,25 @@
 			%strong=f.label :slug, Article.human_attribute_name(:slug)
 			%br/
 			=f.text_field :slug
-			
+		
+		-#	
+			%li
+				%strong=f.label :category, Article.human_attribute_name(:category)
+				=f.collection_select :category_id, Category.all, :id, :to_s
+		
 		%li
 			%strong=f.label :category, Article.human_attribute_name(:category)
-			=f.collection_select :category_id, Category.all, :id, :to_s
+			
+			-Category.all.each do |category|
+				%label
+					=radio_button_tag 'article', 'category_id', @article.category_id = category.id
+					=category
+				
+			-#			
+				<% [ 'plain', 'desert', 'green', 'corporate', 'funky' ].each do |theme| %>
+				<br><%= radio_button_tag 'theme', theme, @theme == theme %>
+				<%= label_tag "theme_#{theme}", theme.humanize %>
+				<% end %>
 		
 		%li
 			%strong=f.label :tags_list, Article.human_attribute_name(:tags)
@@ -118,11 +133,9 @@
 					%ul.sources
 						%li.title
 							%strong=s.label :title
-							%br/
 							=s.text_field :title
 						%li.url
 							%strong=s.label :url
-							%br/
 							=s.text_field :url
 						
 						%li
