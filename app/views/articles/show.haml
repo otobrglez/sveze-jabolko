@@ -5,7 +5,8 @@
 	%meta{:property => "og:type", :content => "article"}/
 	%meta{:property => "og:url", :content => article_url(@article.category, @article)}/
 	%meta{:property => "og:image", :content => @article.image}/
-
+	%meta{:property => "og:description", :content => strip_tags(sanitize(@article.intro_html)) }/
+	
 #blog_article
 	= render :partial => @article, :locals => {:mode => :show}
 
