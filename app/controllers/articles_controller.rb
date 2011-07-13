@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   
   def index
     @articles = Article.published.page(params[:page])
+    # debugger    
     respond_with(@articles)
   end
   

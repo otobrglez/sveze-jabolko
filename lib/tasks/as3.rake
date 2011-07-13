@@ -1,7 +1,21 @@
 #require "rubygems"
 #require 's3'
 
-namespace :as3 do  
+namespace :as3 do 
+  
+  desc "Open Debugger with S3 loaded"
+  task :console do
+    AS3_CONFIG = YAML.load_file("#{Rails.root.to_s}/config/as3.yml")[Rails.env]
+    @service = S3::Service.new(:access_key_id =>AS3_CONFIG["access_key_id"],
+                              :secret_access_key =>AS3_CONFIG["secret_access_key"])
+    
+    @bucket = @service.buckets.find(AS3_CONFIG["bucket"])                 
+             
+    debugger
+    
+    t = 1
+  end
+  
   desc "Uploads compiled assets (public/assets) to Amazone AS3"
   task :upload do
     
@@ -37,6 +51,7 @@ namespace :as3 do
           new_object = bucket.objects.build(f)
           new_object.content = open("#{path}/#{f}")
           new_object.content_type = mimetype
+          new_object.cache_control = "max-age=315360000"
           new_object.save      
           puts "File: #{f} - Upload complete."       
         end

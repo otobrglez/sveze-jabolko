@@ -3,15 +3,23 @@
 	%head
 		%meta(charset="utf-8")
 		
+		-# This is tha shit ;)
 		- if ENV["application_css_CDN"] != nil && ENV["application_css_CDN"]!=""
-			= stylesheet_link_tag ENV["application_css_CDN"]
+			- if (env['HTTP_ACCEPT_ENCODING'] =~ /gzip/)!=nil
+				= stylesheet_link_tag "#{ENV["application_css_CDN"]}.gz"
+			- else
+				= stylesheet_link_tag ENV["application_css_CDN"]
 		- else
-			= stylesheet_link_tag    "application"
+				= stylesheet_link_tag "application"
 			
 		- if ENV["application_js_CDN"] != nil && ENV["application_js_CDN"]!=""
-			= stylesheet_link_tag ENV["application_js_CDN"]
+			- if (env['HTTP_ACCEPT_ENCODING'] =~ /gzip/)!=nil
+				= stylesheet_link_tag "#{ENV["application_js_CDN"]}.gz"
+			- else
+				= stylesheet_link_tag ENV["application_js_CDN"]
 		- else
-			= javascript_include_tag "application"		
+			= javascript_include_tag "application"
+			
 		
 		= csrf_meta_tags
 		
