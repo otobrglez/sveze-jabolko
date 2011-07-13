@@ -8,11 +8,8 @@ namespace :setcdn do
     app_js = Dir["#{Rails.root.to_s}/public/assets/application*.js"].first
     app_css = Dir["#{Rails.root.to_s}/public/assets/application*.css"].first
     
-    exec "gzip -c #{app_js} > #{app_js}.gz"
-    exec "gzip -c #{app_css} > #{app_css}.gz"
+    exec "gzip -c #{app_js} > #{app_js}.gz ; gzip -c #{app_css} > #{app_css}.gz ; echo \"Done\" "
     
-    echo "Done."
-
   end
   
   desc "Set path to production CSS and JS on heroku"

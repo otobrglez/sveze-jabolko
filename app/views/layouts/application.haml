@@ -14,9 +14,9 @@
 
 		- if ENV["application_js_CDN"] != nil && ENV["application_js_CDN"]!=""
 			- if (@gzp =~ /gzip/)!=nil
-				= stylesheet_link_tag "#{ENV["application_js_CDN"]}.gz"
+				= javascript_include_tag "#{ENV["application_js_CDN"]}.gz"
 			- else
-				= stylesheet_link_tag ENV["application_js_CDN"]
+				= javascript_include_tag ENV["application_js_CDN"]
 		- else
 			= javascript_include_tag "application"
 			

@@ -39,6 +39,7 @@ namespace :as3 do
         mimetype = mimetype[0,mimetype.index(';')]
         mimetype = "application/javascript" if "#{path}/#{f}" =~ /\.js/
         mimetype = "text/css" if "#{path}/#{f}" =~ /\.css/
+        mimetype = "text/plain" if "#{path}/#{f}" =~ /\.gz/
         
         # CGI::rfc1123_date( time)
         # Expires
@@ -52,6 +53,7 @@ namespace :as3 do
           new_object.content = open("#{path}/#{f}")
           new_object.content_type = mimetype
           new_object.cache_control = "max-age=315360000"
+          new_object.content_encoding = "gzip" if "#{path}/#{f}" =~ /\.gz/
           new_object.save      
           puts "File: #{f} - Upload complete."       
         end
