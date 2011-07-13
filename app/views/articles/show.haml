@@ -1,5 +1,11 @@
 - page_title @article.to_s
 
+- content_for(:head) do
+	%meta{:property => "og:title", :content => @article.title}/
+	%meta{:property => "og:type", :content => "article"}/
+	%meta{:property => "og:url", :content => article_url(@article.category, @article)}/
+	%meta{:property => "og:image", :content => @article.image}/
+
 #blog_article
 	= render :partial => @article, :locals => {:mode => :show}
 
