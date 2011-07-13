@@ -5,7 +5,8 @@
 				
 		- if ENV["application_css_CDN"] != nil && ENV["application_css_CDN"]!=""
 			- if (@gzp =~ /gzip/)!=nil
-				= stylesheet_link_tag "#{ENV["application_css_CDN"]}.gz"
+				-# = stylesheet_link_tag "#{ENV["application_css_CDN"]}.gz"
+				= stylesheet_link_tag ENV["application_css_CDN"]
 			- else
 				= stylesheet_link_tag ENV["application_css_CDN"]
 		- else
@@ -13,7 +14,8 @@
 
 		- if ENV["application_js_CDN"] != nil && ENV["application_js_CDN"]!=""
 			- if (@gzp =~ /gzip/)!=nil
-				= javascript_include_tag "#{ENV["application_js_CDN"]}.gz"
+				-# = javascript_include_tag "#{ENV["application_js_CDN"]}.gz"
+				= javascript_include_tag ENV["application_js_CDN"]
 			- else
 				= javascript_include_tag ENV["application_js_CDN"]
 		- else
