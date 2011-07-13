@@ -3,9 +3,15 @@
 	%head
 		%meta(charset="utf-8")
 		
-		= stylesheet_link_tag    "application"
-		= javascript_include_tag "application"		
-		-# %script(src="http://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js" type="text/javascript")
+		- if ENV["application_css_CDN"] != nil && ENV["application_css_CDN"]!=""
+			= stylesheet_link_tag ENV["application_css_CDN"]
+		- else
+			= stylesheet_link_tag    "application"
+			
+		- if ENV["application_js_CDN"] != nil && ENV["application_js_CDN"]!=""
+			= stylesheet_link_tag ENV["application_js_CDN"]
+		- else
+			= javascript_include_tag "application"		
 		
 		= csrf_meta_tags
 		

@@ -29,9 +29,9 @@ SvezeJabolko::Application.configure do
   # Compress both stylesheets and JavaScripts
   config.assets.js_compressor  = :uglifier
   
-  # if ENV["COMPRESSOR"].to_s != "0"
-  #   config.assets.css_compressor = :yui # :scss
-  # end
+  if ENV["COMPRESSOR"].to_s == "1"
+    config.assets.css_compressor = :yui # :scss
+  end
   
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   config.action_controller.asset_host = "http://sveze-jabolko-common.s3.amazonaws.com"
