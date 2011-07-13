@@ -10,8 +10,8 @@
 			- else
 				= stylesheet_link_tag ENV["application_css_CDN"]
 		- else
-				= stylesheet_link_tag "application"
-			
+			= stylesheet_link_tag "application"
+
 		- if ENV["application_js_CDN"] != nil && ENV["application_js_CDN"]!=""
 			- if (env['HTTP_ACCEPT_ENCODING'] =~ /gzip/)!=nil
 				= stylesheet_link_tag "#{ENV["application_js_CDN"]}.gz"
