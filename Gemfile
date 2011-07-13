@@ -24,7 +24,7 @@ gem 'feedzirra', :git => 'git://github.com/pauldix/feedzirra.git', :tag => 'v0.0
 gem 'sqlite3'
 gem 'fastercsv'
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :tag => 'v1.4.0'
-
+gem 'heroku'
 
 # gem 'newrelic_rpm'
 # gem 'redcarpet', :git => 'git://github.com/tanoku/redcarpet.git'
