@@ -37,6 +37,12 @@
 			%link{:rel=>"image_src", :href=>image_path("jabolko_facebook.png")}/
 			%meta{:name=>"description", :content=>"Jabolko.org je neodvisni osrednji vir znanja Apple uporabnikov Slovenija. Blog s svežimi novicami in članki iz jabolčnega sveta."}/
 			%meta{:name=>"keywords", :content=>"apple, jabolko, slovenija, mac, iphone, ipod, imac, macbook, macbook pro, apple users of slovenia"}/
+			
+			%meta{:property => "og:title", :content => "Jabolko.org"}/
+			%meta{:property => "og:type", :content => "website"}/
+			%meta{:property => "og:url", :content => root_url}/
+			%meta{:property => "og:image", :content => image_path("jabolko_facebook.png")}/
+			
 		
 	%body{ :class => [ (user_signed_in?? "signed_in" : nil), |
 		((user_signed_in? && current_user.is_admin?)? "is_admin":nil ) ].join(" ").strip }
