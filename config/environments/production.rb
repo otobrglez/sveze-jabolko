@@ -29,7 +29,7 @@ SvezeJabolko::Application.configure do
   # Compress both stylesheets and JavaScripts
   config.assets.js_compressor  = :uglifier
   
-  if ENV["COMPRESSOR"].to_s == "1"
+  if ENV["COMPRESSOR"].to_s != "0"
     config.assets.css_compressor = :yui # :scss
   end
   

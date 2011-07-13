@@ -1,4 +1,4 @@
-// By Oto Brglez - <oto.brglez@opalab.com>
+// By Oto Brglez - <oto.brglez@opalab.com> for Jabolko.org
 //
 //= require jquery
 //= require jquery-ui
@@ -32,6 +32,7 @@ $(function(){
 			$("#feedParser .tabContent .feed").css("display","none");
 			$("#feedParser .tabContent .feed#"+who).css("display","block");
 		});
+		
 	};
 	
 });

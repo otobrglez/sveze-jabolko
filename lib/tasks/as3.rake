@@ -39,8 +39,10 @@ namespace :as3 do
         mimetype = mimetype[0,mimetype.index(';')]
         mimetype = "application/javascript" if "#{path}/#{f}" =~ /\.js/
         mimetype = "text/css" if "#{path}/#{f}" =~ /\.css/
-        mimetype = "text/plain" if "#{path}/#{f}" =~ /\.gz/
         
+        mimetype = "application/javascript" if "#{path}/#{f}" =~ /\.js\.gz/
+        mimetype = "text/css" if "#{path}/#{f}" =~ /\.css\.gz/
+         
         # CGI::rfc1123_date( time)
         # Expires
         
