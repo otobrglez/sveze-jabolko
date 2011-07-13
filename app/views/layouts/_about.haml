@@ -1,9 +1,26 @@
 #about
 	%h1 Apple uporabniki slovenije
 	%p Združenje uporabnikov tehnologij podjetja Apple.
-	%a#twitter_sidebar(href="http://twitter.com/jabolkoorg" target="_blank")
-		=image_tag 'twitter_sidebar.png'
-	%a#facebook_sidebar(href="http://www.facebook.com/group.php?gid=15631334625" target="_blank")
-		=image_tag 'facebook_sidebar.png'
-	%a#koornk_sidebar(href="http://feeds.feedburner.com/jabolkoorg-sok" target="_blank")
-		=image_tag 'rss_header.png'
+	
+	#social_exchange
+		%ul
+			%li.rss
+				=link_to "RSS Vir (FeedBurner)", |
+					"http://feeds.feedburner.com/jabolkoorg-sok", |
+					:title => "RSS Vir (FeedBurner)"
+			%li.twitter
+				=link_to "Twitter: @jabolkoorg", |
+					"http://twitter.com/jabolkoorg", |
+					:title => "Twitter: @jabolkoorg"
+			%li.linkedin
+				=link_to "Apple uporabniki Slovenije Jabolko.org", |
+					"http://www.linkedin.com/groups?about=&gid=2857495&trk=anet_ug_grppro", |
+					:title => "Apple uporabniki Slovenije Jabolko.org"
+			%li.facebook
+				=link_to "Facebook: Apple uporabniki Slovenije Jabolko.org", |
+					"https://www.facebook.com/pages/Apple-uporabniki-Slovenije-Jabolkoorg/209885181941", |
+					:title => "Facebook: Apple uporabniki Slovenije Jabolko.org"
+			%li.googleplus
+				=link_to "Google+: Apple uporabniki Slovenije Jabolko.org", |
+					"https://plus.google.com/105831877969806831737", |
+					:title => "Google+: Apple uporabniki Slovenije Jabolko.org"

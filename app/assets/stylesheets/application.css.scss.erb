@@ -600,8 +600,67 @@ div.stabs{
 		span.gap{
 			display:none;
 		}
+	}	
+}
+
+#social_exchange{
+	display:block;
+	height:28px;
+	line-height:28px;
+	
+	position:relative;
+	
+	top:80px;
+	
+	ul{
+		overflow:hidden;
+	
+		li{
+			float:left;
+			display:inline-block;
+			height:28px;
+			line-height:28px;
+			width:28px;
+			margin-right:20px;
+			
+			a{
+				display:inline-block;
+				width:28px;
+				height:28px;
+				overflow:hidden;
+				text-indent:-400px;
+			
+				background-repeat:no-repeat;
+				background-position:top left;
+			}
+			
+		}
+		
+		li.rss { margin-right:56px;	}
+		li.googleplus { margin-right:0px;	}
+		
+		li.rss a{
+			background-image: url("<%= asset_path 'jabolko_rss_28.png' %>");
+		}
+		
+		li.twitter a{
+			background-image: url("<%= asset_path 'jabolko_tw_28.png' %>");
+		}
+		
+		li.linkedin a{
+			background-image: url("<%= asset_path 'jabolko_lin_28.png' %>");			
+		}
+		
+		li.facebook a{
+			background-image: url("<%= asset_path 'jabolko_fb_28.png' %>");			
+		}
+		
+		li.googleplus a{
+			background-image: url("<%= asset_path 'jabolko_gplus_28.png' %>");			
+		}
 		
 	}
+	
 	
 	
 }
