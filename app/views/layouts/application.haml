@@ -5,7 +5,7 @@
 		
 		-# This is tha shit ;)
 		- if ENV["application_css_CDN"] != nil && ENV["application_css_CDN"]!=""
-			- if (Rails.env['HTTP_ACCEPT_ENCODING'] =~ /gzip/)!=nil
+			- if (@gzp =~ /gzip/)!=nil
 				= stylesheet_link_tag "#{ENV["application_css_CDN"]}.gz"
 			- else
 				= stylesheet_link_tag ENV["application_css_CDN"]
@@ -13,7 +13,7 @@
 			= stylesheet_link_tag "application"
 
 		- if ENV["application_js_CDN"] != nil && ENV["application_js_CDN"]!=""
-			- if (Rails.env['HTTP_ACCEPT_ENCODING'] =~ /gzip/)!=nil
+			- if (@gzp =~ /gzip/)!=nil
 				= stylesheet_link_tag "#{ENV["application_js_CDN"]}.gz"
 			- else
 				= stylesheet_link_tag ENV["application_js_CDN"]
