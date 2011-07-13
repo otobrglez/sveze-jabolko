@@ -1,10 +1,18 @@
 class ArticlesController < ApplicationController
   
   respond_to :html
+  respond_to :rss, :only => [:feed]
   
   def index
     @articles = Article.published.page(params[:page])
     respond_with(@articles)
+  end
+  
+  def feed
+    @articles = Article.published.limit(20)
+    respond_with(@articles) do |f|
+      f.rss { render :layout => false }
+    end
   end
   
   def show

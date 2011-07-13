@@ -3,7 +3,6 @@ SvezeJabolko::Application.routes.draw do
   root :to => "articles#index"
 
   match "admin", :controller => "admin", :action => "dash", :as => "admin", :via => [:get]
-  # devise_for :users, :path => "admin"
   devise_for :users, :controllers => { :sessions => "admin/sessions" }
   
   
@@ -21,6 +20,8 @@ SvezeJabolko::Application.routes.draw do
     end
     
   end
+  
+  match "feed" => "articles#feed"
 
   match "avtorji/:user_id" => "authors#show", :as => :author
   match "avtorji" => "authors#index", :as => :authors
