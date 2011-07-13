@@ -42,5 +42,7 @@
 	%tfoot
 		%tr
 			%td{:colspan => 6}
-				=paginate @articles, :param_name => :articles_page
+				.pagination_wrap
+					.pagination
+						=paginate @articles, :param_name => :articles_page
 

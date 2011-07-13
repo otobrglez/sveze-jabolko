@@ -25,4 +25,6 @@
 	%tfoot
 		%tr
 			%td{:colspan => 4}
-				=paginate @categories, :param_name => :categories_page
+				.pagination_wrap
+					.pagination
+						=paginate @categories, :param_name => :categories_page

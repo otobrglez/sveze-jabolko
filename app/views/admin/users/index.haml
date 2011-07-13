@@ -32,4 +32,7 @@
 
 	%tfoot
 		%tr
-			%td{:colspan => 4}=paginate @users, :param_name => :users_page
+			%td{:colspan => 4}
+				.pagination_wrap
+					.pagination
+						=paginate @users, :param_name => :users_page
