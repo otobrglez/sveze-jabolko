@@ -53,6 +53,13 @@
 							%p
 								%span(class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;")
 								%strong=flash[:error]
+
+				-if flash[:alert]
+					.ui-widget
+						.ui-state-error.ui-corner-all(style="margin-bottom: 20px; padding: 10px; width:95%")
+							%p
+								%span(class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;")
+								%strong=flash[:alert]
 				
 				-if	flash[:notice]
 					.ui-widget

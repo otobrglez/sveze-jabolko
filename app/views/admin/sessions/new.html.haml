@@ -1,0 +1,9 @@
+%h1= link_to page_title("Prijava"), new_user_session_path()
+
+=form_for(resource_name, :url => session_path(resource_name)) do |f|
+	%ul#login
+		%li= f.label :email
+		%li= f.text_field :email
+		%li= f.label :password
+		%li= f.password_field :password
+		%li=f.submit "Prijava"
