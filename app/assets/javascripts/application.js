@@ -7,7 +7,7 @@
 
 $(function(){
 	
-	/* Switching tabs */
+	/* Switching tabs from here to there */
 	if($("#tabed_module").length != 0){
 		
 		$("#tabed_module .tabNav a").bind("click",function(e){
@@ -31,7 +31,6 @@ $(function(){
 			var who = $(this).attr("class");
 			$("#feedParser .tabContent .feed").css("display","none");
 			$("#feedParser .tabContent .feed#"+who).css("display","block");
-			
 		});
 	};
 	
