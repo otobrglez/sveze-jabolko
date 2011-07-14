@@ -16,7 +16,11 @@ class ArticlesController < ApplicationController
   end
   
   def search
-    @articles = Article.search(params[:query]).page(params[:page])
+    if params[:query] != nil && params[:query] != "" && params[:query] != " "
+      @articles = Article.search(params[:query]).page(params[:page])
+    else
+      @articles = []
+    end
   end
   
   def show

@@ -1,7 +1,14 @@
-%h2.heading= page_title("Iskanje: #{params[:query]}")
+%h2.heading2= page_title("Rezultati iskanja: #{params[:query]}")
 
-%div#articles=render :collection => @articles, :partial => 'articles/simple_article'
+- if @articles.size != 0
+	%div#articles=render :collection => @articles, :partial => 'articles/simple_article'
+	.pagination_wrap
+		.pagination
+			=paginate @articles, :param_name => :articles_page
+- else
+	%p
+		Vaše iskanje ni obrodilo sadov.
+		Poskusite z drugačnim naborom ključnih besed.
 
-.pagination_wrap
-	.pagination
-		=paginate @articles, :param_name => :articles_page
+
+

@@ -32,6 +32,18 @@ $(function(){
 			$("#feedParser .tabContent .feed").css("display","none");
 			$("#feedParser .tabContent .feed#"+who).css("display","block");
 		});
+	};
+
+	/* Search box */
+	if($("#q").length != 0){
+		var $search = $('#q');
+		original_val = $search.val();
+		$search.focus(function(){
+			if($(this).val()===original_val) $(this).val('');
+		})
+		.blur(function(){
+			if($(this).val()==='') $(this).val(original_val);
+		});		
 		
 	};
 	

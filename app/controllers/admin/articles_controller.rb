@@ -25,7 +25,6 @@ class Admin::ArticlesController < AdminController
   def new
     @article = Article.new
     @article.authors << current_user
-    
     @article.sources << Source.new if @article.new_record?
     
     respond_with(@article)
