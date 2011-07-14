@@ -663,7 +663,35 @@ div.stabs{
 		}
 		
 	}
-	
-	
-	
+}
+
+#admin_side_tools{
+	ul{
+		li{
+			a{
+				background-repeat:no-repeat;
+				text-indent:20px;
+			}
+		}
+		
+		li.articles a{
+			background-image: url("<%= asset_path 'articles.png' %>");
+		}
+		
+		li.categories a{
+			background-image: url("<%= asset_path 'categories.png' %>");
+		}
+		
+		li.users a{
+			background-image: url("<%= asset_path 'users.png' %>");
+		}
+		
+		li.tags a{
+			background-image: url("<%= asset_path 'tags.png' %>");
+		}
+		
+		li.banners a{
+			background-image: url("<%= asset_path 'banners.png' %>");
+		}
+	}
 }
