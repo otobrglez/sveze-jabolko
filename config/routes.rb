@@ -22,6 +22,8 @@ SvezeJabolko::Application.routes.draw do
   end
   
   match "feed" => "articles#feed"
+  match "search" => "articles#search", :as => :search, :via => [:get]
+
 
   match "avtorji/:user_id" => "authors#show", :as => :author
   match "avtorji" => "authors#index", :as => :authors

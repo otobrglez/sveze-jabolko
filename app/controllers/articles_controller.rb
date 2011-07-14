@@ -15,6 +15,10 @@ class ArticlesController < ApplicationController
     end
   end
   
+  def search
+    @articles = Article.search(params[:query]).page(params[:page])
+  end
+  
   def show
     @article = Article.find_by_slug(params[:id])
     @article = Article.find(params[:id]) if @article == nil

@@ -1,0 +1,4 @@
+.module_search
+	= form_tag(search_path, :method => "get", :class => "module_search_form") do |f|
+		= text_field_tag :query, params[:query] || "Iskanje", :id => "q"
+		= submit_tag "Search", :style => "display:none;"

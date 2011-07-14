@@ -22,10 +22,10 @@
 			%span Forum
 	- if user_signed_in? && 
 		- if current_user.is_admin?
-			%li{:class => ("selected" if @is_administration != nil && @is_administration == 1) }
+			%li{:class => ("selected" if @is_administration != nil && @is_administration == 1), :style => "margin:0px; background-color:#ccc;" }
 				=link_to admin_path() do
-					%span Administracija		
-		%li
+					%span A
+		%li{:style => "background-color:#ccc"}
 			=link_to destroy_user_session_path() do
-				%span Odjava
+				%span X
 			

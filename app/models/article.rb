@@ -35,6 +35,12 @@ class Article < ActiveRecord::Base
     end
   end
   
+  def self.search(query)
+    ids = ArticleObserver.tank_index
+      .search(query)["results"].map {|r| r["docid"].to_i }
+    Article.published.where("id IN (?)", ids)
+  end
+  
   def related(limit=10)
     Article.find_by_sql(%Q{
       SELECT
@@ -105,6 +111,15 @@ class Article < ActiveRecord::Base
   def intro_html
     return nil if self.intro == nil
     return RedCloth.new(self.intro).to_html
+  end
+  
+  def tank_document
+    {
+      title:  self.title.to_s,
+      # intro:  self.intro.to_s,
+      # body:   self.body.to_s,
+      text:   self.body.to_s
+    }
   end
   
   private

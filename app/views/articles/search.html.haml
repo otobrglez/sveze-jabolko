@@ -1,0 +1,7 @@
+%h2.heading= page_title("Iskanje: #{params[:query]}")
+
+%div#articles=render :collection => @articles, :partial => 'articles/simple_article'
+
+.pagination_wrap
+	.pagination
+		=paginate @articles, :param_name => :articles_page
