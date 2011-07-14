@@ -695,3 +695,57 @@ div.stabs{
 		}
 	}
 }
+
+
+#topnav{
+	
+	li.admin,
+	li.logout{
+		background:none;
+		background-color:transparent;
+		
+		a span{
+			background-color:transparent;
+			background-image:none;
+		}
+
+		a{
+			background-color:transparent;
+			width:24px;
+			text-indent:-200px;
+			overflow:hidden;
+			background-position:top left;
+			background-repeat:no-repeat;
+			
+		}
+		
+		a:hover{
+			background:none;
+			background-color:transparent;
+		}
+	}
+	
+	li.admin a{
+		background-image: url("<%= asset_path 'off_admin_24.png' %>");
+	}
+	
+	li.selected.admin a,
+	li.admin a:hover{
+		background-image: url("<%= asset_path 'off_admin_24.png' %>");
+		background-position:-24px 0px;
+	}
+	
+	li.admin{ margin-right:10px; }
+	
+	li.logout a{
+		background-image: url("<%= asset_path 'off_admin_24.png' %>");
+		background-position:-48px 0px;
+	}
+	
+	li.logout a:hover{
+		background-image: url("<%= asset_path 'off_admin_24.png' %>");
+		background-position:-72px 0px;
+
+	}
+	
+}

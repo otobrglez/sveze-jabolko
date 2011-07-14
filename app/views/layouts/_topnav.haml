@@ -1,31 +1,31 @@
 %ul#topnav
 	%li{:class => ("selected" if @category == nil && @is_administration == nil) }
-		=link_to root_path() do
+		=link_to root_path(), :title => "Jabolko.org - Domov" do
 			%span Domov
 	%li{:class => ("selected" if @category != nil && @category.slug == "novice") }
-		=link_to "/novice" do
+		=link_to "/novice", :title => "Novice" do
 			%span Novice
 	%li{:class => ("selected" if @category != nil && @category.slug == "mac") }
-		=link_to "/mac" do
+		=link_to "/mac", :title => "Mac" do
 			%span Mac
 	%li{:class => ("selected" if @category != nil && @category.slug == "iphone-ipod") }
-		=link_to "/iphone-ipod" do
+		=link_to "/iphone-ipod", :title => "iPhone / iPod" do
 			%span iPhone / iPod
 	%li{:class => ("selected" if @category != nil && @category.slug == "ipad") }
-		=link_to "/ipad" do
+		=link_to "/ipad", :title => "iPad" do
 			%span iPad
 	%li{:class => ("selected" if @category != nil && @category.slug == "snelkurs") }
-		=link_to "/snelkurs" do
+		=link_to "/snelkurs", :title => "Šnelkurs" do
 			%span Šnelkurs
 	%li
 		=link_to "http://forum.jabolko.org" do
 			%span Forum
 	- if user_signed_in? && 
 		- if current_user.is_admin?
-			%li{:class => ("selected" if @is_administration != nil && @is_administration == 1), :style => "margin:0px; background-color:#ccc;" }
-				=link_to admin_path() do
-					%span A
-		%li{:style => "background-color:#ccc"}
-			=link_to destroy_user_session_path() do
-				%span X
+			%li.admin{:class => ("selected" if @is_administration != nil && @is_administration == 1)}
+				=link_to admin_path(), :title => "Administracija" do
+					%span Administracija
+		%li.logout
+			=link_to destroy_user_session_path(), :title => "Odjava" do
+				%span Odjava
 			
