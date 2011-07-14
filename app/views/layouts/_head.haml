@@ -40,5 +40,7 @@
 	%meta{:property => "og:url", :content => root_url}/
 	%meta{:property => "og:image", :content => image_path("jabolko_facebook.png")}/
 	
+%script{:type=>"text/javascript", :src=>"https://apis.google.com/js/plusone.js"}="{lang: 'sl'}"
+		
 - if Rails.env == "production"	
 	=render :partial => 'layouts/ganalytics'

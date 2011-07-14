@@ -22,6 +22,7 @@ SvezeJabolko::Application.routes.draw do
   end
   
   match "feed" => "articles#feed"
+  match "blog" => "articles#feed"
   match "search" => "articles#search", :as => :search, :via => [:get]
 
 

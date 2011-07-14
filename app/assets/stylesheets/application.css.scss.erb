@@ -189,12 +189,16 @@ h4 {font-size:16px; line-height:21px; color:#4D4D4D}
 #infobox a:hover {color:#3FA9F5}
 #infobox .links {position:relative}
 #infobox .secondcol {position:absolute; top:0; left:153px}
+
+/*
 #share_article a {margin:0 19px 0 0; width:45px; height:45px; display:block; text-indent:-9999em; float:left}
 
 #share_article .delicious {background:url("<%= asset_path 'social_sharing.gif' %>") no-repeat 0 0}
 #share_article .twitter {background:url("<%= asset_path 'social_sharing.gif' %>") no-repeat -45px 0}
 #share_article .linkedin {background:url("<%= asset_path 'social_sharing.gif' %>") no-repeat -90px 0}
 #share_article .facebook {background:url("<%= asset_path 'social_sharing.gif' %>") no-repeat right 0}
+*/
+
 
  .heading2 {font-size:36px; color:#4d4d4d; font-family:'Myriad Pro', Arial; font-weight:normal; border-bottom:1px solid #D5D5D5; margin:0 0 30px; height:43px; position:relative}
 .order_switcher {position:absolute; right:0; top:40px; height:16px; width:250px; height:16px; text-align:right; margin:0 30px 0 0}
@@ -748,4 +752,21 @@ div.stabs{
 
 	}
 	
+}
+
+#share_article{
+	a{
+		display:inline-block;
+		border:1px solid red;
+		float:left;
+		background-image: url("<%= asset_path 'social_sharing.gif' %>");
+		background-repeat:no-repeat;
+		width:45px;
+		height:45px;
+		text-indent:-100px;
+		overflow:hidden;
+	}
+	
+	a.googleplus{
+	}
 }

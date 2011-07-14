@@ -13,7 +13,7 @@
 - if @article.share_visible?
 	#share_article
 		%h3 Posreduj članek naprej
-		=share_article(@article)
+		=render :partial => "share_article", :locals => {:article => @article}
 
 - if @article.recommend_visible?
 	#related_articles

@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
     @articles = Article.published.limit(20)
     respond_with(@articles) do |f|
       f.rss { render :layout => false }
+      f.html { redirect_to root_url }
     end
   end
   
