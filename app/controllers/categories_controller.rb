@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
     
     return redirect_to "/404", :layout => false if @category == nil
     
-    @articles = Article.published.where(:category_id => @category).page(params[:page]).per(5)
+    @articles = Article.published.where(:category_id => @category).page(params[:page]).per(7)
     respond_with(@category)
   end
 
