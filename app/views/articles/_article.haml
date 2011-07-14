@@ -1,8 +1,18 @@
 .article{:id => "article-#{article.id}"}
 
-	-if article.image
-		=link_to article_path(article.category, article), :class => "mainimage" do
-			%img.mainimage{:src => article.image, :title => article, :alt => article}
+	- if (defined? mode).nil?
+		-if article.image
+			=link_to article_path(article.category, article), :class => "mainimage" do
+				%img.mainimage{:src => article.image, :title => article, :alt => article}	
+	
+	-elsif mode == :show
+		-if article.image_visible?
+			-if article.image
+				=link_to article_path(article.category, article), :class => "mainimage" do
+					%img.mainimage{:src => article.image, :title => article, :alt => article}
+		-else
+			:css
+				.article h2{ position:relative; }
 
 	%h2=link_to article, article_path(article.category, article)
 

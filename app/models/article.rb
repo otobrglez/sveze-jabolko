@@ -23,13 +23,14 @@ class Article < ActiveRecord::Base
   accepts_nested_attributes_for :sources, :allow_destroy => true
   
   default_scope order("created_at DESC")
-  scope :published, where(:published => true)
-  scope :recommended, where(:recommended => 1)
+  scope :published, where(:published => true).where(:hidden => 0)
+  scope :recommended, where(:recommended => 1).where(:hidden => 0)
   
   def self.top_viewed(limit=10)
     with_exclusive_scope do
       where(:published => true)
       .where(:recommended => 1)
+      .where(:hidden => 0)
       .limit(limit)
       .order("views DESC")
     end
@@ -101,6 +102,26 @@ class Article < ActiveRecord::Base
   
   def published?
     return self.published == 1
+  end
+  
+  def comments_visible?
+    return self.comments_visible == 1
+  end
+  
+  def image_visible?
+    return self.image_visible == 1
+  end
+  
+  def share_visible?
+    return self.share_visible == 1
+  end
+  
+  def recommend_visible?
+    return self.recommend_visible == 1
+  end
+  
+  def hidden?
+    return self.hidden == 1
   end
   
   def body_html

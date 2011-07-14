@@ -144,8 +144,33 @@
 			%li
 				%br/
 				%strong=f.label :published, Article.human_attribute_name(:published)
-				=f.check_box :published		
+				=f.check_box :published
+		
+		%li
+			%br/
+			%strong=f.label :comments_visible, Article.human_attribute_name(:comments_visible)
+			=f.check_box :comments_visible
 				
+		%li
+			%br/
+			%strong=f.label :image_visible, Article.human_attribute_name(:image_visible)
+			=f.check_box :image_visible
+
+		%li
+			%br/
+			%strong=f.label :share_visible, Article.human_attribute_name(:share_visible)
+			=f.check_box :share_visible		
+				
+		%li
+			%br/
+			%strong=f.label :recommend_visible, Article.human_attribute_name(:recommend_visible)
+			=f.check_box :recommend_visible				
+
+		%li
+			%br/
+			%strong=f.label :hidden, Article.human_attribute_name(:hidden)
+			=f.check_box :hidden
+			
 		%li.authors
 			%br/
 			%strong= Article.human_attribute_name(:authors)

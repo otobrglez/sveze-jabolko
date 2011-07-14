@@ -10,14 +10,18 @@
 #blog_article
 	= render :partial => @article, :locals => {:mode => :show}
 
-#share_article
-	%h3 Posreduj članek naprej
-	=share_article(@article)
+- if @article.share_visible?
+	#share_article
+		%h3 Posreduj članek naprej
+		=share_article(@article)
 
-#related_articles
-	%h3 Sorodni članki
-	%ul
-		- @article.related(4).each do |article|
-			%li.related_article=link_to article, article_path(article.category, article)
-	.clear=""
-#comments_wrap=disqus_thread(@article)
+- if @article.recommend_visible?
+	#related_articles
+		%h3 Sorodni članki
+		%ul
+			- @article.related(4).each do |article|
+				%li.related_article=link_to article, article_path(article.category, article)
+		.clear=""
+
+- if @article.comments_visible?
+	#comments_wrap=disqus_thread(@article)

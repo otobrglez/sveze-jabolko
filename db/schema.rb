@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712120634) do
+ActiveRecord::Schema.define(:version => 20110714094205) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -21,11 +21,16 @@ ActiveRecord::Schema.define(:version => 20110712120634) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "published",      :default => 0
-    t.integer  "comments_count", :default => 0
-    t.integer  "views",          :default => 0
-    t.integer  "recommended",    :default => 0
+    t.integer  "published",         :default => 0
+    t.integer  "comments_count",    :default => 0
+    t.integer  "views",             :default => 0
+    t.integer  "recommended",       :default => 0
     t.string   "short_url"
+    t.integer  "comments_visible",  :default => 1
+    t.integer  "image_visible",     :default => 1
+    t.integer  "share_visible",     :default => 1
+    t.integer  "recommend_visible", :default => 1
+    t.integer  "hidden",            :default => 0
   end
 
   create_table "articles_users", :id => false, :force => true do |t|
@@ -98,7 +103,6 @@ ActiveRecord::Schema.define(:version => 20110712120634) do
     t.string   "twitter_name"
     t.string   "facebook_name"
     t.string   "github_name"
-    t.string   "skype_name"
     t.string   "home_url"
     t.integer  "is_admin",                              :default => 0
     t.integer  "is_developer",                          :default => 0
