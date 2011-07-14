@@ -73,7 +73,7 @@ class Article < ActiveRecord::Base
   
   # Plugins
   acts_as_taggable_on :tags     # acts_as_taggable_on
-  paginates_per         5       # kaminari
+  paginates_per         7       # kaminari
   
   after_initialize :set_no_image
   
