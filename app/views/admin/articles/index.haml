@@ -24,7 +24,10 @@
 		- @articles.each do |article|
 			%tr
 				%td
-					=image_tag article.image, :width => 30, :height => 30
+					- if not article.hidden?
+						=image_tag article.image, :width => 30, :height => 30
+					- else
+						&nbsp;
 				%td
 					=article.id
 				%td
