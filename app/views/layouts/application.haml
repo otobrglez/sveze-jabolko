@@ -1,50 +1,6 @@
 !!!
 %html
-	%head
-		%meta(charset="utf-8")
-				
-		- if ENV["application_css_CDN"] != nil && ENV["application_css_CDN"]!=""
-			- if (@gzp =~ /gzip/)!=nil
-				-# = stylesheet_link_tag "#{ENV["application_css_CDN"]}.gz"
-				= stylesheet_link_tag ENV["application_css_CDN"]
-			- else
-				= stylesheet_link_tag ENV["application_css_CDN"]
-		- else
-			= stylesheet_link_tag "application"
-
-		- if ENV["application_js_CDN"] != nil && ENV["application_js_CDN"]!=""
-			- if (@gzp =~ /gzip/)!=nil
-				-# = javascript_include_tag "#{ENV["application_js_CDN"]}.gz"
-				= javascript_include_tag ENV["application_js_CDN"]
-			- else
-				= javascript_include_tag ENV["application_js_CDN"]
-		- else
-			= javascript_include_tag "application"
-			
-		= csrf_meta_tags
-		
-		%title=page_title
-		
-		-# = auto_discovery_link_tag(:rss, root_url)
-		
-		%link(type="application/atom+xml" rel="alternate" title="Jabolko.org Sok" |
-			href="http://feeds.feedburner.com/jabolkoorg-sok")
-		
-		%link{:rel => "shortcut icon", :href => image_path('favicon.ico')}/
-		%link{:rel => "apple-touch-icon", :href=> image_path('iphone_57x57.png')}/
-		
-		- if content_for?(:head)
-			= yield(:head)
-		- else
-			%link{:rel=>"image_src", :href=>image_path("jabolko_facebook.png")}/
-			%meta{:name=>"description", :content=>"Jabolko.org je neodvisni osrednji vir znanja Apple uporabnikov Slovenija. Blog s svežimi novicami in članki iz jabolčnega sveta."}/
-			%meta{:name=>"keywords", :content=>"apple, jabolko, slovenija, mac, iphone, ipod, imac, macbook, macbook pro, apple users of slovenia"}/
-			
-			%meta{:property => "og:title", :content => "Jabolko.org"}/
-			%meta{:property => "og:type", :content => "website"}/
-			%meta{:property => "og:url", :content => root_url}/
-			%meta{:property => "og:image", :content => image_path("jabolko_facebook.png")}/
-			
+	%head=render :partial => 'layouts/head'
 		
 	%body{ :class => [ (user_signed_in?? "signed_in" : nil), |
 		((user_signed_in? && current_user.is_admin?)? "is_admin":nil ) ].join(" ").strip }
@@ -59,16 +15,6 @@
 				=render :partial => 'layouts/search'
 				
 			#main
-			
-				-#
-					- if @is_administration != nil 
-						- if user_signed_in? && current_user.is_admin?
-							#admin_tools
-								=link_to t("articles"), [:admin,:articles]
-								=link_to t("categories"), [:admin,:categories]
-								=link_to t("tags"), [:admin,:tags]
-								=link_to t("users"), [:admin,:users]
-								=link_to t("banners"), [:admin, :banners]
 							
 				-if flash[:errors]
 					.ui-widget
