@@ -25,9 +25,9 @@
 	
 	.content
 		- if (defined? mode).nil?
-			=sanitize article.intro_html
+			=raw article.intro_html
 		- elsif mode == :show
-			=sanitize article.body_html
+			=raw article.body_html
 			- if article.sources != nil && article.sources.size != 0
 				-if article.sources.size == 1
 					=t(:source)

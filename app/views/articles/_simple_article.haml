@@ -7,7 +7,7 @@
 	
 	%h3=link_to simple_article, article_path(simple_article.category,simple_article)
 	.summary_intro
-		=sanitize simple_article.intro_html
+		=raw simple_article.intro_html
 		
 	.readmore
 		=link_to t(:read_full_article), article_path(simple_article.category,simple_article)
