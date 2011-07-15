@@ -9,9 +9,12 @@ class ApplicationController < ActionController::Base
   end
   
   def temp_move
-    unless ['sveze-jabolko.heroku.com','localhost'].include?(request.host)
-      redirect_to "http://www.jabolko.org/off.html"
+    if not ['www.jabolko.org','localhost'].include?(request.host)
+      redirect_to "http://www.jabolko.org/"
     end
+    #unless ['sveze-jabolko.heroku.com','localhost'].include?(request.host)
+    #  redirect_to "http://www.jabolko.org/off.html"
+    #end
   end
   
   def missing_page
