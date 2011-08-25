@@ -5,7 +5,7 @@ class AuthorsController < ApplicationController
   def show
     @author = User.authors.limit(1).find_by_id(params[:user_id])
     return redirect_to "/404", :layout => false if @author == nil
-    @articles = @author.articles.page(params[:page]).per(20)
+    @articles = @author.public_articles.page(params[:page]).per(20)
   end
   
   def index

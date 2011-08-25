@@ -26,9 +26,13 @@ class User < ActiveRecord::Base
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix,
     :if => Proc.new { |user| user.home_url != "" && user.home_url != nil }
 
+  has_and_belongs_to_many :public_articles, :class_name => "Article",
+    :foreign_key => "author_id", :conditions => { :published => true, :hidden => 0}
+  
   has_and_belongs_to_many :articles, :class_name => "Article",
     :foreign_key => "author_id"
-    
+
+  
   scope :admins, where(:is_admin => 1).order("name ASC")
   scope :authors, where(:is_author => 1).order("name ASC")
   scope :developers, where(:is_developer => 1).order("name ASC")
