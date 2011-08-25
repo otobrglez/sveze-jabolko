@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
         articles.published = 1 AND
         articles.hidden = 0 AND
         articles_users.author_id = users.id)
-     > 1")
+     > 0")
   
   def is_admin?
     return self.is_admin == 1
