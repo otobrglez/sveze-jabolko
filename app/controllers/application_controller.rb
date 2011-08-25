@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_cdn
   before_filter :temp_move
+  before_filter :authenticate_user!, :if => :detect_stage
   
   def set_cdn
     @gzp = env["HTTP_ACCEPT_ENCODING"]
@@ -12,9 +13,10 @@ class ApplicationController < ActionController::Base
     if not ['www.jabolko.org','localhost','stage-jabolko.heroku.com'].include?(request.host)
       redirect_to "http://www.jabolko.org/"
     end
-    #unless ['sveze-jabolko.heroku.com','localhost'].include?(request.host)
-    #  redirect_to "http://www.jabolko.org/off.html"
-    #end
+  end
+  
+  def detect_stage
+    ['stage-jabolko.heroku.com'].include?(request.host)
   end
   
   def missing_page

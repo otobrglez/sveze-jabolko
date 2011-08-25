@@ -27,6 +27,7 @@ gem 'fastercsv'
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :tag => 'v1.4.0'
 gem 'heroku'
 gem 'indextank'
+gem 'dropbox'
 
 # gem 'newrelic_rpm'
 # gem 'redcarpet', :git => 'git://github.com/tanoku/redcarpet.git'

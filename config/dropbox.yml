@@ -1,0 +1,14 @@
+defaults: &defaults
+  app_key: 'ukaaqa4zfyn4a5d'
+  app_secret: 'fof9vrab8n5hpv9'
+  backup_path: '/Public/Backups/'
+  heroku_app_name: 'sveze-jabolko'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
