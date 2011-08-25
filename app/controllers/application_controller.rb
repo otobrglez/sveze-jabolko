@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
   
   def temp_move
-    if not ['www.jabolko.org','localhost'].include?(request.host)
+    if not ['www.jabolko.org','localhost','stage-jabolko.heroku.com'].include?(request.host)
       redirect_to "http://www.jabolko.org/"
     end
     #unless ['sveze-jabolko.heroku.com','localhost'].include?(request.host)

@@ -63,6 +63,7 @@ end
 
 group :development do
 	gem 'therubyracer', :require => 'v8'
+	gem 'heroku_san'
 end
 
 group :production do
