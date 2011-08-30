@@ -8,13 +8,19 @@ module ArticlesHelper
     
     category = nil
     if article.category !=nil
-      category = link_to(article.category, category_path(article.category))
+      if article.category.hidden?
+        category = article.category
+      else
+        category = link_to(article.category, category_path(article.category))
+      end
       category = I18n.t(:in) +" #{category}"
     end
     
     tags = nil
     if article.tag_list.size != 0
-      tags = article.tag_list.to_a.map { |t| link_to(t.downcase,tag_path(t)) }.join(", ").strip
+      tags = article.tag_list.to_a.map do |t|
+        link_to(t.downcase,tag_path(t)) 
+      end.join(", ").strip
       tags = I18n.t(:with_tags) + " #{tags}"
     end
     

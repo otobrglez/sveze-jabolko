@@ -9,6 +9,8 @@
 			=f.input :title
 		%li
 			=f.input :slug
+		%li
+			=f.input :hidden, :label => "Skrita kategorija", :as => :boolean
 	
 		%li
 			= link_to t("back"), admin_categories_path()

@@ -1,8 +1,6 @@
 SvezeJabolko::Application.routes.draw do
   
   root :to => "articles#index"
-
-  match "stran" => redirect("/")
   
   match "admin", :controller => "admin", :action => "dash", :as => "admin", :via => [:get]
   devise_for :users, :controllers => { :sessions => "admin/sessions" }

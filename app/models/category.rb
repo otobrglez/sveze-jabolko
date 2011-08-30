@@ -7,6 +7,10 @@ class Category < ActiveRecord::Base
     "#{self.title}"
   end
   
+  def hidden?
+    return self.hidden == 1
+  end
+  
   def to_param
     return self.slug if self.slug != nil && self.slug != ""
     "#{self.id}-#{self.title}".parameterize
