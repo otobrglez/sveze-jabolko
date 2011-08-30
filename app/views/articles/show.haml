@@ -7,6 +7,22 @@
 	%meta{:property => "og:image", :content => @article.image}/
 	%meta{:property => "og:description", :content => strip_tags(sanitize(@article.intro_html)) }/
 	
+	= javascript_include_tag "http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js"
+	
+	-"shBrushAS3.js, shBrushAppleScript.js, shBrushBash.js, shBrushCss.js, shBrushDiff.js, shBrushJScript.js, shBrushJava.js, shBrushPerl.js, shBrushPhp.js, shBrushPlain.js, shBrushPowerShell.js, shBrushPython.js, shBrushRuby.js, shBrushXml.js".split(", ").each do |brush|
+		= javascript_include_tag "http://alexgorbatchev.com/pub/sh/current/scripts/#{brush}"
+	
+	= stylesheet_link_tag "http://alexgorbatchev.com/pub/sh/current/styles/shCoreDefault.css"
+	
+	:javascript
+		SyntaxHighlighter.all();
+	
+	-# %script(src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript")/
+	-# %link(href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css")/
+	
+	
+	
+	
 #blog_article
 	= render :partial => @article, :locals => {:mode => :show}
 

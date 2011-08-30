@@ -23,7 +23,9 @@ namespace :setcdn do
       "http://sveze-jabolko-common.s3.amazonaws.com/assets/"+File.basename(f)
     end.first
     
-    exec "bundle exec heroku config:add application_js_CDN=#{app_js} application_css_CDN=#{app_css} "
+    exec "bundle exec heroku --app sveze-jabolko config:add application_js_CDN=#{app_js} application_css_CDN=#{app_css} "
+    exec "bundle exec heroku --app stage-jabolko config:add application_js_CDN=#{app_js} application_css_CDN=#{app_css} "
+    
     
     echo "Done."
   end
