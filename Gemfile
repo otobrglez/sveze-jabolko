@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc8'
+gem 'rails', '3.1.0' # '3.1.0.rc8'
 # gem 'sprockets', '2.0.0.beta.13'
 # gem 'bcrypt-ruby', :git => 'git://github.com/codahale/bcrypt-ruby.git', :tag => 'v3.0.0'
 
