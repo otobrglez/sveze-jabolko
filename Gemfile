@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc6'
-# gem 'sprockets', '2.0.0.beta.13' 
+gem 'rails', '3.1.0.rc8'
+# gem 'sprockets', '2.0.0.beta.13'
+# gem 'bcrypt-ruby', :git => 'git://github.com/codahale/bcrypt-ruby.git', :tag => 'v3.0.0'
 
 # gem "rails", :git => "git://github.com/rails/rails.git"
 # gem "sprockets", :git => "git://github.com/sstephenson/sprockets.git"
@@ -24,7 +25,7 @@ gem 's3'
 gem 'feedzirra', :git => 'git://github.com/pauldix/feedzirra.git', :tag => 'v0.0.24'
 gem 'sqlite3'
 gem 'fastercsv'
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :tag => 'v1.4.0'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :tag => 'v1.4.3'
 gem 'heroku'
 gem 'indextank'
 gem 'dropbox'
