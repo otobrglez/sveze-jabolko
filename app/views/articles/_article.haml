@@ -17,8 +17,8 @@
 	%h2=link_to article, article_path(article.category, article)
 
 	.meta.clear
-		.numofcom{:style=>"display:none"}
-			=link_to "0", article_path(article.category, article)
+		.numofcom
+			=link_to "0", article_path(article.category, article)+"#disqus_thread"
 		
 		%span.created_at
 			=sanitize article_created(article)

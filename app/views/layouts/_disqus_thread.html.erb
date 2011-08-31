@@ -8,11 +8,21 @@
 	
 	(function() {
 		var dsq = document.createElement('script');
-		dsq.type = 'text/javascript'; dsq.async = true;
-		dsq.src = 'http://jabolko.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] ||
-		 document.getElementsByTagName('body')[0]).appendChild(dsq);
+			dsq.type = 'text/javascript';
+			dsq.async = true;
+			dsq.src = 'http://jabolko.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 	})();
+
+	(function() {
+		var cm = document.createElement('script');
+			cm.type = 'text/javascript';
+			cm.async = true;
+			cm.src = 'http://jabolko.disqus.com/count.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cm);
+	})();
+	
+	
 	</script>
 <noscript>
 	Please enable JavaScript to view the
