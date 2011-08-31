@@ -18,7 +18,7 @@
 
 	.meta.clear
 		.numofcom
-			=link_to "0", article_path(article.category, article)+"#disqus_thread"
+			=link_to "0", article_url(article.category, article)+"#disqus_thread"
 		
 		%span.created_at
 			=sanitize article_created(article)
