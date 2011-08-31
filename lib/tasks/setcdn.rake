@@ -15,6 +15,8 @@ namespace :setcdn do
   desc "Set path to production CSS and JS on heroku"
   task :set do
     
+    
+    
     app_js = Dir["#{Rails.root.to_s}/public/assets/application*.js"].map do |f|
       "http://sveze-jabolko-common.s3.amazonaws.com/assets/"+File.basename(f)
     end.first
@@ -23,10 +25,11 @@ namespace :setcdn do
       "http://sveze-jabolko-common.s3.amazonaws.com/assets/"+File.basename(f)
     end.first
     
-    exec "bundle exec heroku config:add application_js_CDN=#{app_js} application_css_CDN=#{app_css} --app sveze-jabolko"
-    exec "bundle exec heroku config:add application_js_CDN=#{app_js} application_css_CDN=#{app_css} --app stage-jabolko"
+    puts "Reload heroku configs..."
     
+    exec "bundle exec heroku config:add application_js_CDN=#{app_js} application_css_CDN=#{app_css} --app sveze-jabolko ; \
+      bundle exec heroku config:add application_js_CDN=#{app_js} application_css_CDN=#{app_css} --app stage-jabolko"
     
-    echo "Done."
+    puts "Done."
   end
 end
