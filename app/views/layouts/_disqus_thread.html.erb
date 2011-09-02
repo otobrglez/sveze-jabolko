@@ -1,8 +1,8 @@
 <!-- disqus_thread -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-	var disqus_identifier = '<%= article %>';
-	var disqus_url = 'http://www.jabolko.org<%= blog_path(article) %>';
+	var disqus_identifier = 'jid-<%= article.id %>';
+	var disqus_url = '<%= article_url(article.category, article) %>';
 	var disqus_category_id = '396478'; /* Legacy ;) */
 	var disqus_developer = 1;
 

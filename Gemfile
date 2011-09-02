@@ -49,7 +49,7 @@ group :test, :development do
 	gem 'autotest'	
 	gem 'autotest-growl'
 	gem 'rcov' 
-	
+	gem 'httparty'	
 	gem 'rspec', '>= 2.6'
 	gem 'rspec-rails', '>= 2.6'
 	
