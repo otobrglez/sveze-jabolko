@@ -4,15 +4,8 @@
 	var disqus_identifier = '<%= article %>';
 	var disqus_url = 'http://www.jabolko.org<%= blog_path(article) %>';
 	var disqus_category_id = '396478'; /* Legacy ;) */
-	/* var disqus_developer = 1; */
-	
-	(function() {
-		var dsq = document.createElement('script');
-			dsq.type = 'text/javascript';
-			dsq.async = true;
-			dsq.src = 'http://jabolko.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
+	var disqus_developer = 1;
+
 
 	(function() {
 		var cm = document.createElement('script');
@@ -22,6 +15,13 @@
 		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cm);
 	})();
 	
+	(function() {
+		var dsq = document.createElement('script');
+			dsq.type = 'text/javascript';
+			dsq.async = true;
+			dsq.src = 'http://jabolko.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
 	
 	</script>
 <noscript>

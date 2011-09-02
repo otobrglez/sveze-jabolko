@@ -85,5 +85,14 @@ describe Article do
     @article.intro = "Demo"
     @article.intro_html.should == "<p>Demo</p>"
   end
+  
+  it "has disqus details" do
+    @article = Article.new
+    @article.should respond_to(:disqus_details)
+    
+    debugger
+    
+    t = 1
+  end
 
 end

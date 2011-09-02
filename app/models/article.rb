@@ -42,6 +42,23 @@ class Article < ActiveRecord::Base
     Article.published.where("id IN (?)", ids)
   end
   
+  def self.comment_details(comment_id)
+    require "net/http"
+    
+    url = "http://disqus.com/api/3.0/posts/details.json?related=thread&api_secret=#{DISQUS['api_secret']}&post=#{comment_id}"
+    
+    begin
+      logger.info "Fetching: disqus_posts - Started."
+      posts = JSON.parse(Net::HTTP.get_response(URI.parse(url)).body)
+      posts = posts["response"]
+    rescue => e
+      logger.info "Fetching: disqus_posts - Failed!"
+      posts = []
+    end
+    
+    posts
+  end
+  
   def related(limit=10)
     Article.find_by_sql(%Q{
       SELECT

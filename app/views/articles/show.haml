@@ -6,6 +6,7 @@
 	%meta{:property => "og:url", :content => article_url(@article.category, @article)}/
 	%meta{:property => "og:image", :content => @article.image}/
 	%meta{:property => "og:description", :content => strip_tags(sanitize(@article.intro_html)) }/
+	%meta{:property => "jabolko:id", :content => @article.id }/
 	
 	= javascript_include_tag "http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js"
 	
