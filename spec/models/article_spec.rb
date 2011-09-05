@@ -86,13 +86,14 @@ describe Article do
     @article.intro_html.should == "<p>Demo</p>"
   end
   
-  it "has disqus details" do
+
+  it "has jid" do
     @article = Article.new
-    @article.should respond_to(:disqus_details)
-    
-    debugger
-    
-    t = 1
+    @article.jid.should == nil
+    @article.id = 111
+    @article.id.should == 111
+    @article.should respond_to :jid
+    @article.jid.should == "jid-111-test"
   end
 
 end

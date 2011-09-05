@@ -1,7 +1,8 @@
 <!-- disqus_thread -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-	var disqus_identifier = 'jid-<%= article.id %>';
+	var disqus_shortname = 'jabolko';
+	var disqus_identifier = '<%= article.jid %>';
 	var disqus_url = '<%= article_url(article.category, article) %>';
 	var disqus_category_id = '396478'; /* Legacy ;) */
 	var disqus_developer = 1;
@@ -23,7 +24,7 @@
 		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 	})();
 	
-	</script>
+</script>
 <noscript>
 	Please enable JavaScript to view the
 	<a href="http://disqus.com/?ref_noscript">

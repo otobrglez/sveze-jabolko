@@ -35,6 +35,12 @@ class Article < ActiveRecord::Base
       .order("views DESC")
     end
   end
+
+  def jid
+    return nil if self.id.nil?
+    return  "jid-#{self.id}" if Rails.env.production?
+    "jid-#{self.id}-test"
+  end
   
   def self.search(query)
     ids = ArticleObserver.tank_index
