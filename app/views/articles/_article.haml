@@ -18,7 +18,7 @@
 
 	.meta.clear
 		.numofcom
-			%a{ :href => article_url(article.category, article)+"#disqus_thread", :"data-disqus-identifier"=>article.jid} = "0"
+			%a{ :href => article_url(article.category, article)+"#disqus_thread", :"data-disqus-identifier"=>article.jid}=0
 		
 		%span.created_at
 			=sanitize article_created(article)
