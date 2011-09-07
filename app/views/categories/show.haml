@@ -1,16 +1,5 @@
 - page_title @category.to_s
 
-- content_for :head do
-	:javascript
-		var disqus_shortname = 'jabolko';
-		(function() {
-			var dsq = document.createElement('script');
-			dsq.type = 'text/javascript';
-			dsq.async = true;
-			dsq.src = 'http://jabolko.disqus.com/count.js';
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-
 %p= @category.description if @category.description != nil
 
 %div#articles=render @articles

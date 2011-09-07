@@ -1,14 +1,3 @@
-- content_for :head do
-	:javascript
-		var disqus_shortname = 'jabolko';
-		(function() {
-			var dsq = document.createElement('script');
-			dsq.type = 'text/javascript';
-			dsq.async = true;
-			dsq.src = 'http://jabolko.disqus.com/count.js';
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-
 %h2.heading2= page_title "Članki z značko '#{params[:tag_id].downcase}'"
 
 %div#articles=render :collection => @articles, :partial => 'articles/simple_article'
