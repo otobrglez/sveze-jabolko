@@ -13,5 +13,6 @@
 		=link_to t(:read_full_article), article_path(simple_article.category,simple_article)
 		%span
 			=t(:num_of_comments)
+			%a{ :href => article_url(simple_article.category, simple_article)+"#disqus_thread", :"data-disqus-identifier"=>simple_article.jid}=0
 			
 %hr/
