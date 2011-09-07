@@ -1,12 +1,14 @@
 - page_title "Apple uporabniki Slovenija"
 
-- content_for(:head) do
-	:javascript
-		var disqus_shortname = 'jabolko';
-		(function() {
-			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = 'http://jabolko.disqus.com/embed.js';
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
+:javascript
+	var disqus_shortname = 'jabolko';
+	(function() {
+		var dsq = document.createElement('script');
+		dsq.type = 'text/javascript';
+		dsq.async = true;
+		dsq.src = 'http://jabolko.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
 
 %div#articles=render @articles
 
