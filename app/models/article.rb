@@ -22,15 +22,22 @@ class Article < ActiveRecord::Base
   has_many :sources
   accepts_nested_attributes_for :sources, :allow_destroy => true
   
-  default_scope order("created_at DESC")
-  scope :published, where(:published => true).where(:hidden => 0)
-  scope :recommended, where(:recommended => 1).where(:hidden => 0)
+  default_scope order("publish_date DESC") # EX created_at
+  scope :published, where(:published => true).where(:hidden => 0).where("publish_date <= ?", Date.today)
+  scope :recommended, where(:published => true).where("publish_date <= ?", Date.today).where(:recommended => 1).where(:hidden => 0)
   
+  after_initialize :default_values
+
+  def default_values
+    self.publish_date ||= Date.today
+  end
+
   def self.top_viewed(limit=10)
     with_exclusive_scope do
       where(:published => true)
       .where(:recommended => 1)
       .where(:hidden => 0)
+      .where("publish_date <= ?", Date.today)
       .limit(limit)
       .order("views DESC")
     end
@@ -65,7 +72,9 @@ class Article < ActiveRecord::Base
     posts
   end
   
-  def related(limit=10)
+  def related(limit=10,p_date=nil)
+    p_date ||= Date.today.strftime("%Y-%m-%d")
+
     Article.find_by_sql(%Q{
       SELECT
       	a.*,
@@ -89,6 +98,7 @@ class Article < ActiveRecord::Base
       	articles a
       WHERE
       	a.published = 1 AND
+        a.publish_date <= '#{p_date}' AND
       	a.id != #{self.id}
       ORDER BY score DESC, a.created_at DESC
       LIMIT #{limit}      
@@ -165,6 +175,8 @@ class Article < ActiveRecord::Base
       text:   self.body.to_s
     }
   end
+
+
   
   private
     def set_no_image

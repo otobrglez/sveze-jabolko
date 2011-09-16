@@ -26,8 +26,10 @@ class User < ActiveRecord::Base
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix,
     :if => Proc.new { |user| user.home_url != "" && user.home_url != nil }
 
+    #FIX!
   has_and_belongs_to_many :public_articles, :class_name => "Article",
-    :foreign_key => "author_id", :conditions => { :published => true, :hidden => 0}
+    :foreign_key => "author_id", :conditions => 
+      "published = 1 AND hidden = 0 AND  publish_date <= '"+Date.today.strftime("%Y-%m-%d")+"'" 
   
   has_and_belongs_to_many :articles, :class_name => "Article",
     :foreign_key => "author_id"
@@ -37,6 +39,8 @@ class User < ActiveRecord::Base
   scope :authors, where(:is_author => 1).order("name ASC")
   scope :developers, where(:is_developer => 1).order("name ASC")
   
+# .where("publish_date <= ?", Date.today)
+
   scope :authors_with_numbers,
     select("
       users.*, (
@@ -50,6 +54,7 @@ class User < ActiveRecord::Base
           articles.id = articles_users.article_id
         WHERE
           articles.published = 1 AND
+          articles.publish_date <= '"+Date.today.strftime("%Y-%m-%d")+"' AND
           articles.hidden = 0 AND
           articles_users.author_id = users.id
       ) as p_count
@@ -67,6 +72,7 @@ class User < ActiveRecord::Base
         articles.id = articles_users.article_id
       WHERE
         articles.published = 1 AND
+        articles.publish_date <= '"+Date.today.strftime("%Y-%m-%d")+"' AND
         articles.hidden = 0 AND
         articles_users.author_id = users.id)
      > 0")

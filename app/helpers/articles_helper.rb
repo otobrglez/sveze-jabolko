@@ -4,7 +4,7 @@ module ArticlesHelper
   
   def article_created(article,options={},&block)
     authors = (article.authors.map { |author| link_to(author,author_path(author)) }.join(", ")).strip
-    date = article.created_at.strftime(I18n.t("date.formats.default".to_sym))
+    date = article.publish_date.strftime(I18n.t("date.formats.default".to_sym))
     
     category = nil
     if article.category !=nil

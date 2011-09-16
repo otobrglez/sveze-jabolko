@@ -38,7 +38,6 @@
 			});
 		});
 		
-		
 		$("a.redcloth").bind("click",function(e){
 			if(e.preventDefault) e.preventDefault();
 			
@@ -49,7 +48,20 @@
 			$("body").append(data);
 			$("#redcloth-helper").dialog({title:"RedCloth Pomoč"});
 		});
-	
+
+		/*
+		$("input#article_published").change(function(){
+			if($(this).is(":checked")){
+				$("#publish_date_lb").show();
+			} else {
+				$("#publish_date_lb").hide();
+			};
+		});
+		*/
+
+		$("#article_publish_date").datepicker({
+			dateFormat: "yy-mm-dd"
+		});
 	});
 	
 
@@ -133,7 +145,6 @@
 							
 							%a.clone-source(href="#clone")
 								=t(:clone)
-							
 
 		%li
 			%br/
@@ -145,6 +156,11 @@
 				%br/
 				%strong=f.label :published, Article.human_attribute_name(:published)
 				=f.check_box :published
+	
+		%li#publish_date_lb{:style => "padding-left:0px;"}
+			%br/
+			%strong=f.label :publish_date, Article.human_attribute_name(:publish_date)
+			=f.text_field :publish_date, :style => "width:150px;"
 		
 		%li
 			%br/

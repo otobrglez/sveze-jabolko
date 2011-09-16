@@ -25,6 +25,7 @@ sl:
         slug: "Varen URL"
         tag: "Značka"
         tools: Orodja
+        publish_date: Datum objave
       category:
         title: "Naslov"
         number_of_articles: "Člankov"

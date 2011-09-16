@@ -1,0 +1,7 @@
+sl:
+  flash:
+    actions:
+      create:
+        notice: "Zapis uspešno ustvarjen!"
+      update:
+        notice: "Zapis posodobljen!"

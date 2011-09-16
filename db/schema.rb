@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830094213) do
+ActiveRecord::Schema.define(:version => 20110916110449) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20110830094213) do
     t.integer  "share_visible",     :default => 1
     t.integer  "recommend_visible", :default => 1
     t.integer  "hidden",            :default => 0
+    t.date     "publish_date"
   end
 
   create_table "articles_users", :id => false, :force => true do |t|

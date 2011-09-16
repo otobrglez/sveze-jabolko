@@ -13,7 +13,7 @@ xml.rss :version => "2.0" do
       xml.item do
         xml.title article.title
         xml.description sanitize(article.intro_html)
-        xml.pubDate article.created_at.to_s(:rfc822)
+        xml.pubDate article.publish_date.to_s(:rfc822)
         if article.short_url.to_s == ""
           xml.link article_url(article.category, article)
         else
