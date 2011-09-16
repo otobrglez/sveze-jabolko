@@ -19,7 +19,9 @@
 				  fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));</script>
 
-				<div class="fb-like" data-href="http://www.jabolko.org/novice/363-maclegion-jesenska-zbirka" data-send="true" data-layout="box_count" data-width="450" data-show-faces="false"></div>
+				<div class="fb-like"
+					data-href="<%= article_url(article.category, article) %>"
+					data-send="true" data-layout="box_count" data-width="450" data-show-faces="false"></div>
 
 				<!--
 				<iframe src="http://www.facebook.com/plugins/like.php?app_id=206320122766024&amp;href&amp;send=false&amp;layout=box_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:90px;" allowTransparency="true"></iframe>
