@@ -54,11 +54,11 @@ class User < ActiveRecord::Base
           articles.id = articles_users.article_id
         WHERE
           articles.published = 1 AND
-          articles.publish_date <= ? AND
+          articles.publish_date <= '"+(Time.zone.now).strftime("%Y-%m-%d")+"' AND
           articles.hidden = 0 AND
           articles_users.author_id = users.id
       ) as p_count
-    ",Time.zone.now)
+    ")
     .where("users.is_author = 1")
     .order("p_count DESC")
     .where("
