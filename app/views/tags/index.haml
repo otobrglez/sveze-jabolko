@@ -1,18 +1,39 @@
 %h2.heading2= page_title "Značke"
 
+
 :css
-	.tag{
-		line-height:20px;
-		height:20px;
-		font-size:14px;
+	.letter { display: inline-block; margin-bottom:15px; width:150px; }
+	.letter span.count { float:right; }
+	.tags { widht:100%; display: block; }
+	.tags li {
+		display: block; 
+		padding:8px 0;
+		border-top:1px solid #999;
 	}
 
-	a.tag:hover{ text-decoration:underline; color: #3FA9F5; }
-	.c1 { font-size: 12px; padding-top:8px; color:#ccc;}
-	.c2 { font-size: 14px; padding-top:6px; color:#666;}
-	.c3 { font-size: 18px; padding-top:2px; }
-	.c4 { font-size: 20px; padding-top:0px;}
+	#smart-tags a{ color:#4D4D4D; }
+	#smart-tags a:hover{ color:#3FA9F5; text-decoration:underline; }
+	#smart-tags .tags li a:hover span.count{ text-decoration:none; }
+	#smart-tags span.count { color:#CCC; text-decoration:none }
 
-- tag_cloud(@tags, %w(c1 c2 c3 c4)) do |tag, css_class|
-	=link_to tag.name, tag_path(tag.name.parameterize), :class => ["tag", css_class]
 
+:javascript
+	$(function(){
+		$("#smart-tags").masonry({
+			columnWidth:150,
+			isFitWidth: false,
+			gutterWidth: 15
+		});
+	});
+
+#smart-tags
+	- @letters.each do |letter|
+		.letter{:class => "letter-#{letter}"}
+			%h2=letter
+			.tags
+				%ul
+					-@tags.to_a.find_all{|t| t.name.upcase[0] == letter}.sort_by(&:name).each do |tag|
+						%li
+							=link_to tag_path(tag.name.parameterize) do
+								%span #{tag.name}
+							%span.count #{tag.count}

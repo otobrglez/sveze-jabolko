@@ -10,7 +10,12 @@ class TagsController < ApplicationController
   end
   
   def index
-    @tags = Article.tag_counts_on(:tags)
+    @tags = Article.tag_counts_on(:tags).to_a
+    @letters = @tags.map {|t| t.name.upcase[0] }.sort.uniq
+
+    # debugger
+
+    t = 2
   end
   
 end
