@@ -23,7 +23,7 @@ class Article < ActiveRecord::Base
   accepts_nested_attributes_for :sources, :allow_destroy => true
   
   default_scope order("publish_date DESC") # EX created_at
-  scope :published, where(:published => true).where(:hidden => 0).where("publish_date <= ?", (Time.zone.now) )
+  scope :published, where(:published => true).where(:hidden => 0).where("publish_date <= ?", (Time.zone.now))
   scope :recommended, where(:published => true).where("publish_date <= ?", (Time.zone.now)).where(:recommended => 1).where(:hidden => 0)
   
   after_initialize :default_values
