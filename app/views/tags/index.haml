@@ -32,7 +32,7 @@
 			%h2=letter
 			.tags
 				%ul
-					-@tags.to_a.find_all{|t| t.name.upcase[0] == letter}.sort_by(&:name).each do |tag|
+					-@tags.to_a.find_all{|t| t.name.upcase[0] == letter}.sort_by!(&:name).each do |tag|
 						%li
 							=link_to tag_path(tag.name.parameterize) do
 								%span #{tag.name}
