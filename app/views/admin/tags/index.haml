@@ -35,11 +35,13 @@
 %table#tags.a
 	%thead
 		%tr
+			%th{:style => "width:10px;"}="Št.č."
 			%th=Article.human_attribute_name(:tag)
 			%th.tools=Article.human_attribute_name(:tools)
 	%tbody
 		- @tags.each do |tag|
 			%tr{:class => "tag-#{tag.id}"}
+				%td=tag.count
 				%td{:style=>"text-align:left;"}
 					%span.name.regular=link_to tag, "/tag/#{tag.name}"
 					.area=" "
