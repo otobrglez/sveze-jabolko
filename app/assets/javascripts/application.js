@@ -1,4 +1,5 @@
 // By Oto Brglez - <oto.brglez@opalab.com> for Jabolko.org
+
 //
 //= require jquery
 //= require jquery-ui
@@ -44,7 +45,5 @@ $(function(){
 		.blur(function(){
 			if($(this).val()==='') $(this).val(original_val);
 		});		
-		
 	};
-	
 });
