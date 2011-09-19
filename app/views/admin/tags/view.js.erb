@@ -1,0 +1,3 @@
+$("#tags tr.tag-<%= @tag.id %> .name a").html('<%=j @tag.name %>');
+$("#tags tr.tag-<%= @tag.id %> .name a").attr('href','/tag/<%=j @tag.name %>');
+$("#tags tr.tag-<%= @tag.id %>").removeClass("editing");

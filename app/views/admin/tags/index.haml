@@ -3,6 +3,34 @@
 
 :css
 	table.a td, table.a th{ font-size: 13px; }
+
+	table tr .updating{ display:none; }
+	table tr .area{ display:none; }
+
+	table tr.editing .updating { display:block; }
+	table tr.editing .regular { display:none; }
+	table tr.editing .area { display: block; }
+		
+	table input{ margin:0px; padding:0px; width:90%; }
+	table tr:nth-child(odd) td{ background-color:#f4f4f4; }
+		
+
+:javascript
+	$(function(){
+		
+		$("a.edit, a.save, a.cancel, a.delete").bind("click",function(e){
+			if(e.preventDefault) e.preventDefault();
+		});
+
+		$("a.save").bind("click",function(e){
+			$($(this).parent().parent().parent().find("form")).trigger("submit");
+		});	
+
+		$("a.cancel").bind("click",function(e){
+			$(this).parent().parent().parent().removeClass("editing");
+		});
+
+	});
 	
 %table#tags.a
 	%thead
@@ -11,9 +39,18 @@
 			%th.tools=Article.human_attribute_name(:tools)
 	%tbody
 		- @tags.each do |tag|
-			%tr
+			%tr{:class => "tag-#{tag.id}"}
 				%td{:style=>"text-align:left;"}
-					=link_to tag, tag_path(tag)
+					%span.name.regular=link_to tag, "/tag/#{tag.name}"
+					.area=" "
 				%td
-					=t("edit")
-					-# =link_to t("edit"), edit_admin_tag_path(tag)
+					.regular
+						=link_to t("edit"), edit_admin_tag_path(tag), :class => "edit", :remote => true
+						|
+						=link_to t("delete"), admin_tag_path(tag), :method => :delete, :remote => true
+
+					.updating
+						=link_to t("save"), admin_tag_path(tag), :class => "save"
+						|
+						=link_to t("cancel"), admin_tag_path(tag), :class => "cancel"
+

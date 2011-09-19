@@ -1,0 +1,9 @@
+=form_for(@tag, :url => admin_tag_path(@tag), :remote => true) do |f|
+
+	-if f.object.errors.any?
+		#form_errors
+			%ul
+				- f.object.errors.full_messages.each do |e|
+					%li=e
+
+	=f.text_field :name
