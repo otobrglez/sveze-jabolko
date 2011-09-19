@@ -1,11 +1,18 @@
 %h2.heading2= page_title "Značke"
 
 :css
-	.css1 { font-size: 1.0em; }
-	.css2 { font-size: 1.2em; }
-	.css3 { font-size: 1.6em; }
-	.css4 { font-size: 1.8em; }
+	.tag{
+		line-height:20px;
+		height:20px;
+		font-size:14px;
+	}
 
-- tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-	=link_to tag.name, tag_path(tag.name.parameterize), :class => css_class
+	a.tag:hover{ text-decoration:underline; color: #3FA9F5; }
+	.c1 { font-size: 12px; padding-top:8px; color:#ccc;}
+	.c2 { font-size: 14px; padding-top:6px; color:#666;}
+	.c3 { font-size: 18px; padding-top:2px; }
+	.c4 { font-size: 20px; padding-top:0px;}
+
+- tag_cloud(@tags, %w(c1 c2 c3 c4)) do |tag, css_class|
+	=link_to tag.name, tag_path(tag.name.parameterize), :class => ["tag", css_class]
 
