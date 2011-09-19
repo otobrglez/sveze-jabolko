@@ -6,3 +6,4 @@ tmp/
 coverage/
 public/assets/
 dropbox_session.txt
+*.dump
