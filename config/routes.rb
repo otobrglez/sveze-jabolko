@@ -17,6 +17,8 @@ SvezeJabolko::Application.routes.draw do
     
     resources :tags do
       get :search, :on => :collection, :via => [:get]
+      get :merge, :on => :member, :via => [:get]
+      put :upmerge, :on => :member, :via => [:get, :put, :post]
     end
     
   end

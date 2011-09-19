@@ -1,0 +1,12 @@
+=form_for(@tag, :url => upmerge_admin_tag_path(@tag), :remote => true) do |f|
+
+	-if f.object.errors.any?
+		#form_errors
+			%ul
+				- f.object.errors.full_messages.each do |e|
+					%li=e
+
+	%span="Združi"
+	%strong=f.object.name
+	%span=" in "
+	= select_tag "acts_as_taggable_on_tag[m_tag]", options_from_collection_for_select(@tags, "id", "name")

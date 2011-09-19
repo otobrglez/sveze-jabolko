@@ -1,0 +1,2 @@
+$("#tags tr.tag-<%= @tag.id %>").addClass("editing");
+$("#tags tr.tag-<%= @tag.id %> .area").html('<%=j render "merge_form" %>');

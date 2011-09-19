@@ -1,0 +1,5 @@
+$("#tags tr.tag-<%= @tag.id %> .name a").html('<%=j @tag.name %>');
+$("#tags tr.tag-<%= @tag.id %> .name a").attr('href','/tag/<%=j @tag.name %>');
+$("#tags tr.tag-<%= @tag.id %> td.count").html('<%= @tag_count %>');
+$("#tags tr.tag-<%= @m_tag.id %>").fadeOut("slow",function(e){ $(this).remove(); });
+$("#tags tr.tag-<%= @tag.id %>").removeClass("editing");

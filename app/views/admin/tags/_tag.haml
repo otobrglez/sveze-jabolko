@@ -1,0 +1,17 @@
+%tr{:class => "tag-#{tag.id}"}
+	%td.count=tag.count
+	%td{:style=>"text-align:left;"}
+		%span.name.regular=link_to tag, "/tag/#{tag.name}"
+		.area=" "
+	%td
+		.regular
+			=link_to t("edit"), edit_admin_tag_path(tag), :class => "edit", :remote => true
+			|
+			=link_to t("merge"), merge_admin_tag_path(tag), :class => "merge", :remote => true
+			|
+			=link_to t("delete"), admin_tag_path(tag), :method => :delete, :remote => true
+
+		.updating
+			=link_to t("save"), admin_tag_path(tag), :class => "save"
+			|
+			=link_to t("cancel"), admin_tag_path(tag), :class => "cancel"
