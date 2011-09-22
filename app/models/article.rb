@@ -27,18 +27,18 @@ class Article < ActiveRecord::Base
   scope :published,
      where(:published => 1)
     .where(:hidden => 0)
-    .where("publish_date <= ?", Time.zone.now.to_s(:db))
+    .where("publish_date <= ?", Time.now)
     
   scope :recommended,
      where(:published => 1)
-    .where("publish_date <= ?", Time.zone.now.to_s(:db))
+    .where("publish_date <= ?", Time.zone)
     .where(:recommended => 1)
     .where(:hidden => 0)
   
   after_initialize :default_values
 
   def default_values
-    self.publish_date ||= Time.now
+    self.publish_date ||= Time.now.to_s(:db)
   end
 
   def self.top_viewed(limit=10)
@@ -46,7 +46,7 @@ class Article < ActiveRecord::Base
       where(:published => true)
       .where(:recommended => 1)
       .where(:hidden => 0)
-      .where("publish_date <= ?", Time.zone.now.to_s(:db))
+      .where("publish_date <= ?", Time.now)
       .limit(limit)
       .order("views DESC")
     end
