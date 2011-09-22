@@ -27,7 +27,7 @@ class Article < ActiveRecord::Base
   scope :published,
      where(:published => 1)
     .where(:hidden => 0)
-    .where("publish_date <= ?", Time.now)
+    .where("publish_date <= ?", Time.zone.now)
     
   scope :recommended,
      where(:published => 1)
