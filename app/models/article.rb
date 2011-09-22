@@ -22,14 +22,23 @@ class Article < ActiveRecord::Base
   has_many :sources
   accepts_nested_attributes_for :sources, :allow_destroy => true
   
-  default_scope order("publish_date DESC") # EX created_at
-  scope :published, where(:published => true).where(:hidden => 0).where("publish_date <= ?", (Time.zone.now))
-  scope :recommended, where(:published => true).where("publish_date <= ?", (Time.zone.now)).where(:recommended => 1).where(:hidden => 0)
+  default_scope order("publish_date DESC, updated_at DESC") # EX created_at
+  
+  scope :published,
+     where(:published => 1)
+    .where(:hidden => 0)
+    .where("publish_date <= ?", Time.now)
+    
+  scope :recommended,
+     where(:published => 1)
+    .where("publish_date <= ?", Time.now)
+    .where(:recommended => 1)
+    .where(:hidden => 0)
   
   after_initialize :default_values
 
   def default_values
-    self.publish_date ||= Date.today
+    self.publish_date ||= Time.now
   end
 
   def self.top_viewed(limit=10)
@@ -37,7 +46,7 @@ class Article < ActiveRecord::Base
       where(:published => true)
       .where(:recommended => 1)
       .where(:hidden => 0)
-      .where("publish_date <= ?", (Time.zone.now))
+      .where("publish_date <= ?", Time.now)
       .limit(limit)
       .order("views DESC")
     end
@@ -47,6 +56,10 @@ class Article < ActiveRecord::Base
     return nil if self.id.nil?
     return  "jid-#{self.id}" if Rails.env.production?
     "jid-#{self.id}-test"
+  end
+  
+  def published_at
+    self.publish_date
   end
   
   def self.search(query)
@@ -73,7 +86,7 @@ class Article < ActiveRecord::Base
   end
   
   def related(limit=10,p_date=nil)
-    p_date ||= (Time.zone.now).strftime("%Y-%m-%d")
+    p_date ||= Time.now.strftime("%Y-%m-%d %H:%M:%S")
 
     Article.find_by_sql(%Q{
       SELECT
