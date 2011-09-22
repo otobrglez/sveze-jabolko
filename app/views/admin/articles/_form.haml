@@ -157,7 +157,8 @@
 		%li#publish_date_lb{:style => "padding-left:0px;"}
 			%br/
 			%strong=f.label :publish_date, Article.human_attribute_name(:publish_date)
-			=f.text_field :publish_date, :style => "width:200px;"
+			=f.datetime_select("publish_date")
+			-# =f.text_field :publish_date, :style => "width:200px;"
 		
 		%li
 			%br/
