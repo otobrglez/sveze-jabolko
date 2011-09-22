@@ -158,9 +158,12 @@
 			%br/
 			%strong=f.label :publish_date, Article.human_attribute_name(:publish_date)
 			=f.datetime_select("publish_date")
-			%br/
-			%small=" Time.zone.now :"+Time.zone.now.to_s
-			%small=" Time.now :"+Time.now.to_s
+			
+			-#
+				%br/
+				%small=" Time.zone.now :"+Time.zone.now.to_s
+				%br/
+				%small=" Time.now :"+Time.now.to_s
       
 			-# =f.text_field :publish_date, :style => "width:200px;"
 		

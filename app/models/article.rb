@@ -31,7 +31,7 @@ class Article < ActiveRecord::Base
     
   scope :recommended,
      where(:published => 1)
-    .where("publish_date <= ?", Time.now)
+    .where("publish_date <= ?", Time.zone.now)
     .where(:recommended => 1)
     .where(:hidden => 0)
   
@@ -50,7 +50,7 @@ class Article < ActiveRecord::Base
       where(:published => true)
       .where(:recommended => 1)
       .where(:hidden => 0)
-      .where("publish_date <= ?", Time.now)
+      .where("publish_date <= ?", Time.zone.now)
       .limit(limit)
       .order("views DESC")
     end
