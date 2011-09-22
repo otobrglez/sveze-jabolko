@@ -42,7 +42,7 @@ class Article < ActiveRecord::Base
   end
   
   def publish_date
-    self.publish_date.strftime("%Y-%m-%d %H:%M:%S")
+    read_attribute(:publish_date).strftime("%Y-%m-%d %H:%M:%S")
   end
 
   def self.top_viewed(limit=10)
