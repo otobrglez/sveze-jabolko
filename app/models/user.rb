@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     #FIX!
   has_and_belongs_to_many :public_articles, :class_name => "Article",
     :foreign_key => "author_id", :conditions => 
-      "published = 1 AND hidden = 0 AND  publish_date <= '"+Time.zone.now.to_s(:db)+"'" 
+      "published = 1 AND hidden = 0 AND  publish_date <= '"+(Time.now-2.hours).to_s(:db)+"'" 
   
   has_and_belongs_to_many :articles, :class_name => "Article",
     :foreign_key => "author_id"
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
           articles.id = articles_users.article_id
         WHERE
           articles.published = 1 AND
-          articles.publish_date <= '"+Time.zone.now.to_s(:db)+"' AND
+          articles.publish_date <= '"+(Time.now-2.hours).to_s(:db)+"' AND
           articles.hidden = 0 AND
           articles_users.author_id = users.id
       ) as p_count
@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
         articles.publish_date <= ? AND
         articles.hidden = 0 AND
         articles_users.author_id = users.id)
-     > 0",Time.zone.now)
+     > 0",(Time.now-2.hours))
   
   def is_admin?
     return self.is_admin == 1
