@@ -40,6 +40,10 @@ class Article < ActiveRecord::Base
   def default_values
     self.publish_date ||= Time.now.to_s(:db)
   end
+  
+  def publish_date
+    a.publish_date.strftime("%Y-%m-%d %H:%M:%S")
+  end
 
   def self.top_viewed(limit=10)
     with_exclusive_scope do
