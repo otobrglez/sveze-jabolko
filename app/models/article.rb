@@ -38,7 +38,7 @@ class Article < ActiveRecord::Base
   after_initialize :default_values
 
   def default_values
-    self.publish_date ||= Time.now.to_s(:db)
+    self.publish_date ||= Time.now
   end
   
   #def publish_date
@@ -91,7 +91,8 @@ class Article < ActiveRecord::Base
   
   def related(limit=10,p_date=nil)
     # p_date ||= Time.now.to_s(:db) #strftime("%Y-%m-%d %H:%M:%S")
-    p_date ||= Time.zone.now.to_s(:db)
+    # p_date ||= Time.zone.now.to_s(:db)
+    p_date ||= Time.now.to_s(:db)
     
     Article.find_by_sql(%Q{
       SELECT
