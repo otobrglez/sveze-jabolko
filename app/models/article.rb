@@ -27,11 +27,11 @@ class Article < ActiveRecord::Base
   scope :published,
      where(:published => 1)
     .where(:hidden => 0)
-    .where("publish_date <= ?", Time.now)
+    .where("publish_date <= ?", Time.zone.now.to_s(:db))
     
   scope :recommended,
      where(:published => 1)
-    .where("publish_date <= ?", Time.now)
+    .where("publish_date <= ?", Time.zone.now.to_s(:db))
     .where(:recommended => 1)
     .where(:hidden => 0)
   
@@ -46,7 +46,7 @@ class Article < ActiveRecord::Base
       where(:published => true)
       .where(:recommended => 1)
       .where(:hidden => 0)
-      .where("publish_date <= ?", Time.now)
+      .where("publish_date <= ?", Time.zone.now.to_s(:db))
       .limit(limit)
       .order("views DESC")
     end
@@ -86,8 +86,9 @@ class Article < ActiveRecord::Base
   end
   
   def related(limit=10,p_date=nil)
-    p_date ||= Time.now.to_s(:db) #strftime("%Y-%m-%d %H:%M:%S")
-
+    # p_date ||= Time.now.to_s(:db) #strftime("%Y-%m-%d %H:%M:%S")
+    p_date ||= Time.zone.now.to_s(:db)
+    
     Article.find_by_sql(%Q{
       SELECT
       	a.*,
