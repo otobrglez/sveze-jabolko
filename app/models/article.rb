@@ -31,7 +31,7 @@ class Article < ActiveRecord::Base
     
   scope :recommended,
      where(:published => 1)
-    .where("publish_date <= ?", Time.zone)
+    .where("publish_date <= ?", Time.now)
     .where(:recommended => 1)
     .where(:hidden => 0)
   
@@ -41,9 +41,9 @@ class Article < ActiveRecord::Base
     self.publish_date ||= Time.now.to_s(:db)
   end
   
-  def publish_date
-    read_attribute(:publish_date).strftime("%Y-%m-%d %H:%M:%S")
-  end
+  #def publish_date
+  #  read_attribute(:publish_date).strftime("%Y-%m-%d %H:%M:%S")
+  #end
 
   def self.top_viewed(limit=10)
     with_exclusive_scope do
