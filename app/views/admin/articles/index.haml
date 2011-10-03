@@ -1,5 +1,10 @@
 %h1= link_to page_title("Članki"), admin_articles_path()
 
+
+%p{:style => "margin:10px;"}
+	Točen čas:
+	=Time.zone.now.strftime("%Y-%m-%d %H:%M:%S")
+
 .ztabs
 	%ul
 		%li=link_to "Nov članek", new_admin_article_path()
@@ -9,7 +14,7 @@
 		%li=link_to t("all"), [:admin,:articles], :class => "category"
 		- @categories.each do |category|
 			%li=link_to category, admin_articles_path(:category_id => category.id), :class => "category", :id => "category-#{category.id}"
-			
+
 %table#articles.a
 	%thead
 		%tr
@@ -30,11 +35,16 @@
 						&nbsp;
 				%td
 					=article.id
-				%td
+				%td(valign="top")
 					%span
+						- if article.published_at > Time.now
+							Objava čez:
+							= article.published_at
+							
+
 						=link_to article, article_path(article.category, article)
 					.article_information= sanitize article_created(article)
-				%td{:valign => "middle" }
+				%td{:valign => "top" }
 					-if article.published?
 						=t("yesp")
 					-else
