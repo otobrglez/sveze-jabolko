@@ -24,33 +24,31 @@ class Article < ActiveRecord::Base
   
   default_scope order("publish_date DESC, updated_at DESC") # EX created_at
   
-  scope :published,
-     where(:published => 1)
+  scope :published, -> {
+    where(:published => 1)
     .where(:hidden => 0)
-    .where("publish_date <= ?", Time.zone.now-2.hours)
+    .where("publish_date <= ?", Time.now)
+  }
     
-  scope :recommended,
+  scope :recommended, -> {
      where(:published => 1)
-    .where("publish_date <= ?", Time.zone.now-2.hours)
     .where(:recommended => 1)
     .where(:hidden => 0)
+    .where("publish_date <= ?", Time.now )
+  }
   
   after_initialize :default_values
 
   def default_values
     self.publish_date ||= Time.now
   end
-  
-  #def publish_date
-  #  read_attribute(:publish_date).strftime("%Y-%m-%d %H:%M:%S")
-  #end
 
   def self.top_viewed(limit=10)
     with_exclusive_scope do
       where(:published => true)
       .where(:recommended => 1)
       .where(:hidden => 0)
-      .where("publish_date <= ?", Time.zone.now-2.hours)
+      .where("publish_date <= ?", Time.zone.now)
       .limit(limit)
       .order("views DESC")
     end
@@ -90,9 +88,7 @@ class Article < ActiveRecord::Base
   end
   
   def related(limit=10,p_date=nil)
-    # p_date ||= Time.now.to_s(:db) #strftime("%Y-%m-%d %H:%M:%S")
-    # p_date ||= Time.zone.now.to_s(:db)
-    p_date ||= (Time.now-2.hours).to_s(:db)
+    p_date ||= Time.now.to_s(:db)
     
     Article.find_by_sql(%Q{
       SELECT
