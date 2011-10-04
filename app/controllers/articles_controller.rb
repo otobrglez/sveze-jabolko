@@ -18,7 +18,8 @@ class ArticlesController < ApplicationController
   
   def search
     if params[:query] != nil && params[:query] != "" && params[:query] != " "
-      @articles = Article.search(params[:query]).page(params[:page]).per(10)
+      @articles = Article.search(params[:query])
+      @articles = Kaminari.paginate_array(@articles).page(params[:articles_page]).per(7)
     else
       @articles = []
     end

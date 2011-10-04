@@ -1,7 +1,9 @@
 %h2.heading2= page_title("Rezultati iskanja: #{params[:query]}")
 
 - if @articles.size != 0
-	%div#articles=render :collection => @articles, :partial => 'articles/simple_article'
+	%div#articles
+		=render :collection => @articles, :partial => 'articles/simple_article'
+
 	.pagination_wrap
 		.pagination
 			=paginate @articles, :param_name => :articles_page

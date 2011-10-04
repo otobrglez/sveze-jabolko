@@ -65,8 +65,8 @@ class Article < ActiveRecord::Base
   end
   
   def self.search(query)
-    ids = ArticleObserver.tank_index
-      .search(query)["results"].map {|r| r["docid"].to_i }
+    ids = ArticleObserver.tank_index.search(query)["results"].map {|r| r["docid"].to_i }
+    
     Article.published.where("id IN (?)", ids)
   end
   
