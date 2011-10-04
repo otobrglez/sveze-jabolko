@@ -1,7 +1,12 @@
 class ArticleObserver < ActiveRecord::Observer
 
+
+  def self.client
+    IndexTank::Client.new(ENV['INDEXTANK_API_URL'] || INDEXTANK["indextank_api_url"])
+  end
+
   def self.tank_index
-    client = IndexTank::Client.new(ENV['INDEXTANK_API_URL'] || INDEXTANK["indextank_api_url"])
+    client = ArticleObserver.client
     index = client.indexes(INDEXTANK["index"])
   end
 
