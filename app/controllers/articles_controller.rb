@@ -17,9 +17,15 @@ class ArticlesController < ApplicationController
   end
   
   def search
+    @service_error = false
     if params[:query] != nil && params[:query] != "" && params[:query] != " "
-      @articles = Article.search(params[:query])
-      @articles = Kaminari.paginate_array(@articles).page(params[:articles_page]).per(7)
+      begin
+        @articles = Article.search(params[:query])
+        @articles = Kaminari.paginate_array(@articles).page(params[:articles_page]).per(7)
+      rescue Exception => e
+        @articles = []
+        @service_error = true
+      end
     else
       @articles = []
     end

@@ -1,16 +1,20 @@
-%h2.heading2= page_title("Rezultati iskanja: #{params[:query]}")
+- if not @service_error
 
-- if @articles.size != 0
-	%div#articles
-		=render :collection => @articles, :partial => 'articles/simple_article'
+	%h2.heading2= page_title("Rezultati iskanja: #{params[:query]}")
 
-	.pagination_wrap
-		.pagination
-			=paginate @articles, :param_name => :articles_page
+	- if @articles.size != 0
+		%div#articles
+			=render :collection => @articles, :partial => 'articles/simple_article'
+
+		.pagination_wrap
+			.pagination
+				=paginate @articles, :param_name => :articles_page
+	- else
+		%p
+			Vaše iskanje ni obrodilo sadov.
+			Poskusite z drugačnim naborom ključnih besed.
+
+
 - else
-	%p
-		Vaše iskanje ni obrodilo sadov.
-		Poskusite z drugačnim naborom ključnih besed.
-
-
-
+	%h2.heading2= page_title("Napaka iskalne storitve!")
+	%p Storitev, ki jo uporablja jabolko.org za iskanje je povzdročila napako.
