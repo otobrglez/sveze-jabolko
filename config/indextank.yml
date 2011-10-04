@@ -1,11 +1,11 @@
 defaults: &defaults
   indextank_api_url: http://:BP90eIm2oEivgG@8ndbs.api.indextank.com
   index: idx
-      
+  public_api_url: http://8ndbs.api.indextank.com
 development:
   indextank_api_url: http://:BP90eIm2oEivgG@8ndbs.api.indextank.com
   index: jabolko_dev
-
+  public_api_url: http://8ndbs.api.indextank.com
 test:
   <<: *defaults
 

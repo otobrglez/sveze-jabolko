@@ -38,12 +38,20 @@ $(function(){
 	/* Search box */
 	if($("#q").length != 0){
 		var $search = $('#q');
+		
 		original_val = $search.val();
+
 		$search.focus(function(){
 			if($(this).val()===original_val) $(this).val('');
-		})
-		.blur(function(){
+		}).blur(function(){
 			if($(this).val()==='') $(this).val(original_val);
 		});		
+	
+		if(typeof(it_p_url) != "undefined" && typeof(it_i_name) != "undefined"){
+			$("#search").indextank_Ize(it_p_url,it_i_name);
+			$("#q").indextank_Autocomplete();
+		};
 	};
+
+
 });
