@@ -26,22 +26,18 @@ class User < ActiveRecord::Base
     :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix,
     :if => Proc.new { |user| user.home_url != "" && user.home_url != nil }
 
-    #FIX!
   has_and_belongs_to_many :public_articles, :class_name => "Article",
-    :foreign_key => "author_id", :conditions => 
-      "published = 1 AND hidden = 0 AND  publish_date <= '"+(Time.now-2.hours).to_s(:db)+"'" 
-  
+    :foreign_key => "author_id",
+      :conditions => proc { "published = 1 AND hidden = 0 AND publish_date <= '#{Time.now.to_s(:db)}'"} 
+
   has_and_belongs_to_many :articles, :class_name => "Article",
     :foreign_key => "author_id"
-
   
   scope :admins, where(:is_admin => 1).order("name ASC")
   scope :authors, where(:is_author => 1).order("name ASC")
   scope :developers, where(:is_developer => 1).order("name ASC")
   
-# .where("publish_date <= ?", Date.today)
-
-  scope :authors_with_numbers,
+  scope :authors_with_numbers, -> {
     select("
       users.*, (
         SELECT
@@ -54,7 +50,7 @@ class User < ActiveRecord::Base
           articles.id = articles_users.article_id
         WHERE
           articles.published = 1 AND
-          articles.publish_date <= '"+(Time.now-2.hours).to_s(:db)+"' AND
+          articles.publish_date <= '#{(Time.now).to_s(:db)}' AND
           articles.hidden = 0 AND
           articles_users.author_id = users.id
       ) as p_count
@@ -75,7 +71,8 @@ class User < ActiveRecord::Base
         articles.publish_date <= ? AND
         articles.hidden = 0 AND
         articles_users.author_id = users.id)
-     > 0",(Time.now-2.hours))
+     > 0",Time.now)
+   }
   
   def is_admin?
     return self.is_admin == 1
