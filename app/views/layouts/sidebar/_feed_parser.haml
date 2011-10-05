@@ -13,7 +13,9 @@
 			- i = 0
 			- apple_feeds.each do |feed|
 				.feed{:id => "feed-#{feed[:key]}", :style => i==0?"display: block;":"display: none;"}
-					%ul.list
-						- feed[:feed_data].entries.slice(0,10).each do |entry|
-							%li=link_to entry.title, entry.url
+					- if not feed[:feed_data].entries.nil?
+						%ul.list
+							- feed[:feed_data].entries.slice(0,10).each do |entry|
+								%li=link_to entry.title, entry.url
+				
 				- i = i+1
