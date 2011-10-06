@@ -1,6 +1,14 @@
 !!!
 %html
 	%head
+	
+		- content_for(:head) do
+			%meta{:property => "og:title", :content => "Steve Jobs 1955-2011"}/
+			%meta{:property => "og:type", :content => "article"}/
+			%meta{:property => "og:url", :content => root_url()}/
+			%meta{:property => "og:image", :content => "http://jabolkoorg.s3.amazonaws.com/website/images/articles/stevejobs/steve_jobs.jpg"}/
+			%meta{:property => "og:description", :content => "Hvala g. Steve za vse ideje, ki ste jih delil z nami, za seme navdušenja, ki ste ga skrbno zalival ter odlično uporabniško izkušnjo, ki jo Apple uporabniki doživljamo vsak dan. Hvala!"}/
+	
 		=render :partial => 'layouts/head'
 		
 		:css
