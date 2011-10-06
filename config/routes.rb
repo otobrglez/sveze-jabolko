@@ -1,6 +1,7 @@
 SvezeJabolko::Application.routes.draw do
   
-  root :to => "articles#index"
+  # root :to => "articles#index"
+  root :to => "articles#special_intro"
   
   match "admin", :controller => "admin", :action => "dash", :as => "admin", :via => [:get]
   devise_for :users, :controllers => { :sessions => "admin/sessions" }

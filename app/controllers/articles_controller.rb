@@ -49,4 +49,10 @@ class ArticlesController < ApplicationController
     respond_with(@article)
   end
   
+  def special_intro
+    respond_to do |f|
+      f.html { render "special_intro", :layout => false }
+    end
+  end
+  
 end

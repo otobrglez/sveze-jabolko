@@ -1,0 +1,26 @@
+!!!
+%html
+	%head
+		=render :partial => 'layouts/head'
+		
+		:css
+			html body{ background-color: black; background-image:none }
+			html body{ text-align:center; width:100%; }
+			div#steve{ display:block; width:90%; margin:0 auto; position: relative; }
+			div#steve .text p{ color:white; text-align:left; margin-bottom:5%; font-family:arial, sans-serif; font-size:140%; font-weight:normal}
+			
+			div#steve .image { width:60%; }
+			div#steve .image img { width:100%; }
+			div#steve .text { width:40%; position:absolute; top:40%; right:0px; display:block; }
+			
+	%body
+		#steve
+			.image
+				=image_tag "http://jabolkoorg.s3.amazonaws.com/website/images/articles/stevejobs/steve-jobs-gone.jpg", :alt => "Steve Jobs", :title => "Steve Jobs"
+			.text
+				%p
+					Hvala g. Steve za vse ideje, ki ste jih delil z nami, za seme navdušenja,
+					ki ste ga skrbno zalival ter odlično uporabniško izkušnjo,
+					ki jo Apple uporabniki doživljamo vsak dan. Hvala!
+				%p
+					Društo Apple Uporabnikov Slovenije
