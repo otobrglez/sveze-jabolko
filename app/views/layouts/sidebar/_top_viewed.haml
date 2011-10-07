@@ -2,6 +2,9 @@
 %p Najbolj priljubljeni članki na blogu.
 - cache("top_viewed", :expires_in => 30.minutes) do
 	%ul.list
+		%li
+			.title=link_to "Steve Jobs", steve_jobs_path()
+			
 		- Article.top_viewed.each do |article|
 			%li
 				.image

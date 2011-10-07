@@ -1,7 +1,8 @@
 SvezeJabolko::Application.routes.draw do
   
-  # root :to => "articles#index"
-  root :to => "articles#special_intro"
+  root :to => "articles#index"
+  
+  match "steve-jobs" => "articles#steve_jobs", :as => "steve_jobs" # Tribute page
   
   match "admin", :controller => "admin", :action => "dash", :as => "admin", :via => [:get]
   devise_for :users, :controllers => { :sessions => "admin/sessions" }
