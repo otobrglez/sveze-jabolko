@@ -1,5 +1,7 @@
 %h1= link_to page_title("Članki"), admin_articles_path()
 
+:css
+	table#articles th.tools{ width:80px; }
 
 %p{:style => "margin:10px;"}
 	Točen čas:
@@ -23,6 +25,7 @@
 			%th=Article.human_attribute_name(:title)
 			%th=t(".published_title")
 			%th=Article.human_attribute_name(:views)
+			%th=t(".comments")
 			%th.tools= t("tools")
 
 	%tbody
@@ -50,6 +53,9 @@
 					-else
 						= link_to t("publish"), publish_admin_article_path(article), :style => "color:green"
 				%td=article.views
+				%td
+					%a{ :href => article_url(article.category, article)+"#disqus_thread", :"data-disqus-identifier"=>article.jid}=0
+					
 				%td
 					=link_to t("edit"), edit_admin_article_path(article)
 	%tfoot
